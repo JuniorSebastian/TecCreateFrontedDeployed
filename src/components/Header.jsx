@@ -1,12 +1,11 @@
 // src/components/Header.jsx
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { SparklesIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {

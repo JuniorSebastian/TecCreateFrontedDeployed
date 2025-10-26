@@ -72,7 +72,7 @@ const styles = `
   .animation-delay-4000 { animation-delay: 4s; }
   
   .bg-size-200 { background-size: 200% 200%; }
-  .hover\:shadow-3xl:hover { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+  /* Hover shadow handled via Tailwind utility classes */
 `;
 
 export default function Contact() {
@@ -141,7 +141,7 @@ export default function Contact() {
             {/* Información de contacto - Lado izquierdo */}
             <div className="space-y-8 animate-slideInLeft">
               {/* Tarjeta principal de info */}
-              <div className="bg-white rounded-3xl shadow-2xl p-8 transform transition-all duration-500 hover:shadow-3xl hover:scale-[1.02]">
+              <div className="bg-white rounded-3xl shadow-2xl p-8 transform transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
                 <h3 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -220,7 +220,7 @@ export default function Contact() {
 
             {/* Formulario - Lado derecho */}
             <div className="animate-slideInRight">
-              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 transform transition-all duration-500 hover:shadow-3xl relative overflow-hidden">
+              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 transform transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
                 {/* Efecto de brillo */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient"></div>
                 

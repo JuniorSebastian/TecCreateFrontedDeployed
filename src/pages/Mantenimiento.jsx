@@ -84,7 +84,6 @@ const styles = `
   .animation-delay-4000 { animation-delay: 4s; }
   
   .bg-size-200 { background-size: 200% 200%; }
-  .hover\:shadow-3xl:hover { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
 `;
 
 export default function Mantenimiento() {
@@ -134,7 +133,7 @@ export default function Mantenimiento() {
 
         <div className="max-w-2xl w-full relative z-10 animate-fadeIn">
         {/* Card principal con animación de entrada */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:shadow-3xl hover:scale-[1.02]">
+  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
           {/* Header con gradiente animado */}
           <div className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient p-8 text-center relative overflow-hidden">
             {/* Efecto de onda */}

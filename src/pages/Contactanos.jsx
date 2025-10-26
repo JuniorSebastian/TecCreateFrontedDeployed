@@ -7,7 +7,6 @@ import {
   PaperAirplaneIcon,
   TagIcon,
   ExclamationTriangleIcon,
-  SparklesIcon,
 } from '@heroicons/react/24/outline';
 import { crearReporteSoporte, obtenerCategoriasReportes } from '../services/api';
 
@@ -80,7 +79,7 @@ const styles = `
   .animation-delay-4000 { animation-delay: 4s; }
   
   .bg-size-200 { background-size: 200% 200%; }
-  .hover\:shadow-3xl:hover { box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3); }
+  /* Hover shadow handled via Tailwind utility classes */
 `;
 
 const DESTINATARIOS = ['rodrigo.diaz.i@tecsup.edu.pe', 'junior.osorio@tecsup.edu.pe'];
@@ -293,7 +292,7 @@ export default function Contactanos() {
         </div>
 
         <div className="mx-auto max-w-5xl space-y-10 relative z-10">
-        <header className="relative overflow-hidden rounded-3xl border border-white/40 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient p-10 text-white shadow-2xl hover:shadow-3xl transition-shadow duration-500 animate-fadeIn">
+  <header className="relative overflow-hidden rounded-3xl border border-white/40 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient p-10 text-white shadow-2xl hover:shadow-2xl transition-shadow duration-500 animate-fadeIn">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_transparent_55%)]"></div>
           <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/25 blur-3xl animate-pulse-glow"></div>
           <div className="absolute -bottom-40 right-0 h-80 w-80 rounded-full bg-cyan-200/35 blur-[120px] animate-pulse"></div>
@@ -348,7 +347,7 @@ export default function Contactanos() {
         </header>
 
         <section className="grid gap-8 md:grid-cols-[1.1fr,0.9fr]">
-          <div className="space-y-6 rounded-3xl border border-blue-100 bg-white/95 p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 animate-slideInLeft animation-delay-300 backdrop-blur-sm">
+          <div className="space-y-6 rounded-3xl border border-blue-100 bg-white/95 p-8 shadow-2xl hover:shadow-2xl transition-all duration-500 animate-slideInLeft animation-delay-300 backdrop-blur-sm">
             <div className="space-y-2">
               <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent animate-gradient bg-size-200">
                 Compártenos tu mensaje
@@ -527,7 +526,7 @@ export default function Contactanos() {
               <button
                 type="submit"
                 disabled={enviando || !tieneUsuario}
-                className="group relative inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient px-10 py-4 text-base font-bold text-white shadow-2xl transition-all duration-300 hover:shadow-3xl hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 overflow-hidden"
+                className="group relative inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient px-10 py-4 text-base font-bold text-white shadow-2xl transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 overflow-hidden"
               >
                 {/* Efecto de brillo en hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 group-hover:animate-shimmer"></div>
@@ -552,7 +551,7 @@ export default function Contactanos() {
             </form>
           </div>
 
-          <aside className="space-y-6 rounded-3xl border border-blue-100 bg-white/90 p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 animate-slideInRight animation-delay-400 backdrop-blur-sm">
+          <aside className="space-y-6 rounded-3xl border border-blue-100 bg-white/90 p-8 shadow-2xl hover:shadow-2xl transition-all duration-500 animate-slideInRight animation-delay-400 backdrop-blur-sm">
             <div className="space-y-3">
               <h3 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 Sistema de reportes autenticados

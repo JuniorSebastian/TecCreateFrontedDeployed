@@ -421,12 +421,6 @@ const esObjetoPresentacion = (valor) =>
   !Array.isArray(valor) &&
   (valor.titulo !== undefined || valor.nombre !== undefined || valor.presentacionId !== undefined || valor.presentacion_id !== undefined);
 
-const toSentence = (texto) => {
-  if (!texto) return '';
-  const valor = String(texto).trim();
-  return valor ? valor.charAt(0).toUpperCase() + valor.slice(1) : '';
-};
-
 // ===========================
 // COMPONENTE PRINCIPAL
 // ===========================
@@ -457,7 +451,7 @@ export default function Soporte() {
   const [rolFiltroUsuarios, setRolFiltroUsuarios] = useState('todos');
   const [estadoFiltroUsuarios, setEstadoFiltroUsuarios] = useState('todos');
   const [usuarioSeleccionadoEmail, setUsuarioSeleccionadoEmail] = useState(null);
-  const [usuarioSeleccionadoId, setUsuarioSeleccionadoId] = useState(null);
+  const [, setUsuarioSeleccionadoId] = useState(null);
   const [usuarioDetalle, setUsuarioDetalle] = useState(null);
   const [cargandoUsuarioDetalle, setCargandoUsuarioDetalle] = useState(false);
   const [presentacionesUsuario, setPresentacionesUsuario] = useState([]);
@@ -1850,7 +1844,6 @@ export default function Soporte() {
                   .map((reporte, index) => {
                   const id = obtenerIdReporte(reporte, index);
                   const categoriaLabel = obtenerCategoriaLabel(reporte);
-                  const categoriaKey = obtenerCategoriaKey(reporte);
                   const estadoActualKey = obtenerEstadoKey(reporte);
                   const estadoDisplay =
                     reporte?.estado ?? reporte?.status ?? (estadoActualKey ? toLabel(estadoActualKey) : 'Sin estado');
