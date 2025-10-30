@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 // ✅ Usa variable de entorno para adaptarse a producción o desarrollo
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+// Soporta ambos nombres: REACT_APP_API_URL (CRA) y NEXT_PUBLIC_API_URL (Vercel/Next)
+// Orden de prioridad: REACT_APP_API_URL -> NEXT_PUBLIC_API_URL -> localhost (dev)
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 // ✅ Instancia de Axios con token JWT automático
 const axiosInstance = axios.create({
