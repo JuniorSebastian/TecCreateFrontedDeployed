@@ -54,9 +54,17 @@ export default function OauthSuccess() {
         console.log('📸 Foto de perfil recibida:', usuario.foto);
         console.log('📋 Todos los campos del usuario:', Object.keys(usuario));
         
-        // Guardar token y usuario en localStorage
+        // Guardar token y usuario en localStorage (compatibilidad con distintas claves)
+        // Claves históricas usadas por la app: 'token' y 'usuario'
         localStorage.setItem('token', token);
         localStorage.setItem('usuario', JSON.stringify(usuario));
+        // Claves adicionales/compatibilidad con otros despliegues: 'authToken' y 'userData'
+        try {
+          localStorage.setItem('authToken', token);
+          localStorage.setItem('userData', JSON.stringify(usuario));
+        } catch (e) {
+          console.warn('No se pudo guardar claves alternativas en localStorage:', e);
+        }
 
         // Verificar estado de suspensión
         const estadoNormalizado = (estado || usuario.estado || '').toLowerCase();
