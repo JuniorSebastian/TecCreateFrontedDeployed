@@ -2,7 +2,8 @@
 const http = require('http');
 const https = require('https');
 
-const BACKEND_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+// Use NEXT_PUBLIC_API_URL when available (Vercel), otherwise REACT_APP_API_URL, then localhost for local dev
+const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 console.log('🔍 Verificando conexión con el backend...');
 console.log(`📡 URL del backend: ${BACKEND_URL}`);
