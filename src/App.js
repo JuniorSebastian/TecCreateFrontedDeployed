@@ -27,69 +27,6 @@ import { ProtectedRoute, RoleGuard, StateGuard, PublicRoute } from './guards/Rou
 import './styles/index.css';
 import AuthRedirectHandler from './components/AuthRedirectHandler';
 
-// Componente para capturar parámetros de OAuth si el backend redirige al root
-function AuthRedirectHandler() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
-      const userRaw = params.get('user');
-      const redirect = params.get('redirect');
-
-      if (!token || !userRaw) return; // nada que hacer
-
-      let user = null;
-      try {
-        user = JSON.parse(decodeURIComponent(userRaw));
-      } catch (e) {
-        try {
-          user = JSON.parse(userRaw);
-        } catch (err) {
-          console.warn('AuthRedirectHandler: user no es JSON válido');
-          return;
-        }
-      }
-
-      // Guardar en localStorage (compatibilidad)
-      localStorage.setItem('token', token);
-      localStorage.setItem('usuario', JSON.stringify(user));
-      try {
-        localStorage.setItem('authToken', token);
-        localStorage.setItem('userData', JSON.stringify(user));
-      } catch (e) {
-        console.warn('No se pudo guardar claves alternativas en localStorage:', e);
-      }
-
-      // Determinar ruta segura de redirección
-      let redirectPath = redirect || '/perfil';
-      const rutasNormalizadas = {
-        '/admin': '/admindashboard',
-        '/dashboard': '/admindashboard',
-        '/administrador': '/admindashboard',
-      };
-      if (redirect && rutasNormalizadas[redirect]) redirectPath = rutasNormalizadas[redirect];
-      if (!redirect) {
-        const rolNormalizado = (user?.rol || '').toLowerCase();
-        if (rolNormalizado === 'admin') redirectPath = '/admindashboard';
-        else if (rolNormalizado === 'soporte') redirectPath = '/soporte';
-        else redirectPath = '/perfil';
-      }
-
-      // Limpiar query params de la URL para no exponer tokens en el historial
-      const basePath = window.location.pathname;
-      window.history.replaceState({}, document.title, basePath);
-
-      navigate(redirectPath, { replace: true });
-    } catch (err) {
-      console.error('AuthRedirectHandler error:', err);
-    }
-  }, [navigate]);
-
-  return null;
-}
-
 function App() {
 
   return (
