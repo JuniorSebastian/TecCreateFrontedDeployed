@@ -93,6 +93,8 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        {/* Handler global que procesa parámetros OAuth si vienen en la URL inicial */}
+        <AuthRedirectHandler />
         <Routes>
           {/* Páginas públicas - redirigen si ya está autenticado */}
           <Route path="/" element={<PublicRoute><LandingPage /></PublicRoute>} />
