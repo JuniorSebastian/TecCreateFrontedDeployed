@@ -25,6 +25,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute, RoleGuard, StateGuard, PublicRoute } from './guards/RouteGuards';
 
 import './styles/index.css';
+import AuthRedirectHandler from './components/AuthRedirectHandler';
 
 // Componente para capturar parámetros de OAuth si el backend redirige al root
 function AuthRedirectHandler() {
