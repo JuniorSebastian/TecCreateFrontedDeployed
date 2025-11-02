@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Autenticando...</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(135deg,#f0f9ff,#ecfccb); height:100vh; margin:0; display:flex; align-items:center; justify-content:center }
+    .card{ background:#fff; padding:24px; border-radius:12px; box-shadow:0 6px 20px rgba(10,10,10,0.08); text-align:center; max-width:420px }
+    .spinner{ width:48px; height:48px; border-radius:50%; border:4px solid rgba(59,130,246,0.2); border-top-color:#3b82f6; margin:0 auto 16px; animation:spin 1s linear infinite }
+    @keyframes spin{ to{ transform:rotate(360deg) } }
+    code{ background:#f7fafc; padding:4px 8px; border-radius:6px; display:inline-block }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="spinner" aria-hidden></div>
+    <h1 style="margin:0 0 8px">Autenticando...</h1>
+    <p style="margin:0 0 12px;color:#475569">Procesando credenciales y redirigiendo al dashboard.</p>
+    <p style="font-size:12px;color:#94a3b8">Si la redirección no ocurre, espera unos segundos o vuelve al <a href="/">inicio</a>.</p>
+    <div id="debug" style="margin-top:12px;font-size:12px;color:#64748b"></div>
+  </div>
+
+  <script>
+    (function(){
+      function debug(msg){
+        var d = document.getElementById('debug');
+        if(d) d.textContent = msg;
+        console.log('[oauth-success-static]', msg);
+      }
+
+      try{
+        var params = new URLSearchParams(window.location.search);
+        var token = params.get('token');
+        var userRaw = params.get('user');
+        var redirect = params.get('redirect');
+        var estado = params.get('estado');
+        var error = params.get('error');
+
+        debug('Parámetros leídos. Procesando...');
+
+        if(error){
+          debug('Error OAuth: '+error);
+          // Redirigir a home mostrando error (el SPA puede mostrar un toast)
+          setTimeout(function(){ window.location.replace('/?oauth_error='+encodeURIComponent(error)); }, 2000);
+          return;
+        }
+
+        if(!token || !userRaw){
+          debug('Faltan token/usuario. Volviendo al inicio.');
+          setTimeout(function(){ window.location.replace('/'); }, 1000);
+          return;
+        }
+
+        var user = null;
+        try{ user = JSON.parse(decodeURIComponent(userRaw)); }
+        catch(e){
+          try{ user = JSON.parse(userRaw); }
+          catch(err){ console.warn('No se pudo parsear user:', err); }
+        }
+
+        // Guardar keys compatibles
+        try{ localStorage.setItem('token', token); }catch(e){ console.warn(e); }
+        try{ localStorage.setItem('usuario', JSON.stringify(user)); }catch(e){ console.warn(e); }
+        try{ localStorage.setItem('authToken', token); localStorage.setItem('userData', JSON.stringify(user)); }catch(e){ console.warn(e); }
+
+        // Normalizar ruta
+        var rutasNormalizadas = { '/admin':'/admindashboard', '/dashboard':'/admindashboard', '/administrador':'/admindashboard' };
+        var redirectPath = redirect || (user && user.rol && user.rol.toLowerCase()==='admin' ? '/admindashboard' : '/perfil');
+        if(redirect && rutasNormalizadas[redirect]) redirectPath = rutasNormalizadas[redirect];
+        if(estado && estado.toLowerCase().includes('suspend')){
+          // usuario suspendido → página de cuenta suspendida
+          redirectPath = '/cuenta-suspendida';
+        }
+
+        debug('Redirigiendo a ' + redirectPath);
+        // Reemplazar la URL sin query para limpiar la barra
+        try{ window.history.replaceState({}, document.title, window.location.pathname); }catch(e){}
+        setTimeout(function(){ window.location.replace(redirectPath); }, 600);
+      }catch(e){
+        console.error('Error en oauth-success estático', e);
+        debug('Error interno procesando OAuth. Reintentando en 2s.');
+        setTimeout(function(){ window.location.replace('/'); }, 2000);
+      }
+    })();
+  </script>
+</body>
+</html>
