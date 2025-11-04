@@ -8,6 +8,8 @@ import {
   RectangleStackIcon,
   UserCircleIcon 
 } from '@heroicons/react/24/outline';
+import { HiSparkles } from 'react-icons/hi';
+import { IoRocketSharp } from 'react-icons/io5';
 
 export default function NavBar() {
   const [usuario, setUsuario] = useState(null);
@@ -62,16 +64,16 @@ export default function NavBar() {
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
-            {/* Logo MÁS GRANDE */}
+            {/* Logo TC */}
             <Link 
               to="/perfil" 
               className="flex items-center group transition-transform duration-300 hover:scale-105"
             >
-              <img
-                src="https://i.ibb.co/Q3JXxDPY/Chat-GPT-Image-13-jun-2025-22-14-04-removebg-preview-Photoroom.png"
-                alt="TecCreate"
-                className="h-28 w-44 sm:h-32 sm:w-52 object-contain drop-shadow-lg transition-all duration-300 group-hover:drop-shadow-2xl"
-              />
+              <div className="flex items-center gap-3 px-5 py-2.5 bg-white/90 backdrop-blur-sm border border-cyan-200 rounded-xl shadow-lg">
+                <HiSparkles className="w-6 h-6 text-cyan-600" />
+                <span className="text-2xl font-black text-gray-800 tracking-tight">TC</span>
+                <IoRocketSharp className="w-6 h-6 text-cyan-600" />
+              </div>
             </Link>
 
             {/* Desktop Navigation - MÁS GRANDE */}

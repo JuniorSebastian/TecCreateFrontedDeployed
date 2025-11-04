@@ -45,17 +45,17 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Logo TC */}
+        {/* Logo TC Grande */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm border border-cyan-200 rounded-xl shadow-lg relative overflow-hidden group">
-            <HiSparkles className="w-5 h-5 text-cyan-600" />
-            <span className="text-xl font-bold text-gray-800 tracking-wide relative">TC</span>
-            <IoRocketSharp className="w-5 h-5 text-cyan-600" />
+          <div className="inline-flex items-center gap-4 px-8 py-4 bg-white/80 backdrop-blur-sm border border-cyan-200 rounded-xl shadow-lg relative overflow-hidden group">
+            <HiSparkles className="w-7 h-7 text-cyan-600" />
+            <span className="text-3xl font-black text-gray-800 tracking-tight relative">TC</span>
+            <IoRocketSharp className="w-7 h-7 text-cyan-600" />
           </div>
         </motion.div>
 
