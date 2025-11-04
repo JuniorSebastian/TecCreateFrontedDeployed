@@ -55,14 +55,14 @@ export default function NavBar() {
 
   return (
     <>
-      {/* Navbar principal con efecto glass */}
+      {/* Navbar principal con efecto glass - MÁS GRANDE */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100/50 shadow-sm">
         {/* Barra de gradiente superior */}
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-500"></div>
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-24">
+            {/* Logo MÁS GRANDE */}
             <Link 
               to="/perfil" 
               className="flex items-center group transition-transform duration-300 hover:scale-105"
@@ -70,17 +70,17 @@ export default function NavBar() {
               <img
                 src="https://i.ibb.co/Q3JXxDPY/Chat-GPT-Image-13-jun-2025-22-14-04-removebg-preview-Photoroom.png"
                 alt="TecCreate"
-                className="h-24 w-40 sm:h-28 sm:w-48 object-contain drop-shadow-lg transition-all duration-300 group-hover:drop-shadow-2xl"
+                className="h-28 w-44 sm:h-32 sm:w-52 object-contain drop-shadow-lg transition-all duration-300 group-hover:drop-shadow-2xl"
               />
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - MÁS GRANDE */}
             <div className="hidden md:flex items-center gap-3 lg:gap-4">
               <Link
                 to="/perfil"
-                className="group relative flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 text-sm font-semibold text-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-100/50 hover:scale-105"
+                className="group relative flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 text-base font-semibold text-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-100/50 hover:scale-105"
               >
-                <RectangleStackIcon className="w-5 h-5" />
+                <RectangleStackIcon className="w-6 h-6" />
                 <span>Mis Presentaciones</span>
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 transition-opacity duration-300 group-hover:opacity-5"></div>
               </Link>
@@ -89,7 +89,7 @@ export default function NavBar() {
                 <div className="relative" ref={menuRef}>
                   <button
                     onClick={() => setOpenMenu((prev) => !prev)}
-                    className="flex items-center gap-3 pl-4 pr-2 py-2 rounded-full border border-gray-200/80 bg-white/90 text-sm font-medium text-gray-700 shadow-sm transition-all duration-300 hover:border-blue-300 hover:shadow-md hover:shadow-blue-100/50"
+                    className="flex items-center gap-3 pl-5 pr-3 py-3 rounded-full border border-gray-200/80 bg-white/90 text-base font-medium text-gray-700 shadow-sm transition-all duration-300 hover:border-blue-300 hover:shadow-md hover:shadow-blue-100/50"
                   >
                     <span className="hidden lg:block font-semibold text-gray-900">
                       {usuario.nombre?.split(' ')[0]}
@@ -98,7 +98,7 @@ export default function NavBar() {
                       <img
                         src={usuario.foto}
                         alt="Perfil"
-                        className="h-9 w-9 rounded-full border-2 border-blue-100 object-cover ring-2 ring-white"
+                        className="h-10 w-10 rounded-full border-2 border-blue-100 object-cover ring-2 ring-white"
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = '/default-avatar.png';

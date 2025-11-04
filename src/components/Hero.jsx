@@ -22,7 +22,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 pt-28">
       
       {/* Grid sutil */}
       <div 
@@ -45,7 +45,7 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Logo TecCreate Profesional */}
+        {/* Logo TC */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,12 +54,12 @@ const Hero = () => {
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm border border-cyan-200 rounded-xl shadow-lg relative overflow-hidden group">
             <HiSparkles className="w-5 h-5 text-cyan-600" />
-            <span className="text-xl font-bold text-gray-800 tracking-wide relative">TecCreate</span>
+            <span className="text-xl font-bold text-gray-800 tracking-wide relative">TC</span>
             <IoRocketSharp className="w-5 h-5 text-cyan-600" />
           </div>
         </motion.div>
 
-        {/* Título PROFESIONAL Y CLARO */}
+        {/* Título CORTO Y DIRECTO */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,21 +70,21 @@ const Hero = () => {
             Crea presentaciones
           </span>
           <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            con Inteligencia Artificial
+            con IA
           </span>
           <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
             para tus cursos TECSUP
           </span>
         </motion.h1>
 
-        {/* Descripción PROFESIONAL Y CLARA */}
+        {/* Descripción CORTA Y CLARA */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Genera diapositivas educativas en minutos • Contenido adaptado a tu carrera • Completamente gratis
+          Diapositivas educativas en minutos • Contenido por carrera • Gratis
         </motion.p>
 
         {/* Features Profesionales */}
