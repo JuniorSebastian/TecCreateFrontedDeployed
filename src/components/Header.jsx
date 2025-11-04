@@ -47,7 +47,7 @@ const Header = () => {
               whileHover={{ rotate: [0, -5, 5, 0] }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-white font-black text-sm">T</span>
+              <span className="text-white font-black text-sm">TC</span>
             </motion.div>
             <span className="text-xl font-bold text-gray-900 group-hover:text-cyan-600 transition-colors">TecCreate</span>
           </motion.a>

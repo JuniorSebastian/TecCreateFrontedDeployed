@@ -42,7 +42,7 @@ const Header = () => {
             whileHover={{ scale: 1.02 }}
           >
             <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-sm">T</span>
+              <span className="text-white font-black text-sm">TC</span>
             </div>
             <span className="text-xl font-bold text-gray-900">TecCreate</span>
           </motion.a>
