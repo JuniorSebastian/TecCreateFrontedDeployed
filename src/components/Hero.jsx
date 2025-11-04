@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { FiCheck, FiZap, FiClock, FiDollarSign } from 'react-icons/fi';
-import { HiSparkles } from 'react-icons/hi';
 import { IoRocketSharp } from 'react-icons/io5';
 
 const Hero = () => {
@@ -45,20 +44,6 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Logo TC Grande */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <div className="inline-flex items-center gap-4 px-8 py-4 bg-white/80 backdrop-blur-sm border border-cyan-200 rounded-xl shadow-lg relative overflow-hidden group">
-            <HiSparkles className="w-7 h-7 text-cyan-600" />
-            <span className="text-3xl font-black text-gray-800 tracking-tight relative">TC</span>
-            <IoRocketSharp className="w-7 h-7 text-cyan-600" />
-          </div>
-        </motion.div>
-
         {/* Título CORTO Y DIRECTO */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -67,13 +52,13 @@ const Hero = () => {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
           <span className="block text-gray-900 mb-4">
-            Crea presentaciones
+            IA que crea
           </span>
           <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            con IA
+            presentaciones
           </span>
           <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
-            para tus cursos TECSUP
+            para TECSUP
           </span>
         </motion.h1>
 
@@ -84,7 +69,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Diapositivas educativas en minutos • Contenido por carrera • Gratis
+          Solo dinos el tema • La IA genera todo • Gratis
         </motion.p>
 
         {/* Features Profesionales */}
