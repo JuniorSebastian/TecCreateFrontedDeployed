@@ -18,8 +18,8 @@ const Features = () => {
       description: 'Genera presentaciones profesionales automáticamente con inteligencia artificial avanzada.',
       stat: '10x',
       statLabel: 'Más rápido',
-      gradient: 'from-teal-400 to-cyan-500',
-      glowColor: 'teal',
+      gradient: 'from-red-500 to-red-600',
+      glowColor: 'red',
     },
     {
       icon: <PaintBrushIcon className="w-8 h-8" />,
@@ -27,8 +27,8 @@ const Features = () => {
       description: 'Plantillas modernas y elegantes diseñadas por expertos, listas para impresionar.',
       stat: '50+',
       statLabel: 'Plantillas',
-      gradient: 'from-sky-400 to-blue-500',
-      glowColor: 'sky',
+      gradient: 'from-blue-900 to-blue-950',
+      glowColor: 'blue',
     },
     {
       icon: <UserGroupIcon className="w-8 h-8" />,
@@ -36,8 +36,8 @@ const Features = () => {
       description: 'Trabaja en equipo en tiempo real con tus compañeros y profesores de TECSUP.',
       stat: '100%',
       statLabel: 'Sincronizado',
-      gradient: 'from-purple-400 to-pink-500',
-      glowColor: 'purple',
+      gradient: 'from-green-500 to-green-600',
+      glowColor: 'green',
     },
     {
       icon: <BoltIcon className="w-8 h-8" />,
@@ -45,8 +45,8 @@ const Features = () => {
       description: 'Crea, edita y presenta en segundos. Sin demoras, sin complicaciones.',
       stat: '<3s',
       statLabel: 'Generación',
-      gradient: 'from-amber-400 to-orange-500',
-      glowColor: 'amber',
+      gradient: 'from-red-600 to-red-700',
+      glowColor: 'red',
     },
     {
       icon: <ShieldCheckIcon className="w-8 h-8" />,
@@ -54,8 +54,8 @@ const Features = () => {
       description: 'Tus datos están protegidos con encriptación de nivel empresarial.',
       stat: '256-bit',
       statLabel: 'Encriptación',
-      gradient: 'from-emerald-400 to-green-500',
-      glowColor: 'emerald',
+      gradient: 'from-green-600 to-green-700',
+      glowColor: 'green',
     },
     {
       icon: <ArrowPathIcon className="w-8 h-8" />,
@@ -63,8 +63,8 @@ const Features = () => {
       description: 'Nuevas funciones y mejoras cada mes basadas en tus sugerencias.',
       stat: '24/7',
       statLabel: 'Disponible',
-      gradient: 'from-rose-400 to-red-500',
-      glowColor: 'rose',
+      gradient: 'from-blue-900 to-slate-900',
+      glowColor: 'blue',
     },
   ];
 
@@ -94,9 +94,9 @@ const Features = () => {
     <section id="funcionalidades" className="relative py-24 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-teal-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 -right-48 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-red-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -right-48 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-green-300/20 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,17 +113,17 @@ const Features = () => {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-50 to-sky-50 border border-teal-200/50 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-50 to-red-100 border border-red-200/50 rounded-full mb-6"
           >
-            <SparklesIcon className="w-5 h-5 text-teal-600" />
-            <span className="text-sm font-bold text-teal-700 uppercase tracking-wider">
+            <SparklesIcon className="w-5 h-5 text-red-600" />
+            <span className="text-sm font-bold text-red-700 uppercase tracking-wider">
               Funcionalidades Destacadas
             </span>
           </motion.div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6">
             Todo lo que necesitas para
-            <span className="block mt-2 bg-gradient-to-r from-teal-600 via-sky-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="block mt-2 bg-gradient-to-r from-red-600 via-blue-900 to-green-600 bg-clip-text text-transparent">
               Presentaciones Increíbles
             </span>
           </h2>
@@ -174,7 +174,7 @@ const Features = () => {
                 </motion.div>
 
                 {/* Título */}
-                <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-teal-600 group-hover:to-sky-600 transition-all duration-300">
+                <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-red-600 group-hover:to-blue-900 transition-all duration-300">
                   {feature.title}
                 </h3>
 
@@ -224,13 +224,13 @@ const Features = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-20 text-center"
         >
-          <div className="inline-flex flex-col items-center gap-6 p-10 bg-gradient-to-br from-teal-50 via-sky-50 to-purple-50 rounded-3xl border border-teal-100 shadow-xl">
+          <div className="inline-flex flex-col items-center gap-6 p-10 bg-gradient-to-br from-red-50 via-gray-50 to-red-100 rounded-3xl border border-red-100 shadow-xl">
             <h3 className="text-2xl sm:text-3xl font-black text-gray-900">
               ¿Listo para crear tu primera presentación?
             </h3>
             <motion.button
               onClick={() => (window.location.href = '/login')}
-              className="px-10 py-5 bg-gradient-to-r from-teal-400 via-sky-500 to-purple-600 text-white font-bold rounded-2xl text-lg shadow-2xl shadow-teal-500/50"
+              className="px-10 py-5 bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white font-bold rounded-2xl text-lg shadow-2xl shadow-red-600/50"
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >

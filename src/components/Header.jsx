@@ -26,7 +26,7 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-cyan-500/10'
+          ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-red-500/10'
           : 'bg-white/80 backdrop-blur-md shadow-lg'
       }`}
       initial={{ y: -100 }}
@@ -42,13 +42,13 @@ const Header = () => {
             whileTap={{ scale: 0.95 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-sky-500 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-              <div className="relative bg-gradient-to-br from-teal-400 via-sky-500 to-purple-600 p-2 rounded-xl shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+              <div className="relative bg-gradient-to-br from-red-500 via-red-600 to-blue-900 p-2 rounded-xl shadow-lg">
                 <SparklesIcon className="w-6 h-6 text-white" />
               </div>
             </div>
             <div>
-              <h1 className="text-2xl font-black bg-gradient-to-r from-teal-500 via-sky-500 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-black bg-gradient-to-r from-red-600 via-red-500 to-blue-900 bg-clip-text text-transparent">
                 TecCreate
               </h1>
               <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
@@ -63,7 +63,7 @@ const Header = () => {
               <motion.a
                 key={link.text}
                 href={link.href}
-                className="relative px-4 py-2 text-gray-700 hover:text-cyan-600 font-semibold text-sm transition-colors duration-300 group rounded-xl"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 group rounded-xl"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -75,7 +75,7 @@ const Header = () => {
                   {link.text}
                 </span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-teal-50 to-sky-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-red-50 to-red-100 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   layoutId="navHighlight"
                 />
               </motion.a>
@@ -84,7 +84,7 @@ const Header = () => {
             {/* Botón CTA */}
             <motion.a
               href="/login"
-              className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-teal-400 via-sky-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="ml-4 relative group overflow-hidden px-6 py-2.5 bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -92,14 +92,14 @@ const Header = () => {
                 <SparklesIcon className="w-4 h-4" />
                 Comenzar
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.a>
           </nav>
 
           {/* Botón Menú Mobile */}
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl bg-gradient-to-br from-teal-50 to-sky-50 text-teal-600 hover:from-teal-100 hover:to-sky-100 transition-all duration-300"
+            className="md:hidden p-2 rounded-xl bg-gradient-to-br from-red-50 to-red-100 text-red-600 hover:from-red-100 hover:to-red-200 transition-all duration-300"
             whileTap={{ scale: 0.9 }}
           >
             {isMobileMenuOpen ? (
@@ -127,7 +127,7 @@ const Header = () => {
               key={link.text}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-4 py-3 text-gray-700 hover:text-teal-600 font-semibold rounded-xl hover:bg-gradient-to-r hover:from-teal-50 hover:to-sky-50 transition-all duration-300"
+              className="block px-4 py-3 text-gray-700 hover:text-red-600 font-semibold rounded-xl hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 transition-all duration-300"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -141,7 +141,7 @@ const Header = () => {
           ))}
           <motion.a
             href="/login"
-            className="block text-center mt-4 px-6 py-3 bg-gradient-to-r from-teal-400 via-sky-500 to-purple-600 text-white font-bold rounded-full shadow-lg"
+            className="block text-center mt-4 px-6 py-3 bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white font-bold rounded-full shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}

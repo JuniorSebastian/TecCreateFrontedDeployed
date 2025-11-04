@@ -15,9 +15,9 @@ const Hero = () => {
   }, []);
 
   const stats = [
-    { icon: <BoltIcon className="w-6 h-6" />, number: '500+', label: 'Usuarios Activos', color: 'from-teal-400 to-cyan-400' },
-    { icon: <ChartBarIcon className="w-6 h-6" />, number: '2K+', label: 'Presentaciones Creadas', color: 'from-sky-400 to-blue-500' },
-    { icon: <ShieldCheckIcon className="w-6 h-6" />, number: '98%', label: 'Satisfacción', color: 'from-purple-400 to-pink-500' },
+    { icon: <BoltIcon className="w-6 h-6" />, number: '500+', label: 'Usuarios Activos', color: 'from-red-500 to-red-600', bgColor: 'bg-red-500' },
+    { icon: <ChartBarIcon className="w-6 h-6" />, number: '2K+', label: 'Presentaciones Creadas', color: 'from-blue-900 to-blue-950', bgColor: 'bg-blue-900' },
+    { icon: <ShieldCheckIcon className="w-6 h-6" />, number: '98%', label: 'Satisfacción', color: 'from-green-500 to-green-600', bgColor: 'bg-green-500' },
   ];
 
   const containerVariants = {
@@ -48,7 +48,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
       {/* Video Background con overlay mejorado */}
       <div className="absolute inset-0 z-0">
         <video
@@ -64,15 +64,17 @@ const Hero = () => {
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/40 via-sky-900/30 to-purple-900/40"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-gray-900/50 to-gray-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/40 via-blue-950/50 to-slate-900/60"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-slate-900/50 to-slate-900"></div>
       </div>
 
-      {/* Partículas flotantes mejoradas */}
+      {/* Partículas flotantes mejoradas con colores TECSUP */}
       {[...Array(15)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-gradient-to-r from-teal-400 to-sky-500 rounded-full opacity-40"
+          className={`absolute w-2 h-2 rounded-full opacity-40 ${
+            i % 3 === 0 ? 'bg-red-500' : i % 3 === 1 ? 'bg-blue-900' : 'bg-green-500'
+          }`}
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -100,30 +102,28 @@ const Hero = () => {
         animate="visible"
       >
         {/* Badge Superior */}
-        <motion.div
-          variants={itemVariants}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white font-semibold text-sm mb-8 shadow-2xl"
-          whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
-        >
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
-          </span>
-          <span className="bg-gradient-to-r from-teal-300 to-sky-300 bg-clip-text text-transparent">
-            ✨ Exclusivo para TECSUP
-          </span>
-        </motion.div>
-
-        {/* Título Principal con gradiente mejorado */}
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white font-semibold text-sm mb-8 shadow-2xl"
+            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+          >
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+            </span>
+            <span className="bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent">
+              ✨ Exclusivo para TECSUP
+            </span>
+          </motion.div>        {/* Título Principal con gradiente mejorado */}
         <motion.h1
           variants={itemVariants}
           className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-8 leading-tight"
         >
-          <span className="block bg-gradient-to-r from-white via-teal-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
+          <span className="block bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
             Crea Presentaciones
           </span>
           <span className="block mt-2">
-            <span className="bg-gradient-to-r from-teal-300 via-sky-400 to-purple-400 bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent animate-gradient-x">
               Asombrosas con IA
             </span>
           </span>
@@ -135,9 +135,9 @@ const Hero = () => {
           className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light"
         >
           Transforma tus ideas en presentaciones profesionales en{' '}
-          <span className="text-teal-300 font-semibold">segundos</span>. 
+          <span className="text-red-400 font-semibold">segundos</span>. 
           Diseño inteligente, resultados{' '}
-          <span className="text-sky-300 font-semibold">extraordinarios</span>.
+          <span className="text-green-400 font-semibold">extraordinarios</span>.
         </motion.p>
 
         {/* Botones CTA mejorados */}
@@ -147,7 +147,7 @@ const Hero = () => {
         >
           <motion.button
             onClick={() => navigate('/login')}
-            className="group relative px-10 py-5 bg-gradient-to-r from-teal-400 via-sky-500 to-purple-600 text-white font-bold rounded-2xl text-lg shadow-2xl shadow-teal-500/50 overflow-hidden"
+            className="group relative px-10 py-5 bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white font-bold rounded-2xl text-lg shadow-2xl shadow-red-600/50 overflow-hidden"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -156,7 +156,7 @@ const Hero = () => {
               Comenzar Ahora
             </span>
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-teal-400"
+              className="absolute inset-0 bg-gradient-to-r from-red-700 via-red-800 to-red-600"
               initial={{ x: '100%' }}
               whileHover={{ x: 0 }}
               transition={{ duration: 0.3 }}
@@ -193,7 +193,7 @@ const Hero = () => {
               
               {/* Card */}
               <div className="relative bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl p-6 text-center shadow-2xl">
-                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br ${stat.color} text-white mb-4 shadow-lg`}>
+                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full ${stat.bgColor} text-white mb-4 shadow-lg`}>
                   {stat.icon}
                 </div>
                 <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
