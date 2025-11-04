@@ -77,21 +77,74 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Badge minimalista con hover */}
+        {/* Badge con animación de brillo y partículas */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.05 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 border border-cyan-100 rounded-full mb-8 cursor-pointer"
+          className="inline-block mb-8"
         >
           <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.05 }}
+            className="relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-full cursor-pointer overflow-hidden shadow-lg"
+            style={{ backgroundSize: '200% 100%' }}
+            animate={{ 
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+            }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear"
+            }}
           >
-            <SparklesIcon className="w-4 h-4 text-cyan-600" />
+            {/* Efecto de brillo que se mueve */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+              animate={{ 
+                x: ['-100%', '100%'],
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "linear",
+                repeatDelay: 1
+              }}
+            />
+            
+            {/* Contenido del badge */}
+            <div className="relative z-10 flex items-center gap-3">
+              <motion.div
+                animate={{ 
+                  rotate: [0, 360],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              >
+                <SparklesIcon className="w-5 h-5 text-white" />
+              </motion.div>
+              
+              <span className="text-sm font-bold text-white tracking-wide">
+                ✨ Impulsado por IA de última generación
+              </span>
+              
+              <motion.div
+                className="w-2 h-2 bg-white rounded-full"
+                animate={{ 
+                  opacity: [1, 0.3, 1],
+                  scale: [1, 1.5, 1]
+                }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              />
+            </div>
           </motion.div>
-          <span className="text-sm font-medium text-cyan-700">Plataforma Oficial TECSUP</span>
         </motion.div>
 
         {/* Título limpio con gradiente animado */}

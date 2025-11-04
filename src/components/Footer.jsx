@@ -8,8 +8,13 @@ import {
   CodeBracketIcon,
   DocumentTextIcon,
   CommandLineIcon,
-  ChatBubbleLeftRightIcon
+  ChatBubbleLeftRightIcon,
+  UserGroupIcon
 } from '@heroicons/react/24/outline';
+import { 
+  CodeBracketIcon as CodeBracketIconSolid,
+  UserGroupIcon as UserGroupIconSolid
+} from '@heroicons/react/24/solid';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,17 +22,19 @@ export default function Footer() {
   const socialLinks = [
     { 
       name: 'GitHub', 
-      icon: '💻', 
+      IconComponent: CodeBracketIconSolid,
       url: 'https://github.com/JuniorSebastian',
       gradient: 'from-gray-700 to-gray-900',
-      hoverGlow: 'group-hover:shadow-gray-500/50'
+      hoverGlow: 'group-hover:shadow-gray-500/50',
+      iconColor: 'text-white'
     },
     { 
       name: 'LinkedIn', 
-      icon: '�', 
+      IconComponent: UserGroupIconSolid,
       url: 'https://www.linkedin.com/in/juniorsebastian/',
       gradient: 'from-blue-600 to-blue-700',
-      hoverGlow: 'group-hover:shadow-blue-500/50'
+      hoverGlow: 'group-hover:shadow-blue-500/50',
+      iconColor: 'text-white'
     },
   ];
 
@@ -170,36 +177,39 @@ export default function Footer() {
           >
             <h4 className="text-lg font-bold mb-6 text-cyan-300">Síguenos</h4>
             <div className="flex flex-col gap-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center gap-3 px-5 py-4 bg-gradient-to-br ${social.gradient} backdrop-blur-sm rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 group shadow-lg ${social.hoverGlow}`}
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <motion.span 
-                    className="text-3xl"
-                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.2 }}
-                    transition={{ duration: 0.5 }}
+              {socialLinks.map((social, index) => {
+                const IconComp = social.IconComponent;
+                return (
+                  <motion.a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-3 px-5 py-4 bg-gradient-to-br ${social.gradient} backdrop-blur-sm rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 group shadow-lg ${social.hoverGlow}`}
+                    whileHover={{ scale: 1.05, y: -4 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    {social.icon}
-                  </motion.span>
-                  <div className="flex-1">
-                    <span className="text-base font-bold text-white group-hover:text-cyan-200 transition-colors block">
-                      {social.name}
-                    </span>
-                    <span className="text-xs text-gray-300 group-hover:text-cyan-300 transition-colors">
-                      Seguir
-                    </span>
-                  </div>
-                  <svg className="w-5 h-5 text-cyan-400 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </motion.a>
-              ))}
+                    <motion.div
+                      className="p-2 bg-white/10 rounded-lg"
+                      whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.15 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <IconComp className={`w-6 h-6 ${social.iconColor}`} />
+                    </motion.div>
+                    <div className="flex-1">
+                      <span className="text-base font-bold text-white group-hover:text-cyan-200 transition-colors block">
+                        {social.name}
+                      </span>
+                      <span className="text-xs text-gray-300 group-hover:text-cyan-300 transition-colors">
+                        Seguir
+                      </span>
+                    </div>
+                    <svg className="w-5 h-5 text-cyan-400 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </motion.a>
+                );
+              })}
             </div>
             
             {/* Card decorativa con stats */}
