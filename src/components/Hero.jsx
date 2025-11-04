@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { 
-  SparklesIcon, 
   ArrowRightIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
