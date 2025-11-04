@@ -1,21 +1,18 @@
-// src/components/Hero.jsx - DISEÑO IMPACTANTE TECCREATE
+// src/components/Hero.jsx - DISEÑO PROFESIONAL TECCREATE
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { 
-  CheckCircleIcon,
-  SparklesIcon,
-  RocketLaunchIcon,
-  BoltIcon
-} from '@heroicons/react/24/outline';
+import { FiCheck, FiZap, FiClock, FiDollarSign } from 'react-icons/fi';
+import { HiSparkles } from 'react-icons/hi';
+import { IoRocketSharp } from 'react-icons/io5';
 
 const Hero = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { number: '5min', label: 'Tiempo Promedio', icon: '⚡' },
-    { number: '70%', label: 'Ahorro de Tiempo', icon: '📈' },
-    { number: '100%', label: 'Gratis', icon: '🎁' },
+    { number: '5min', label: 'Tiempo Promedio', icon: FiClock },
+    { number: '70%', label: 'Ahorro', icon: FiZap },
+    { number: '100%', label: 'Gratis', icon: FiDollarSign },
   ];
 
   const features = [
@@ -25,153 +22,153 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-900 pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 pt-20">
       
-      {/* Grid animado brillante */}
+      {/* Grid sutil */}
       <div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e933_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e933_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 animate-pulse"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e918_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e918_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40"
       />
 
-      {/* Gradientes múltiples superpuestos */}
+      {/* Gradientes suaves */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Círculos flotantes mejorados */}
+      {/* Círculos flotantes suaves */}
       <div className="hero-circles">
-        <div className="hero-circle hero-circle-1 bg-gradient-to-br from-cyan-400/20 to-blue-500/20"></div>
-        <div className="hero-circle hero-circle-2 bg-gradient-to-br from-blue-400/20 to-purple-500/20"></div>
-        <div className="hero-circle hero-circle-3 bg-gradient-to-br from-purple-400/20 to-pink-500/20"></div>
+        <div className="hero-circle hero-circle-1 bg-gradient-to-br from-cyan-300/10 to-blue-400/10"></div>
+        <div className="hero-circle hero-circle-2 bg-gradient-to-br from-blue-300/10 to-indigo-400/10"></div>
+        <div className="hero-circle hero-circle-3 bg-gradient-to-br from-indigo-300/10 to-cyan-400/10"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Logo TecCreate IMPACTANTE */}
+        {/* Logo TecCreate Profesional */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8"
         >
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl shadow-2xl shadow-cyan-500/50 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-            <SparklesIcon className="w-6 h-6 text-white animate-spin" style={{ animationDuration: '3s' }} />
-            <span className="text-2xl font-black text-white tracking-wider relative">TecCreate</span>
-            <RocketLaunchIcon className="w-6 h-6 text-white" />
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm border border-cyan-200 rounded-xl shadow-lg relative overflow-hidden group">
+            <HiSparkles className="w-5 h-5 text-cyan-600" />
+            <span className="text-xl font-bold text-gray-800 tracking-wide relative">TecCreate</span>
+            <IoRocketSharp className="w-5 h-5 text-cyan-600" />
           </div>
         </motion.div>
 
-        {/* Título IMPACTANTE */}
+        {/* Título Profesional */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
-          <span className="block text-white mb-4">
-            Crea PPTs increíbles
+          <span className="block text-gray-900 mb-4">
+            Crea presentaciones
           </span>
-          <span className="block bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow-2xl">
-            en solo 5 minutos
+          <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            en 5 minutos
           </span>
-          <span className="block text-cyan-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-extrabold">
-            ⚡ con IA para TECSUP Lima
+          <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
+            con IA para TECSUP Lima
           </span>
         </motion.h1>
 
-        {/* Descripción IMPACTANTE */}
+        {/* Descripción Profesional */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-lg sm:text-xl md:text-2xl text-cyan-100/90 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-semibold"
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          🎯 Plantillas especializadas por carrera • 🎨 Diseño profesional automático • 💰 100% GRATIS
+          Plantillas especializadas por carrera • Diseño profesional automático • 100% Gratis
         </motion.p>
 
-        {/* Features LLAMATIVAS */}
+        {/* Features Profesionales */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12 px-4"
         >
           {features.map((feature, index) => (
             <motion.div 
               key={index} 
-              className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg hover:bg-white/20 transition-all group"
-              initial={{ opacity: 0, scale: 0.8 }}
+              className="flex items-center gap-3 px-5 py-2.5 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-all group"
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+              whileHover={{ scale: 1.03, y: -3 }}
             >
-              <CheckCircleIcon className="w-6 h-6 text-cyan-300 group-hover:text-cyan-200 transition-colors flex-shrink-0" />
-              <span className="text-sm sm:text-base font-bold text-white">{feature}</span>
+              <FiCheck className="w-5 h-5 text-cyan-600 flex-shrink-0" />
+              <span className="text-sm sm:text-base font-semibold text-gray-700">{feature}</span>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTAs IMPACTANTES */}
+        {/* CTAs Profesionales */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16 px-4"
         >
           <motion.button
             onClick={() => navigate('/login')}
-            className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white font-black text-lg rounded-2xl shadow-2xl shadow-cyan-500/50 overflow-hidden transition-all hover:shadow-cyan-400/70 hover:scale-105"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold text-base rounded-xl shadow-lg hover:shadow-xl transition-all"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            <span className="relative flex items-center gap-3 justify-center">
-              <RocketLaunchIcon className="w-6 h-6" />
-              CREAR MI PRIMERA PPT GRATIS
-              <BoltIcon className="w-6 h-6 animate-bounce" />
+            <span className="relative flex items-center gap-2 justify-center">
+              <IoRocketSharp className="w-5 h-5" />
+              Crear mi primera PPT gratis
             </span>
           </motion.button>
           
           <motion.button
             onClick={() => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-10 py-5 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-2xl hover:bg-white/20 hover:border-white/50 transition-all hover:scale-105"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-white border-2 border-gray-300 text-gray-700 font-bold text-base rounded-xl hover:border-cyan-600 hover:text-cyan-700 hover:shadow-lg transition-all"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
-            Ver Plantillas ✨
+            Ver plantillas
           </motion.button>
         </motion.div>
 
-        {/* Stats IMPACTANTES con glow effect */}
+        {/* Stats Cards Profesionales */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-          className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 max-w-4xl mx-auto px-4"
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto px-4"
         >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="relative group"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 1.1 + index * 0.1 }}
-              whileHover={{ scale: 1.1, y: -10 }}
-            >
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl group-hover:bg-white/20 group-hover:border-white/40 transition-all">
-                <div className="text-4xl mb-2">{stat.icon}</div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent mb-2">
-                  {stat.number}
+          {stats.map((stat, index) => {
+            const IconComponent = stat.icon;
+            return (
+              <motion.div
+                key={index}
+                className="relative group"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl p-4 sm:p-6 shadow-lg group-hover:shadow-xl group-hover:border-cyan-300 transition-all">
+                  <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-600 mb-3 mx-auto" />
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-xs sm:text-sm font-semibold text-gray-600">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm md:text-base font-bold text-cyan-100/80">
-                  {stat.label}
-                </div>
-              </div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/50 to-blue-500/50 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
-            </motion.div>
-          ))}
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
       </div>
