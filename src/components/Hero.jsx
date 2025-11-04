@@ -65,12 +65,12 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Título limpio con gradiente animado */}
+        {/* Título limpio con gradiente animado - RESPONSIVO */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight px-4 sm:px-0"
         >
           Crea presentaciones{' '}
           <span className="relative inline-block">
@@ -78,7 +78,7 @@ const Hero = () => {
               profesionales
             </span>
             <motion.span
-              className="absolute bottom-2 left-0 right-0 h-3 bg-cyan-400/20 -z-10"
+              className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-2 sm:h-3 bg-cyan-400/20 -z-10"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -87,22 +87,22 @@ const Hero = () => {
           <br />con inteligencia artificial
         </motion.h1>
 
-        {/* Descripción simple */}
+        {/* Descripción simple - RESPONSIVO */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto px-4 sm:px-6 leading-relaxed"
         >
           Potencia tu creatividad con tecnología de vanguardia. Diseña presentaciones impactantes en minutos, no en horas.
         </motion.p>
 
-        {/* Features list con stagger */}
+        {/* Features list con stagger - RESPONSIVO */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-6 mb-10"
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 px-4"
         >
           {features.map((feature, index) => (
             <motion.div 
@@ -124,44 +124,44 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               >
-                <CheckCircleIcon className="w-5 h-5 text-cyan-600" />
+                <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600 flex-shrink-0" />
               </motion.div>
-              <span className="text-sm font-medium">{feature}</span>
+              <span className="text-xs sm:text-sm font-medium">{feature}</span>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTAs limpios con animaciones */}
+        {/* CTAs limpios con animaciones - RESPONSIVO */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4"
         >
           <button
             onClick={() => navigate('/login')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-1"
+            className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
           >
-            <span className="relative flex items-center gap-2 justify-center">
+            <span className="relative flex items-center gap-2 justify-center text-sm sm:text-base">
               Comenzar ahora
-              <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
           
           <button
             onClick={() => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all duration-300 hover:-translate-y-1"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto text-sm sm:text-base"
           >
             Ver funcionalidades
           </button>
         </motion.div>
 
-        {/* Stats minimalistas con animación */}
+        {/* Stats minimalistas con animación - RESPONSIVO */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t border-gray-200"
+          className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-2xl mx-auto pt-6 sm:pt-8 border-t border-gray-200 px-4"
         >
           {stats.map((stat, index) => (
             <motion.div 
@@ -173,14 +173,14 @@ const Hero = () => {
               whileHover={{ y: -5 }}
             >
               <motion.div 
-                className="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-1"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-1"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 + index * 0.1 }}
               >
                 {stat.number}
               </motion.div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

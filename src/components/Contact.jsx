@@ -92,25 +92,25 @@ export default function Contact() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Header animado */}
-          <div className="text-center mb-16 animate-fadeIn">
+          {/* Header animado - RESPONSIVO */}
+          <div className="text-center mb-12 sm:mb-16 animate-fadeIn px-4">
             <div className="flex justify-center mb-6">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full blur-lg opacity-50 animate-pulse-glow"></div>
-                <div className="relative bg-white rounded-full p-4 shadow-2xl">
-                  <SparklesIcon className="w-12 h-12 text-blue-600 animate-float" />
+                <div className="relative bg-white rounded-full p-3 sm:p-4 shadow-2xl">
+                  <SparklesIcon className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 animate-float" />
                 </div>
               </div>
             </div>
-            <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent mb-4 animate-gradient bg-size-200">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent mb-4 animate-gradient bg-size-200">
               Contáctanos
             </h2>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Conoce más sobre nuestro proyecto y encuentra recursos útiles para crear presentaciones increíbles.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start px-4">
             {/* Información de contacto - Lado izquierdo */}
             <div className="space-y-8 animate-slideInLeft">
               {/* Tarjeta principal de info */}
