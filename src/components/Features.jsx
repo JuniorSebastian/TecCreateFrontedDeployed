@@ -14,64 +14,70 @@ const Features = () => {
   const features = [
     {
       icon: SparklesIcon,
-      title: 'Generación con IA',
-      description: 'Crea presentaciones completas en segundos. Nuestra IA genera contenido profesional automáticamente.',
+      title: 'Generación Inteligente',
+      description: 'Crea presentaciones completas con IA avanzada. Contenido relevante y estructurado automáticamente.',
+      color: 'from-cyan-500 to-blue-500'
     },
     {
       icon: PaintBrushIcon,
-      title: 'Diseño Profesional',
-      description: 'Más de 50 plantillas modernas diseñadas por expertos. Personaliza colores, fuentes y estilos.',
+      title: 'Diseño de Calidad',
+      description: 'Plantillas profesionales y personalizables. Diseños que destacan tu contenido.',
+      color: 'from-blue-500 to-indigo-500'
     },
     {
       icon: UserGroupIcon,
-      title: 'Colaboración en Tiempo Real',
-      description: 'Trabaja con tu equipo simultáneamente. Comparte, comenta y edita presentaciones juntos.',
+      title: 'Trabajo Colaborativo',
+      description: 'Edición simultánea en equipo. Comparte y colabora sin límites.',
+      color: 'from-indigo-500 to-purple-500'
     },
     {
       icon: BoltIcon,
-      title: 'Rendimiento Rápido',
-      description: 'Exporta y presenta sin demoras. Optimizado para proyectos de cualquier tamaño.',
+      title: 'Alto Rendimiento',
+      description: 'Velocidad optimizada para proyectos de cualquier tamaño. Sin esperas, sin interrupciones.',
+      color: 'from-purple-500 to-pink-500'
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Seguridad Avanzada',
-      description: 'Encriptación de nivel empresarial. Tus datos están protegidos y respaldados automáticamente.',
+      title: 'Seguridad Total',
+      description: 'Encriptación empresarial y respaldos automáticos. Tus datos siempre protegidos.',
+      color: 'from-pink-500 to-rose-500'
     },
     {
       icon: CloudArrowUpIcon,
-      title: 'Almacenamiento Cloud',
-      description: 'Accede a tus presentaciones desde cualquier dispositivo. Sincronización automática en la nube.',
+      title: 'Acceso Universal',
+      description: 'Tus presentaciones en cualquier dispositivo. Sincronización instantánea.',
+      color: 'from-rose-500 to-cyan-500'
     },
   ];
 
   return (
-    <section id="funcionalidades" className="relative py-24 lg:py-32 bg-white">
+    <section id="funcionalidades" className="relative py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50">
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 border border-cyan-100 rounded-full mb-6"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 rounded-full mb-6 shadow-sm"
           >
-            <SparklesIcon className="w-4 h-4 text-cyan-600" />
-            <span className="text-sm font-medium text-cyan-700">Funcionalidades</span>
+            <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+            <span className="text-sm font-semibold text-gray-700">Funcionalidades</span>
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6"
           >
-            Todo lo que necesitas para{' '}
+            Herramientas poderosas para{' '}
             <span className="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
-              presentaciones perfectas
+              resultados excepcionales
             </span>
           </motion.h2>
 
@@ -79,10 +85,10 @@ const Features = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
           >
-            Herramientas potentes diseñadas para estudiantes y profesores de TECSUP
+            Tecnología de vanguardia al servicio de tu creatividad
           </motion.p>
         </div>
 
@@ -93,29 +99,20 @@ const Features = () => {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8, boxShadow: "0 10px 30px -10px rgba(6, 182, 212, 0.3)" }}
-                className="group relative p-6 bg-white border border-gray-200 rounded-2xl hover:border-cyan-300 transition-all"
+                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -4 }}
+                className="group relative p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200 transition-all duration-300"
               >
-                {/* Efecto de brillo en hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"
-                  initial={false}
-                />
-                
                 <div className="relative">
-                  <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-4"
-                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Icon className="w-6 h-6 text-white" />
-                  </motion.div>
+                  {/* Icono con gradiente único */}
+                  <div className={`inline-flex p-4 bg-gradient-to-br ${feature.color} rounded-xl mb-5 shadow-lg`}>
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {feature.title}
                   </h3>
                   
@@ -124,70 +121,38 @@ const Features = () => {
                   </p>
                 </div>
 
-                {/* Línea decorativa sutil */}
+                {/* Indicador sutil en hover */}
                 <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-b-2xl"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '100%' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity`}
                 />
               </motion.div>
             );
           })}
         </div>
 
-        {/* CTA Final con animaciones */}
+        {/* CTA Final profesional */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-20 text-center"
+          transition={{ duration: 0.6 }}
+          className="mt-24 text-center"
         >
-          <motion.div 
-            className="inline-flex flex-col items-center gap-6 p-12 bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-100 rounded-3xl relative overflow-hidden"
-            whileHover={{ scale: 1.02 }}
-          >
-            {/* Efecto de brillo sutil */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-              animate={{ x: ['-200%', '200%'] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
-            />
-            
-            <div className="relative z-10">
-              <motion.h3 
-                className="text-3xl font-bold text-gray-900 mb-4"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                ¿Listo para comenzar?
-              </motion.h3>
-              <motion.p 
-                className="text-gray-600 max-w-md mb-6"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                Únete a cientos de estudiantes de TECSUP que ya están creando presentaciones increíbles
-              </motion.p>
-              <motion.button
-                onClick={() => (window.location.href = '/login')}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium rounded-lg"
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(6, 182, 212, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Comenzar gratis
-              </motion.button>
-              <p className="text-sm text-gray-500 mt-4">
-                Sin tarjeta de crédito • Comienza en 30 segundos
-              </p>
-            </div>
-          </motion.div>
+          <div className="inline-flex flex-col items-center gap-6 p-12 bg-white border border-gray-200 rounded-3xl shadow-lg max-w-3xl">
+            <h3 className="text-3xl font-bold text-gray-900">
+              ¿Listo para transformar tus presentaciones?
+            </h3>
+            <p className="text-lg text-gray-600 max-w-xl">
+              Únete a miles de usuarios que ya están creando contenido excepcional
+            </p>
+            <motion.button
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-shadow"
+            >
+              Comenzar gratis
+            </motion.button>
+          </div>
         </motion.div>
 
       </div>

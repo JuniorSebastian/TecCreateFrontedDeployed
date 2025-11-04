@@ -77,72 +77,23 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Badge con animación de brillo y partículas */}
+        {/* Badge profesional y sutil */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="inline-block mb-8"
         >
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-full cursor-pointer overflow-hidden shadow-lg"
-            style={{ backgroundSize: '200% 100%' }}
-            animate={{ 
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            }}
-            transition={{ 
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear"
-            }}
+            whileHover={{ scale: 1.02 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur-sm border border-cyan-200/50 rounded-full shadow-sm hover:shadow-md transition-shadow"
           >
-            {/* Efecto de brillo que se mueve */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-              animate={{ 
-                x: ['-100%', '100%'],
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear",
-                repeatDelay: 1
-              }}
-            />
-            
-            {/* Contenido del badge */}
-            <div className="relative z-10 flex items-center gap-3">
-              <motion.div
-                animate={{ 
-                  rotate: [0, 360],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              >
-                <SparklesIcon className="w-5 h-5 text-white" />
-              </motion.div>
-              
-              <span className="text-sm font-bold text-white tracking-wide">
-                ✨ Impulsado por IA de última generación
-              </span>
-              
-              <motion.div
-                className="w-2 h-2 bg-white rounded-full"
-                animate={{ 
-                  opacity: [1, 0.3, 1],
-                  scale: [1, 1.5, 1]
-                }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              />
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+                <div className="absolute inset-0 w-2 h-2 bg-cyan-500 rounded-full animate-ping opacity-75" />
+              </div>
+              <span className="text-sm font-semibold text-gray-700">Impulsado por IA</span>
             </div>
           </motion.div>
         </motion.div>
@@ -151,26 +102,21 @@ const Hero = () => {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
         >
           Crea presentaciones{' '}
-          <motion.span 
-            className="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent inline-block"
-            animate={{ 
-              backgroundPosition: ['0%', '100%', '0%'],
-            }}
-            transition={{ 
-              duration: 5,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            style={{
-              backgroundSize: '200% auto',
-            }}
-          >
-            increíbles
-          </motion.span>
+          <span className="relative inline-block">
+            <span className="relative z-10 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              profesionales
+            </span>
+            <motion.span
+              className="absolute bottom-2 left-0 right-0 h-3 bg-cyan-400/20 -z-10"
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            />
+          </span>
           <br />con inteligencia artificial
         </motion.h1>
 
@@ -178,11 +124,10 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
         >
-          La forma más rápida de crear presentaciones profesionales. 
-          Diseñado para estudiantes y profesores de TECSUP.
+          Potencia tu creatividad con tecnología de vanguardia. Diseña presentaciones impactantes en minutos, no en horas.
         </motion.p>
 
         {/* Features list con stagger */}
@@ -223,31 +168,25 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
           <motion.button
             onClick={() => navigate('/login')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium rounded-lg overflow-hidden"
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(6, 182, 212, 0.3)" }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-shadow"
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
-            {/* Efecto shine sutil */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              animate={{ x: ['-200%', '200%'] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-            />
             <span className="relative flex items-center gap-2 justify-center">
-              Comenzar gratis
+              Comenzar ahora
               <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </motion.button>
           
           <motion.button
             onClick={() => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white border border-gray-200 text-gray-700 font-medium rounded-lg hover:border-cyan-300 hover:bg-cyan-50/50 transition-all"
-            whileHover={{ scale: 1.05, y: -2 }}
+            className="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all"
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
             Ver funcionalidades
