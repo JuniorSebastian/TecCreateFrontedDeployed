@@ -12,64 +12,64 @@ import {
 
 const TESTIMONIOS = [
   {
-    nombre: 'Ana López Martínez',
-    cargo: 'Docente de Ingeniería',
-    departamento: 'TECSUP Lima',
-    mensaje: 'TecCreate ha revolucionado la forma en que preparo mis clases. Es intuitivo, rápido y poderoso. Mis estudiantes están más comprometidos con presentaciones visualmente atractivas.',
-    avatar: 'https://ui-avatars.com/api/?name=Ana+Lopez&background=06b6d4&color=fff&size=200&bold=true',
-    rating: 5,
-    tag: 'Docente',
-    color: 'from-cyan-500 to-blue-600',
-  },
-  {
-    nombre: 'Carlos Mendoza Ríos',
+    nombre: 'Carlos Mendoza',
     cargo: 'Estudiante de Mecatrónica',
-    departamento: 'TECSUP Arequipa',
-    mensaje: 'Gracias a TecCreate puedo generar presentaciones profesionales en minutos. ¡Me encanta! La IA hace todo el trabajo pesado y yo solo me enfoco en el contenido.',
+    departamento: 'TECSUP Lima',
+    mensaje: 'Increíble! Ahora hago mis PPTs en 5 minutos. Los temas de mecatrónica están perfectos y ya no gasto en diseñadores. Mis notas mejoraron porque dedico más tiempo a estudiar el contenido.',
     avatar: 'https://ui-avatars.com/api/?name=Carlos+Mendoza&background=8b5cf6&color=fff&size=200&bold=true',
     rating: 5,
     tag: 'Estudiante',
     color: 'from-purple-500 to-pink-600',
   },
   {
-    nombre: 'Lucía Pérez Vega',
-    cargo: 'Coordinadora Académica',
-    departamento: 'TECSUP Trujillo',
-    mensaje: 'Facilita la vida docente. Las presentaciones son visualmente atractivas y de alta calidad. El equipo ahora puede crear material educativo más rápido que nunca.',
-    avatar: 'https://ui-avatars.com/api/?name=Lucia+Perez&background=ec4899&color=fff&size=200&bold=true',
-    rating: 5,
-    tag: 'Coordinadora',
-    color: 'from-pink-500 to-rose-600',
-  },
-  {
-    nombre: 'Miguel Torres Silva',
+    nombre: 'Miguel Torres',
     cargo: 'Estudiante de Electrónica',
     departamento: 'TECSUP Lima',
-    mensaje: 'La mejor herramienta para estudiantes. Ahorro horas de trabajo y obtengo resultados increíbles. Perfecta para presentar proyectos y trabajos finales con estilo.',
+    mensaje: 'La mejor herramienta para estudiantes. Antes tardaba 3 horas por presentación, ahora solo 5 minutos. Las plantillas de electrónica son muy profesionales y mis profes las aprueban.',
     avatar: 'https://ui-avatars.com/api/?name=Miguel+Torres&background=10b981&color=fff&size=200&bold=true',
     rating: 5,
     tag: 'Estudiante',
     color: 'from-emerald-500 to-teal-600',
   },
   {
-    nombre: 'Patricia Rojas Campos',
-    cargo: 'Docente de Sistemas',
-    departamento: 'TECSUP Cusco',
-    mensaje: 'Impresionante cómo la IA entiende el contexto y genera diapositivas coherentes. Mis presentaciones ahora son más dinámicas y mis alumnos participan más en clase.',
-    avatar: 'https://ui-avatars.com/api/?name=Patricia+Rojas&background=f59e0b&color=fff&size=200&bold=true',
-    rating: 5,
-    tag: 'Docente',
-    color: 'from-amber-500 to-orange-600',
-  },
-  {
-    nombre: 'Diego Flores Mendez',
-    cargo: 'Estudiante de Administración',
+    nombre: 'Diego Flores',
+    cargo: 'Estudiante de Redes y Comunicaciones',
     departamento: 'TECSUP Lima',
-    mensaje: 'TecCreate es simplemente genial. La interfaz es súper amigable y los resultados son profesionales. Lo recomiendo a todos mis compañeros de TECSUP.',
+    mensaje: 'Perfecto para trabajos grupales! Ya no discutimos por el diseño, la IA hace todo. Los temas de redes son técnicos y bien explicados. Lo uso en todos mis cursos.',
     avatar: 'https://ui-avatars.com/api/?name=Diego+Flores&background=3b82f6&color=fff&size=200&bold=true',
     rating: 5,
     tag: 'Estudiante',
     color: 'from-blue-500 to-indigo-600',
+  },
+  {
+    nombre: 'Andrea Castillo',
+    cargo: 'Estudiante de Diseño Industrial',
+    departamento: 'TECSUP Lima',
+    mensaje: 'Como estudiante de diseño soy muy exigente, pero TecCreate me sorprendió. Las plantillas son limpias, profesionales y se adaptan perfecto a mis proyectos. Ahorro mucho tiempo.',
+    avatar: 'https://ui-avatars.com/api/?name=Andrea+Castillo&background=06b6d4&color=fff&size=200&bold=true',
+    rating: 5,
+    tag: 'Estudiante',
+    color: 'from-cyan-500 to-blue-600',
+  },
+  {
+    nombre: 'Luis Ramírez',
+    cargo: 'Estudiante de Mantenimiento',
+    departamento: 'TECSUP Lima',
+    mensaje: 'Antes pagaba S/50 por presentación. Con TecCreate es gratis y queda mejor! Los temas de mantenimiento tienen diagramas técnicos perfectos. Ya convencí a todos mis compañeros.',
+    avatar: 'https://ui-avatars.com/api/?name=Luis+Ramirez&background=f59e0b&color=fff&size=200&bold=true',
+    rating: 5,
+    tag: 'Estudiante',
+    color: 'from-amber-500 to-orange-600',
+  },
+  {
+    nombre: 'Sofía Vargas',
+    cargo: 'Estudiante de Administración Industrial',
+    departamento: 'TECSUP Lima',
+    mensaje: 'Rapidísimo y fácil de usar. Mis exposiciones ahora son más visuales y profesionales. Gané 2do lugar en un concurso gracias a una PPT hecha con TecCreate. ¡100% recomendado!',
+    avatar: 'https://ui-avatars.com/api/?name=Sofia+Vargas&background=ec4899&color=fff&size=200&bold=true',
+    rating: 5,
+    tag: 'Estudiante',
+    color: 'from-pink-500 to-rose-600',
   },
 ];
 
@@ -137,11 +137,11 @@ export default function Testimonials() {
           </motion.div>
 
           <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 via-purple-900 to-pink-900 bg-clip-text text-transparent">
-            Lo que dice nuestra comunidad
+            Lo que dicen nuestros alumnos
           </h2>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Más de <span className="font-bold text-purple-600">500 usuarios</span> de TECSUP confían en TecCreate
+            Estudiantes de <span className="font-bold text-purple-600">TECSUP Lima</span> comparten su experiencia
           </p>
         </motion.div>
 
@@ -277,10 +277,10 @@ export default function Testimonials() {
           transition={{ delay: 0.3 }}
         >
           {[
-            { icon: UserGroupIcon, value: '500+', label: 'Usuarios Activos', color: 'from-cyan-500 to-blue-600' },
-            { icon: StarIcon, value: '4.9/5', label: 'Rating Promedio', color: 'from-amber-500 to-orange-600' },
-            { icon: AcademicCapIcon, value: '98%', label: 'Satisfacción', color: 'from-purple-500 to-pink-600' },
-            { icon: SparklesIcon, value: '2K+', label: 'Presentaciones', color: 'from-emerald-500 to-teal-600' },
+            { icon: AcademicCapIcon, value: '5min', label: 'Tiempo Promedio', color: 'from-cyan-500 to-blue-600' },
+            { icon: StarIcon, value: '4.9/5', label: 'Valoración', color: 'from-amber-500 to-orange-600' },
+            { icon: SparklesIcon, value: '70%', label: 'Ahorro de Tiempo', color: 'from-purple-500 to-pink-600' },
+            { icon: UserGroupIcon, value: '100%', label: 'Gratis', color: 'from-emerald-500 to-teal-600' },
           ].map((stat, index) => (
             <motion.div
               key={index}

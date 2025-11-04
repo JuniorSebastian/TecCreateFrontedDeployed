@@ -11,15 +11,15 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { number: '500+', label: 'Alumnos TECSUP' },
-    { number: '2K+', label: 'PPTs Generadas' },
+    { number: '5min', label: 'Tiempo Promedio' },
     { number: '70%', label: 'Ahorro de Tiempo' },
+    { number: '100%', label: 'Gratis' },
   ];
 
   const features = [
-    'Ahorra tiempo en tus tareas',
-    'Contenido educativo optimizado',
-    'Gratis para estudiantes TECSUP'
+    'Temas por carrera TECSUP',
+    'Plantillas profesionales incluidas',
+    'Listo en 5 minutos'
   ];
 
   return (
@@ -65,26 +65,18 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Título limpio con gradiente animado - RESPONSIVO */}
+        {/* Título limpio - RESPONSIVO */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
-          Crea presentaciones{' '}
-          <span className="relative inline-block">
-            <span className="relative z-10 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              educativas
-            </span>
-            <motion.span
-              className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-2 sm:h-3 bg-cyan-400/20 -z-10"
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            />
+          Crea presentaciones educativas{' '}
+          <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            en 5 minutos
           </span>
-          <br />para tus cursos TECSUP
+          <br />para tus cursos TECSUP Lima
         </motion.h1>
 
         {/* Descripción simple - RESPONSIVO */}
@@ -94,8 +86,8 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-10 max-w-3xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Optimiza tu tiempo y enfócate en lo que importa. Genera presentaciones académicas de calidad con IA, 
-          diseñadas específicamente para estudiantes de TECSUP.
+          Plantillas y temas especializados para todas las carreras de TECSUP. 
+          Genera tu PPT con IA en minutos y dedica más tiempo a estudiar.
         </motion.p>
 
         {/* Features list con stagger - RESPONSIVO */}

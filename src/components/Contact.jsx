@@ -124,28 +124,33 @@ export default function Contact() {
                 </h3>
                 
                 <div className="space-y-6">
-                  {/* Email */}
+                  {/* Email - Equipo de Soporte */}
                   <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group">
                     <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <EnvelopeIcon className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">Correo Electrónico</h4>
-                      <a href="mailto:soporte@teccreate.com" className="text-blue-600 hover:text-cyan-600 transition-colors font-medium">
-                        soporte@teccreate.com
-                      </a>
-                      <p className="text-sm text-gray-600 mt-1">Respuesta en 24-48 horas</p>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">Equipo de Soporte</h4>
+                      <div className="space-y-1.5">
+                        <a href="mailto:junior.osorio@tecsup.edu.pe" className="block text-blue-600 hover:text-cyan-600 transition-colors font-medium text-sm">
+                          junior.osorio@tecsup.edu.pe
+                        </a>
+                        <a href="mailto:rodrigo.diaz.i@tecsup.edu.pe" className="block text-blue-600 hover:text-cyan-600 transition-colors font-medium text-sm">
+                          rodrigo.diaz.i@tecsup.edu.pe
+                        </a>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-2">Respuesta en 24-48 horas</p>
                     </div>
                   </div>
 
-                  {/* Ubicación */}
+                  {/* Ubicación - Solo Lima */}
                   <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group animation-delay-100">
                     <div className="bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <MapPinIcon className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-1">Ubicación</h4>
-                      <p className="text-gray-700 font-medium">TECSUP</p>
+                      <p className="text-gray-700 font-medium">TECSUP Lima</p>
                       <p className="text-gray-600">Lima, Perú</p>
                     </div>
                   </div>
