@@ -1,52 +1,81 @@
-// src/components/Features.jsx - MINIMALISTA Y PROFESIONAL
+// src/components/Features.jsx - PROFESIONAL CON REACT-ICONS
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  SparklesIcon,
-  PaintBrushIcon,
-  UserGroupIcon,
-  BoltIcon,
-  ShieldCheckIcon,
-  CloudArrowUpIcon,
-} from '@heroicons/react/24/outline';
+import { 
+  HiSparkles, 
+  HiLightningBolt, 
+  HiUserGroup, 
+  HiShieldCheck 
+} from 'react-icons/hi';
+import { 
+  TbTemplate, 
+  TbDevices 
+} from 'react-icons/tb';
+import { 
+  RiShapeLine 
+} from 'react-icons/ri';
 
 const Features = () => {
   const features = [
     {
-      icon: SparklesIcon,
+      icon: HiSparkles,
       title: 'IA Educativa',
       description: 'Genera presentaciones académicas adaptadas a tus cursos TECSUP. Contenido educativo optimizado.',
-      color: 'from-cyan-500 to-blue-500'
+      gradient: 'from-cyan-500/10 to-blue-500/10',
+      iconBg: 'bg-gradient-to-br from-cyan-500 to-blue-500',
+      iconColor: 'text-cyan-600',
+      borderColor: 'border-cyan-200',
+      hoverShadow: 'hover:shadow-cyan-500/20'
     },
     {
-      icon: PaintBrushIcon,
+      icon: TbTemplate,
       title: 'Plantillas Académicas',
       description: 'Diseños profesionales para exposiciones y trabajos. Cumple con estándares educativos.',
-      color: 'from-blue-500 to-indigo-500'
+      gradient: 'from-blue-500/10 to-indigo-500/10',
+      iconBg: 'bg-gradient-to-br from-blue-500 to-indigo-500',
+      iconColor: 'text-blue-600',
+      borderColor: 'border-blue-200',
+      hoverShadow: 'hover:shadow-blue-500/20'
     },
     {
-      icon: BoltIcon,
+      icon: HiLightningBolt,
       title: 'Ahorro de Tiempo',
       description: 'Crea tu PPT en minutos, no en horas. Dedica más tiempo a estudiar y menos a diseñar.',
-      color: 'from-indigo-500 to-purple-500'
+      gradient: 'from-indigo-500/10 to-violet-500/10',
+      iconBg: 'bg-gradient-to-br from-indigo-500 to-violet-500',
+      iconColor: 'text-indigo-600',
+      borderColor: 'border-indigo-200',
+      hoverShadow: 'hover:shadow-indigo-500/20'
     },
     {
-      icon: UserGroupIcon,
+      icon: HiUserGroup,
       title: 'Trabajo en Equipo',
       description: 'Colabora con compañeros en tiempo real. Ideal para proyectos grupales.',
-      color: 'from-purple-500 to-pink-500'
+      gradient: 'from-violet-500/10 to-purple-500/10',
+      iconBg: 'bg-gradient-to-br from-violet-500 to-purple-500',
+      iconColor: 'text-violet-600',
+      borderColor: 'border-violet-200',
+      hoverShadow: 'hover:shadow-violet-500/20'
     },
     {
-      icon: ShieldCheckIcon,
+      icon: HiShieldCheck,
       title: 'Gratis para Alumnos',
       description: 'Sin costos ocultos ni suscripciones. Acceso completo para toda la comunidad TECSUP.',
-      color: 'from-pink-500 to-rose-500'
+      gradient: 'from-purple-500/10 to-pink-500/10',
+      iconBg: 'bg-gradient-to-br from-purple-500 to-pink-500',
+      iconColor: 'text-purple-600',
+      borderColor: 'border-purple-200',
+      hoverShadow: 'hover:shadow-purple-500/20'
     },
     {
-      icon: CloudArrowUpIcon,
+      icon: TbDevices,
       title: 'Multiplataforma',
       description: 'Accede desde cualquier dispositivo. Laptop, tablet o celular, siempre disponible.',
-      color: 'from-rose-500 to-cyan-500'
+      gradient: 'from-pink-500/10 to-rose-500/10',
+      iconBg: 'bg-gradient-to-br from-pink-500 to-rose-500',
+      iconColor: 'text-pink-600',
+      borderColor: 'border-pink-200',
+      hoverShadow: 'hover:shadow-pink-500/20'
     },
   ];
 
@@ -103,27 +132,35 @@ const Features = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-                className="group relative p-6 sm:p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200 transition-all duration-300"
+                className={`group relative p-6 sm:p-8 bg-white rounded-2xl shadow-md hover:shadow-2xl border ${feature.borderColor} transition-all duration-300 ${feature.hoverShadow}`}
                 style={{ willChange: 'transform' }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="relative">
-                  {/* Icono con gradiente único */}
-                  <div className={`inline-flex p-3 sm:p-4 bg-gradient-to-br ${feature.color} rounded-xl mb-4 sm:mb-5 shadow-lg transition-transform duration-300 group-hover:scale-110`}>
-                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                {/* Gradiente de fondo sutil */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                
+                <div className="relative z-10">
+                  {/* Icono profesional con gradiente */}
+                  <div className="relative mb-5">
+                    <div className={`inline-flex p-4 ${feature.iconBg} rounded-xl shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+                    {/* Glow effect en hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.iconBg.replace('bg-', '')} rounded-xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10`} />
                   </div>
                   
-                  <h3 className="text-lg sm:text-xl font-extrabold text-gray-900 mb-2 sm:mb-3 tracking-tight">
+                  <h3 className="text-xl font-extrabold text-gray-900 mb-3 tracking-tight group-hover:text-gray-800 transition-colors">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-medium">
+                  <p className="text-base text-gray-600 leading-relaxed font-medium group-hover:text-gray-700 transition-colors">
                     {feature.description}
                   </p>
                 </div>
 
-                {/* Indicador sutil en hover */}
+                {/* Indicador en hover */}
                 <div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                  className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${feature.iconBg.replace('bg-', '')} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                 />
               </motion.div>
             );
