@@ -1,18 +1,14 @@
 // src/components/Hero.jsx - VERSIÓN PREMIUM TECSUP CELESTE
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { 
   SparklesIcon, 
   RocketLaunchIcon, 
   LightBulbIcon, 
-  UsersIcon, 
   StarIcon,
   FireIcon,
-  BeakerIcon,
-  AcademicCapIcon,
-  BoltIcon,
-  ArrowRightIcon
+  BeakerIcon
 } from '@heroicons/react/24/solid';
 
 const Hero = () => {

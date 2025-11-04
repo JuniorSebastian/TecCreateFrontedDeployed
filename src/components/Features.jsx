@@ -3,16 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   SparklesIcon,
-  CpuChipIcon,
   PaintBrushIcon,
   UserGroupIcon,
   BoltIcon,
   ShieldCheckIcon,
   CloudArrowUpIcon,
   ArrowPathIcon,
-  RocketLaunchIcon,
-  LightBulbIcon,
-  BeakerIcon
+  RocketLaunchIcon
 } from '@heroicons/react/24/outline';
 
 const Features = () => {
