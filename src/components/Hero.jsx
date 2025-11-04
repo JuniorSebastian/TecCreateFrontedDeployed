@@ -11,15 +11,15 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { number: '500+', label: 'Estudiantes' },
-    { number: '2K+', label: 'Presentaciones' },
-    { number: '98%', label: 'Satisfacción' },
+    { number: '500+', label: 'Alumnos TECSUP' },
+    { number: '2K+', label: 'PPTs Generadas' },
+    { number: '70%', label: 'Ahorro de Tiempo' },
   ];
 
   const features = [
-    'Generación con IA en segundos',
-    'Plantillas profesionales',
-    'Colaboración en tiempo real'
+    'Ahorra tiempo en tus tareas',
+    'Contenido educativo optimizado',
+    'Gratis para estudiantes TECSUP'
   ];
 
   return (
@@ -60,7 +60,7 @@ const Hero = () => {
                 <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
                 <div className="absolute inset-0 w-2 h-2 bg-cyan-500 rounded-full animate-ping opacity-75" />
               </div>
-              <span className="text-sm font-semibold text-gray-700">Impulsado por IA</span>
+              <span className="text-sm font-semibold text-gray-700">Plataforma Educativa TECSUP</span>
             </div>
           </motion.div>
         </motion.div>
@@ -70,12 +70,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight px-4 sm:px-0"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
           Crea presentaciones{' '}
           <span className="relative inline-block">
             <span className="relative z-10 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              profesionales
+              educativas
             </span>
             <motion.span
               className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-2 sm:h-3 bg-cyan-400/20 -z-10"
@@ -84,7 +84,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
             />
           </span>
-          <br />con inteligencia artificial
+          <br />para tus cursos TECSUP
         </motion.h1>
 
         {/* Descripción simple - RESPONSIVO */}
@@ -92,9 +92,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto px-4 sm:px-6 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-10 max-w-3xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Potencia tu creatividad con tecnología de vanguardia. Diseña presentaciones impactantes en minutos, no en horas.
+          Optimiza tu tiempo y enfócate en lo que importa. Genera presentaciones académicas de calidad con IA, 
+          diseñadas específicamente para estudiantes de TECSUP.
         </motion.p>
 
         {/* Features list con stagger - RESPONSIVO */}
@@ -126,7 +127,7 @@ const Hero = () => {
               >
                 <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600 flex-shrink-0" />
               </motion.div>
-              <span className="text-xs sm:text-sm font-medium">{feature}</span>
+              <span className="text-xs sm:text-sm font-semibold">{feature}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -140,19 +141,19 @@ const Hero = () => {
         >
           <button
             onClick={() => navigate('/login')}
-            className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
+            className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
           >
             <span className="relative flex items-center gap-2 justify-center text-sm sm:text-base">
-              Comenzar ahora
+              Crear mi primera PPT
               <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
           
           <button
             onClick={() => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto text-sm sm:text-base"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto text-sm sm:text-base"
           >
-            Ver funcionalidades
+            Conocer beneficios
           </button>
         </motion.div>
 

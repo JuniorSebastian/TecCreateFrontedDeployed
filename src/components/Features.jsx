@@ -14,38 +14,38 @@ const Features = () => {
   const features = [
     {
       icon: SparklesIcon,
-      title: 'Generación Inteligente',
-      description: 'Crea presentaciones completas con IA avanzada. Contenido relevante y estructurado automáticamente.',
+      title: 'IA Educativa',
+      description: 'Genera presentaciones académicas adaptadas a tus cursos TECSUP. Contenido educativo optimizado.',
       color: 'from-cyan-500 to-blue-500'
     },
     {
       icon: PaintBrushIcon,
-      title: 'Diseño de Calidad',
-      description: 'Plantillas profesionales y personalizables. Diseños que destacan tu contenido.',
+      title: 'Plantillas Académicas',
+      description: 'Diseños profesionales para exposiciones y trabajos. Cumple con estándares educativos.',
       color: 'from-blue-500 to-indigo-500'
     },
     {
-      icon: UserGroupIcon,
-      title: 'Trabajo Colaborativo',
-      description: 'Edición simultánea en equipo. Comparte y colabora sin límites.',
+      icon: BoltIcon,
+      title: 'Ahorro de Tiempo',
+      description: 'Crea tu PPT en minutos, no en horas. Dedica más tiempo a estudiar y menos a diseñar.',
       color: 'from-indigo-500 to-purple-500'
     },
     {
-      icon: BoltIcon,
-      title: 'Alto Rendimiento',
-      description: 'Velocidad optimizada para proyectos de cualquier tamaño. Sin esperas, sin interrupciones.',
+      icon: UserGroupIcon,
+      title: 'Trabajo en Equipo',
+      description: 'Colabora con compañeros en tiempo real. Ideal para proyectos grupales.',
       color: 'from-purple-500 to-pink-500'
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Seguridad Total',
-      description: 'Encriptación empresarial y respaldos automáticos. Tus datos siempre protegidos.',
+      title: 'Gratis para Alumnos',
+      description: 'Sin costos ocultos ni suscripciones. Acceso completo para toda la comunidad TECSUP.',
       color: 'from-pink-500 to-rose-500'
     },
     {
       icon: CloudArrowUpIcon,
-      title: 'Acceso Universal',
-      description: 'Tus presentaciones en cualquier dispositivo. Sincronización instantánea.',
+      title: 'Multiplataforma',
+      description: 'Accede desde cualquier dispositivo. Laptop, tablet o celular, siempre disponible.',
       color: 'from-rose-500 to-cyan-500'
     },
   ];
@@ -65,7 +65,7 @@ const Features = () => {
             className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-white border border-gray-200 rounded-full mb-4 sm:mb-6 shadow-sm"
           >
             <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
-            <span className="text-xs sm:text-sm font-semibold text-gray-700">Funcionalidades</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-700">Beneficios</span>
           </motion.div>
 
           <motion.h2
@@ -73,11 +73,11 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6 px-4 tracking-tight leading-tight"
           >
-            Herramientas poderosas para{' '}
+            Todo lo que necesitas para{' '}
             <span className="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
-              resultados excepcionales
+              destacar en tus cursos
             </span>
           </motion.h2>
 
@@ -86,9 +86,9 @@ const Features = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4"
+            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed font-medium"
           >
-            Tecnología de vanguardia al servicio de tu creatividad
+            Diseñado específicamente para estudiantes TECSUP. Ahorra tiempo, dinero y esfuerzo en tus presentaciones académicas.
           </motion.p>
         </div>
 
@@ -112,11 +112,11 @@ const Features = () => {
                     <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
                   
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-gray-900 mb-2 sm:mb-3 tracking-tight">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-medium">
                     {feature.description}
                   </p>
                 </div>
@@ -139,16 +139,16 @@ const Features = () => {
           className="mt-16 sm:mt-20 md:mt-24 text-center px-4"
         >
           <div className="inline-flex flex-col items-center gap-4 sm:gap-6 p-8 sm:p-10 md:p-12 bg-white border border-gray-200 rounded-3xl shadow-lg max-w-3xl w-full">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
-              ¿Listo para transformar tus presentaciones?
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+              ¿Listo para optimizar tu tiempo?
             </h3>
-            <p className="text-base sm:text-lg text-gray-600 max-w-xl">
-              Únete a miles de usuarios que ya están creando contenido excepcional
+            <p className="text-base sm:text-lg text-gray-600 max-w-xl font-medium leading-relaxed">
+              Únete a cientos de estudiantes TECSUP que ya están creando presentaciones de calidad en minutos
             </p>
             <button
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto text-sm sm:text-base"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto text-sm sm:text-base"
             >
-              Comenzar gratis
+              Empezar ahora gratis
             </button>
           </div>
         </motion.div>
