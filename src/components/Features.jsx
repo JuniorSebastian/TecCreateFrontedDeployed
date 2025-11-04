@@ -86,7 +86,7 @@ const Features = () => {
           </motion.p>
         </div>
 
-        {/* Grid de features */}
+        {/* Grid de features con animaciones sutiles */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -97,25 +97,47 @@ const Features = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-6 bg-white border border-gray-200 rounded-2xl hover:border-cyan-300 hover:shadow-lg transition-all"
+                whileHover={{ y: -8, boxShadow: "0 10px 30px -10px rgba(6, 182, 212, 0.3)" }}
+                className="group relative p-6 bg-white border border-gray-200 rounded-2xl hover:border-cyan-300 transition-all"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Icon className="w-6 h-6 text-white" />
+                {/* Efecto de brillo en hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={false}
+                />
+                
+                <div className="relative">
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-4"
+                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Icon className="w-6 h-6 text-white" />
+                  </motion.div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
+
+                {/* Línea decorativa sutil */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-b-2xl"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                />
               </motion.div>
             );
           })}
         </div>
 
-        {/* CTA Final */}
+        {/* CTA Final con animaciones */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -123,23 +145,49 @@ const Features = () => {
           transition={{ duration: 0.5 }}
           className="mt-20 text-center"
         >
-          <div className="inline-flex flex-col items-center gap-6 p-12 bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-100 rounded-3xl">
-            <h3 className="text-3xl font-bold text-gray-900">
-              ¿Listo para comenzar?
-            </h3>
-            <p className="text-gray-600 max-w-md">
-              Únete a cientos de estudiantes de TECSUP que ya están creando presentaciones increíbles
-            </p>
-            <button
-              onClick={() => (window.location.href = '/login')}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium rounded-lg hover:shadow-xl hover:scale-105 transition-all"
-            >
-              Comenzar gratis
-            </button>
-            <p className="text-sm text-gray-500">
-              Sin tarjeta de crédito • Comienza en 30 segundos
-            </p>
-          </div>
+          <motion.div 
+            className="inline-flex flex-col items-center gap-6 p-12 bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-100 rounded-3xl relative overflow-hidden"
+            whileHover={{ scale: 1.02 }}
+          >
+            {/* Efecto de brillo sutil */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+              animate={{ x: ['-200%', '200%'] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+            />
+            
+            <div className="relative z-10">
+              <motion.h3 
+                className="text-3xl font-bold text-gray-900 mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                ¿Listo para comenzar?
+              </motion.h3>
+              <motion.p 
+                className="text-gray-600 max-w-md mb-6"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                Únete a cientos de estudiantes de TECSUP que ya están creando presentaciones increíbles
+              </motion.p>
+              <motion.button
+                onClick={() => (window.location.href = '/login')}
+                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium rounded-lg"
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(6, 182, 212, 0.3)" }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Comenzar gratis
+              </motion.button>
+              <p className="text-sm text-gray-500 mt-4">
+                Sin tarjeta de crédito • Comienza en 30 segundos
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
 
       </div>
