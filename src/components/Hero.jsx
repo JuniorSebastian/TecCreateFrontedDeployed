@@ -59,7 +59,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Título ENGANCHADOR */}
+        {/* Título PROFESIONAL Y CLARO */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,24 +67,24 @@ const Hero = () => {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
           <span className="block text-gray-900 mb-4">
-            Adiós noches sin dormir
+            Crea presentaciones
           </span>
           <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            haciendo PPTs
+            con Inteligencia Artificial
           </span>
           <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
-            La IA las crea en 5 minutos
+            para tus cursos TECSUP
           </span>
         </motion.h1>
 
-        {/* Descripción ENGANCHADORA */}
+        {/* Descripción PROFESIONAL Y CLARA */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Especial para estudiantes TECSUP • Contenido por tu carrera • 100% Gratis
+          Genera diapositivas educativas en minutos • Contenido adaptado a tu carrera • Completamente gratis
         </motion.p>
 
         {/* Features Profesionales */}
