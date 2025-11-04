@@ -17,7 +17,7 @@ const Hero = () => {
 
   const features = [
     'Temas por carrera TECSUP',
-    'Plantillas profesionales incluidas',
+    'Plantillas educativas incluidas',
     'Listo en 5 minutos'
   ];
 
@@ -59,7 +59,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Título Profesional */}
+        {/* Título Impactante */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,21 +70,21 @@ const Hero = () => {
             Crea presentaciones
           </span>
           <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            en 5 minutos
+            educativas en 5 minutos
           </span>
           <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
-            con IA para TECSUP Lima
+            con IA para TECSUP
           </span>
         </motion.h1>
 
-        {/* Descripción Profesional */}
+        {/* Descripción Impactante */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Plantillas especializadas por carrera • Diseño profesional automático • 100% Gratis
+          Plantillas especializadas por carrera • Contenido educativo automático • 100% Gratis
         </motion.p>
 
         {/* Features Profesionales */}
