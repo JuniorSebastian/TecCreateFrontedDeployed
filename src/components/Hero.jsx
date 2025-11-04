@@ -25,54 +25,22 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-cyan-50/30 to-white pt-20">
       
-      {/* Grid sutil animado */}
-      <motion.div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem]"
-        animate={{ 
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ 
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+      {/* Grid sutil - SIN animación para mejor performance */}
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40"
       />
 
-      {/* Gradiente suave de fondo con pulso */}
-      <motion.div 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-cyan-100/40 via-blue-50/20 to-transparent rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.4, 0.6, 0.4]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+      {/* Gradiente suave de fondo - ESTÁTICO para mejor performance */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-cyan-100/40 via-blue-50/20 to-transparent rounded-full blur-3xl opacity-50"
       />
 
-      {/* Círculos flotantes sutiles */}
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-cyan-400/30 rounded-full"
-          style={{
-            left: `${20 + i * 15}%`,
-            top: `${30 + i * 10}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 3 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.5,
-          }}
-        />
-      ))}
+      {/* Círculos flotantes reducidos - Solo 3 con CSS animations */}
+      <div className="hero-circles">
+        <div className="hero-circle hero-circle-1"></div>
+        <div className="hero-circle hero-circle-2"></div>
+        <div className="hero-circle hero-circle-3"></div>
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20 text-center">
         
@@ -170,26 +138,22 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <motion.button
+          <button
             onClick={() => navigate('/login')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-shadow"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-1"
           >
             <span className="relative flex items-center gap-2 justify-center">
               Comenzar ahora
               <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
-          </motion.button>
+          </button>
           
-          <motion.button
+          <button
             onClick={() => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            className="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-cyan-500 hover:text-cyan-700 transition-all duration-300 hover:-translate-y-1"
           >
             Ver funcionalidades
-          </motion.button>
+          </button>
         </motion.div>
 
         {/* Stats minimalistas con animación */}
@@ -222,6 +186,54 @@ const Hero = () => {
         </motion.div>
 
       </div>
+
+      {/* CSS Animations optimizadas */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        .hero-circles {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+        
+        .hero-circle {
+          position: absolute;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+          filter: blur(40px);
+          will-change: transform;
+        }
+        
+        .hero-circle-1 {
+          width: 300px;
+          height: 300px;
+          left: 20%;
+          top: 30%;
+          animation: float 20s ease-in-out infinite;
+        }
+        
+        .hero-circle-2 {
+          width: 400px;
+          height: 400px;
+          right: 15%;
+          top: 20%;
+          animation: float 25s ease-in-out infinite;
+          animation-delay: 2s;
+        }
+        
+        .hero-circle-3 {
+          width: 350px;
+          height: 350px;
+          left: 50%;
+          bottom: 20%;
+          animation: float 22s ease-in-out infinite;
+          animation-delay: 4s;
+        }
+      `}</style>
     </section>
   );
 };

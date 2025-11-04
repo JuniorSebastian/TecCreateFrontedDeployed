@@ -101,14 +101,14 @@ const Features = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                whileHover={{ y: -4 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
                 className="group relative p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200 transition-all duration-300"
+                style={{ willChange: 'transform' }}
               >
                 <div className="relative">
                   {/* Icono con gradiente único */}
-                  <div className={`inline-flex p-4 bg-gradient-to-br ${feature.color} rounded-xl mb-5 shadow-lg`}>
+                  <div className={`inline-flex p-4 bg-gradient-to-br ${feature.color} rounded-xl mb-5 shadow-lg transition-transform duration-300 group-hover:scale-110`}>
                     <Icon className="w-7 h-7 text-white" />
                   </div>
                   
@@ -122,8 +122,8 @@ const Features = () => {
                 </div>
 
                 {/* Indicador sutil en hover */}
-                <motion.div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity`}
+                <div
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                 />
               </motion.div>
             );
@@ -134,8 +134,8 @@ const Features = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
           className="mt-24 text-center"
         >
           <div className="inline-flex flex-col items-center gap-6 p-12 bg-white border border-gray-200 rounded-3xl shadow-lg max-w-3xl">
@@ -145,13 +145,11 @@ const Features = () => {
             <p className="text-lg text-gray-600 max-w-xl">
               Únete a miles de usuarios que ya están creando contenido excepcional
             </p>
-            <motion.button
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-shadow"
+            <button
+              className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-0.5"
             >
               Comenzar gratis
-            </motion.button>
+            </button>
           </div>
         </motion.div>
 
