@@ -59,7 +59,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Título Impactante */}
+        {/* Título ENGANCHADOR */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,24 +67,24 @@ const Hero = () => {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
           <span className="block text-gray-900 mb-4">
-            Crea presentaciones
+            Adiós noches sin dormir
           </span>
           <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            educativas en 5 minutos
+            haciendo PPTs
           </span>
           <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
-            con IA para TECSUP
+            La IA las crea en 5 minutos
           </span>
         </motion.h1>
 
-        {/* Descripción Impactante */}
+        {/* Descripción ENGANCHADORA */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
-          Plantillas especializadas por carrera • Contenido educativo automático • 100% Gratis
+          Especial para estudiantes TECSUP • Contenido por tu carrera • 100% Gratis
         </motion.p>
 
         {/* Features Profesionales */}
