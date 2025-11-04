@@ -1,12 +1,16 @@
 // src/components/Contact.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   EnvelopeIcon, 
   MapPinIcon, 
   PhoneIcon,
-  PaperAirplaneIcon,
   CheckCircleIcon,
-  SparklesIcon
+  SparklesIcon,
+  UserCircleIcon,
+  CodeBracketIcon,
+  DocumentTextIcon,
+  BoltIcon,
+  ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
 
 // Estilos CSS personalizados para animaciones
@@ -76,37 +80,6 @@ const styles = `
 `;
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    asunto: '',
-    mensaje: ''
-  });
-  const [enviado, setEnviado] = useState(false);
-  const [enviando, setEnviando] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEnviando(true);
-    
-    // Simular envío
-    setTimeout(() => {
-      setEnviando(false);
-      setEnviado(true);
-      setFormData({ nombre: '', email: '', asunto: '', mensaje: '' });
-      
-      // Ocultar mensaje después de 5 segundos
-      setTimeout(() => setEnviado(false), 5000);
-    }, 1500);
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
     <>
       <style>{styles}</style>
@@ -133,7 +106,7 @@ export default function Contact() {
               Contáctanos
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              ¿Tienes alguna pregunta o sugerencia? Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos pronto.
+              Conoce más sobre nuestro proyecto y encuentra recursos útiles para crear presentaciones increíbles.
             </p>
           </div>
 
@@ -191,6 +164,124 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Sistema de Reportes */}
+              <div className="bg-gradient-to-br from-cyan-600 via-blue-500 to-cyan-600 bg-size-200 animate-gradient rounded-3xl p-8 shadow-2xl text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-shimmer"></div>
+                <div className="relative z-10">
+                  <h4 className="text-2xl font-bold mb-3 flex items-center gap-3">
+                    <SparklesIcon className="w-7 h-7" />
+                    Sistema de Reportes
+                  </h4>
+                  <p className="mb-4 text-cyan-50 leading-relaxed">
+                    ¿Encontraste un problema o tienes una sugerencia? Utiliza nuestro sistema de reportes para enviar tu feedback.
+                  </p>
+                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-4">
+                    <p className="text-sm font-semibold mb-2">📋 Para reportar problemas o solicitar soporte:</p>
+                    <ul className="text-sm space-y-1 text-cyan-50">
+                      <li>• Inicia sesión en tu cuenta</li>
+                      <li>• Visita la sección de <strong>Reportes</strong></li>
+                      <li>• Describe el problema detalladamente</li>
+                    </ul>
+                  </div>
+                  <a 
+                    href="/soporte" 
+                    className="inline-flex items-center gap-2 bg-white text-cyan-600 px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    Ir a Reportes
+                    <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Enlaces importantes - Lado derecho */}
+            <div className="animate-slideInRight space-y-8">
+              {/* Título */}
+              <div className="bg-white rounded-3xl shadow-2xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">Enlaces Importantes</h3>
+                <p className="text-gray-600 mb-8">
+                  Descubre más sobre nuestro proyecto, explora el código fuente y conoce al equipo.
+                </p>
+
+                <div className="space-y-4">
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/juniorsebastian/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group border-2 border-transparent hover:border-blue-300"
+                  >
+                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <UserCircleIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                        LinkedIn
+                        <ArrowTopRightOnSquareIcon className="w-4 h-4 text-blue-500" />
+                      </h4>
+                      <p className="text-sm text-gray-600">Conéctate con el creador del proyecto</p>
+                    </div>
+                  </a>
+
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/JuniorSebastian"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-br from-gray-50 to-slate-50 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group border-2 border-transparent hover:border-gray-400"
+                  >
+                    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <CodeBracketIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                        GitHub
+                        <ArrowTopRightOnSquareIcon className="w-4 h-4 text-gray-500" />
+                      </h4>
+                      <p className="text-sm text-gray-600">Explora el código fuente y repositorios</p>
+                    </div>
+                  </a>
+
+                  {/* Documentación */}
+                  <a
+                    href="https://docs.google.com/document/d/1TjcS1w0mx5UJmLtiwijjZ-3vPRD1cX54ci14w_6xWK0/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group border-2 border-transparent hover:border-cyan-300"
+                  >
+                    <div className="bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <DocumentTextIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                        Documentación
+                        <ArrowTopRightOnSquareIcon className="w-4 h-4 text-cyan-500" />
+                      </h4>
+                      <p className="text-sm text-gray-600">Guías y recursos del proyecto</p>
+                    </div>
+                  </a>
+
+                  {/* Groq API */}
+                  <a
+                    href="https://groq.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group border-2 border-transparent hover:border-orange-300"
+                  >
+                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <BoltIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                        Groq API
+                        <ArrowTopRightOnSquareIcon className="w-4 h-4 text-orange-500" />
+                      </h4>
+                      <p className="text-sm text-gray-600">Inteligencia artificial ultra-rápida</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
               {/* Tarjeta decorativa adicional */}
               <div className="bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient rounded-3xl p-8 shadow-2xl text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-shimmer"></div>
@@ -215,123 +306,6 @@ export default function Contact() {
                     </li>
                   </ul>
                 </div>
-              </div>
-            </div>
-
-            {/* Formulario - Lado derecho */}
-            <div className="animate-slideInRight">
-              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 transform transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
-                {/* Efecto de brillo */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient"></div>
-                
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">Envíanos un mensaje</h3>
-                
-                {/* Mensaje de éxito */}
-                {enviado && (
-                  <div className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-lg animate-fadeIn">
-                    <div className="flex items-center gap-3">
-                      <CheckCircleIcon className="w-6 h-6 text-green-600" />
-                      <div>
-                        <p className="font-semibold text-green-900">¡Mensaje enviado con éxito!</p>
-                        <p className="text-sm text-green-700">Te responderemos pronto.</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Nombre */}
-                  <div className="group">
-                    <label className="block mb-2 font-semibold text-gray-700 text-sm uppercase tracking-wide">
-                      Nombre completo
-                    </label>
-                    <input
-                      type="text"
-                      name="nombre"
-                      value={formData.nombre}
-                      onChange={handleChange}
-                      required
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100 transition-all duration-300 group-hover:border-gray-300"
-                      placeholder="Tu nombre completo"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div className="group">
-                    <label className="block mb-2 font-semibold text-gray-700 text-sm uppercase tracking-wide">
-                      Correo electrónico
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100 transition-all duration-300 group-hover:border-gray-300"
-                      placeholder="tucorreo@ejemplo.com"
-                    />
-                  </div>
-
-                  {/* Asunto */}
-                  <div className="group">
-                    <label className="block mb-2 font-semibold text-gray-700 text-sm uppercase tracking-wide">
-                      Asunto
-                    </label>
-                    <input
-                      type="text"
-                      name="asunto"
-                      value={formData.asunto}
-                      onChange={handleChange}
-                      required
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100 transition-all duration-300 group-hover:border-gray-300"
-                      placeholder="¿En qué podemos ayudarte?"
-                    />
-                  </div>
-
-                  {/* Mensaje */}
-                  <div className="group">
-                    <label className="block mb-2 font-semibold text-gray-700 text-sm uppercase tracking-wide">
-                      Mensaje
-                    </label>
-                    <textarea
-                      name="mensaje"
-                      value={formData.mensaje}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100 transition-all duration-300 resize-none group-hover:border-gray-300"
-                      placeholder="Escribe tu mensaje aquí..."
-                    ></textarea>
-                  </div>
-
-                  {/* Botón de envío */}
-                  <button
-                    type="submit"
-                    disabled={enviando}
-                    className="w-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-size-200 animate-gradient text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3 group relative overflow-hidden"
-                  >
-                    {/* Efecto de brillo en hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 group-hover:animate-shimmer"></div>
-                    
-                    {enviando ? (
-                      <>
-                        <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span className="relative z-10">Enviando...</span>
-                      </>
-                    ) : (
-                      <>
-                        <PaperAirplaneIcon className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-                        <span className="relative z-10">Enviar mensaje</span>
-                      </>
-                    )}
-                  </button>
-                </form>
-
-                {/* Nota de privacidad */}
-                <p className="mt-6 text-center text-sm text-gray-500">
-                  <span className="inline-block mr-1">🔒</span>
-                  Tus datos están protegidos y serán tratados con confidencialidad
-                </p>
               </div>
             </div>
           </div>
