@@ -11,9 +11,6 @@ import {
   TbTemplate, 
   TbDevices 
 } from 'react-icons/tb';
-import { 
-  RiShapeLine 
-} from 'react-icons/ri';
 
 const Features = () => {
   const features = [
