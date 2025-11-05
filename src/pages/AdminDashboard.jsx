@@ -188,13 +188,21 @@ const formatearFechaLarga = (valor) => {
 
 const normalizarSerieDiaria = (serie) => {
   if (!Array.isArray(serie)) return [];
-  return [...serie]
+  
+  const normalizado = [...serie]
     .map((item) => ({
       fecha: item?.fecha ?? item?.day ?? item?.date ?? null,
       total: typeof item?.total === 'number' ? item.total : Number(item?.count ?? item?.total) || 0,
     }))
     .filter((item) => typeof item.fecha === 'string' && item.fecha)
     .sort((a, b) => a.fecha.localeCompare(b.fecha));
+  
+  // Debug: ver últimas fechas recibidas del backend
+  if (normalizado.length > 0) {
+    console.log('📅 [AdminDashboard] Últimas 3 fechas del backend:', normalizado.slice(-3));
+  }
+  
+  return normalizado;
 };
 
 const obtenerUsuarioId = (usuario) =>
@@ -515,10 +523,17 @@ export default function AdminDashboard() {
     setCargandoDashboard(true);
     setErrorDashboard('');
     try {
+      console.log('🔄 [AdminDashboard] Solicitando datos al backend...');
       const data = await obtenerDashboardResumen();
+      console.log('✅ [AdminDashboard] Datos recibidos del backend:', {
+        presentacionesPorDia: data?.actividad?.presentacionesPorDia?.length || 0,
+        usuariosPorDia: data?.actividad?.usuariosPorDia?.length || 0,
+        ultimaFechaPresentaciones: data?.actividad?.presentacionesPorDia?.slice(-1)[0],
+        ultimaFechaUsuarios: data?.actividad?.usuariosPorDia?.slice(-1)[0],
+      });
       setDashboardResumen(data || null);
     } catch (error) {
-      console.error('Error al obtener el resumen del dashboard admin', error);
+      console.error('❌ [AdminDashboard] Error al obtener el resumen del dashboard admin', error);
       const mensaje =
         error?.response?.data?.message ||
         error?.response?.data?.error ||
