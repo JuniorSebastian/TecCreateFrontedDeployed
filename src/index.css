@@ -18,19 +18,25 @@ code {
     transform: translate3d(0, 0, 0) scale(1);
   }
   33% {
-    transform: translate3d(12px, -18px, 0) scale(1.05);
+    transform: translate3d(8px, -12px, 0) scale(1.03);
   }
   66% {
-    transform: translate3d(-14px, 16px, 0) scale(0.97);
+    transform: translate3d(-10px, 10px, 0) scale(0.98);
   }
 }
 
 .animate-blob {
-  animation: blob 18s ease-in-out infinite;
+  animation: blob 12s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .animate-blob-slow {
-  animation: blob 26s ease-in-out infinite alternate;
+  animation: blob 18s ease-in-out infinite alternate;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @keyframes shimmer {
@@ -47,7 +53,8 @@ code {
 
 .animate-text-shimmer {
   background-size: 220% 220%;
-  animation: shimmer 9s ease-in-out infinite;
+  animation: shimmer 6s ease-in-out infinite;
+  will-change: background-position;
 }
 
 @keyframes spinSlow {
@@ -57,7 +64,9 @@ code {
 }
 
 .animate-spin-slow {
-  animation: spinSlow 7s linear infinite;
+  animation: spinSlow 5s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes floatSoft {
@@ -66,12 +75,15 @@ code {
     transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -8px, 0);
   }
 }
 
 .animate-float {
-  animation: floatSoft 8s ease-in-out infinite;
+  animation: floatSoft 6s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @keyframes gradientFlight {
@@ -88,21 +100,59 @@ code {
 
 .animate-gradient-flight {
   background-size: 200% 200%;
-  animation: gradientFlight 12s ease infinite;
+  animation: gradientFlight 8s ease infinite;
+  will-change: background-position;
 }
 
 @keyframes pulseSoft {
   0%,
   100% {
-    opacity: 0.82;
-    transform: scale(0.98);
+    opacity: 0.85;
+    transform: scale(0.99);
   }
   50% {
     opacity: 1;
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 }
 
 .animate-pulse-soft {
-  animation: pulseSoft 4.5s ease-in-out infinite;
+  animation: pulseSoft 3s ease-in-out infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* 🚀 OPTIMIZACIÓN: Reducir animaciones para mejor rendimiento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-blob-slow,
+  .animate-float,
+  .animate-text-shimmer,
+  .animate-gradient-flight,
+  .animate-pulse-soft,
+  .animate-spin-slow {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 🎯 OPTIMIZACIÓN: GPU Acceleration para elementos hover */
+.group:hover,
+button:hover,
+a:hover {
+  will-change: transform;
+}
+
+.group:not(:hover),
+button:not(:hover),
+a:not(:hover) {
+  will-change: auto;
+}
+
+/* 🔥 OPTIMIZACIÓN: Reducir repaints en gradientes */
+.bg-gradient-to-r,
+.bg-gradient-to-br,
+.bg-gradient-to-b {
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }

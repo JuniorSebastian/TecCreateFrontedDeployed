@@ -1428,8 +1428,8 @@ export default function AdminDashboard() {
   const renderUsuarios = () => (
     <div className="space-y-8">
       <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(14,165,233,0.18)] backdrop-blur">
-        <div className="pointer-events-none absolute -top-20 -left-16 h-48 w-48 rounded-full bg-cyan-300/30 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-blue-400/30 blur-[90px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-20 -left-16 h-48 w-48 rounded-full bg-cyan-300/30 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-blue-400/30 blur-[50px] animate-blob-slow"></div>
         <div className="relative space-y-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
@@ -1521,8 +1521,8 @@ export default function AdminDashboard() {
 
       <div className="grid gap-6 xl:grid-cols-[1.7fr,1fr]">
   <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_18px_60px_rgba(8,145,178,0.18)]">
-          <div className="pointer-events-none absolute -top-20 left-10 h-52 w-52 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
-          <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-blue-200/25 blur-[120px] animate-blob-slow"></div>
+          <div className="pointer-events-none absolute -top-20 left-10 h-52 w-52 rounded-full bg-cyan-200/35 blur-2xl animate-blob"></div>
+          <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-blue-200/25 blur-[50px] animate-blob-slow"></div>
           <div className="relative p-6">
             {mensajeUsuarios && (
               <div
@@ -1700,7 +1700,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaUsuarios(Math.max(0, paginaUsuarios - 1))}
                   disabled={paginaUsuarios === 0}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   <ChevronLeftIcon className="w-5 h-5" />
                   Anterior
@@ -1720,7 +1720,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaUsuarios(Math.min(Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1, paginaUsuarios + 1))}
                   disabled={paginaUsuarios >= Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   Siguiente
                   <ChevronRightIcon className="w-5 h-5" />
@@ -1734,8 +1734,8 @@ export default function AdminDashboard() {
         </div>
 
         <aside className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(59,130,246,0.18)]">
-          <div className="pointer-events-none absolute -top-20 left-8 h-44 w-44 rounded-full bg-cyan-200/40 blur-3xl animate-blob"></div>
-          <div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-cyan-200/40 blur-[110px] animate-blob-slow"></div>
+          <div className="pointer-events-none absolute -top-20 left-8 h-44 w-44 rounded-full bg-cyan-200/40 blur-2xl animate-blob"></div>
+          <div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-cyan-200/40 blur-[50px] animate-blob-slow"></div>
           <div className="relative space-y-5">
             <div className="flex items-center gap-3">
               <IdentificationIcon className="h-8 w-8 rounded-2xl bg-cyan-100/70 p-1.5 text-cyan-600 shadow" />
@@ -1928,7 +1928,7 @@ export default function AdminDashboard() {
       <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
         {/* Gradientes de fondo clásicos */}
         <div className="pointer-events-none absolute -top-12 -right-10 h-36 w-36 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
-        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-blue-200/25 to-cyan-200/20 blur-3xl"></div>
+        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-blue-200/25 to-cyan-200/20 blur-2xl"></div>
 
         <div className="relative space-y-5">
           {/* Header mejorado */}
@@ -1956,7 +1956,7 @@ export default function AdminDashboard() {
                 return (
                   <li 
                     key={`${titulo}-${etiqueta}-${index}`} 
-                    className={`group flex items-center justify-between gap-4 rounded-xl border p-3 transition-all hover:scale-[1.02] hover:shadow-md ${
+                    className={`group flex items-center justify-between gap-4 rounded-xl border p-3 transition-transform hover:scale-[1.02] hover:shadow-md ${
                       esPodio 
                         ? `border-cyan-200 bg-gradient-to-r ${colorConfig.podioBg}` 
                         : 'border-white/60 bg-white/80'
@@ -2035,7 +2035,7 @@ export default function AdminDashboard() {
       <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/70 bg-white/90 p-4 sm:p-5 lg:p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
         {/* Gradientes de fondo */}
         <div className="pointer-events-none absolute -top-16 -left-12 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
-        <div className="pointer-events-none absolute -bottom-12 right-0 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-200/25 to-cyan-200/20 blur-3xl"></div>
+        <div className="pointer-events-none absolute -bottom-12 right-0 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-200/25 to-cyan-200/20 blur-2xl"></div>
 
         <div className="relative space-y-4 sm:space-y-5 lg:space-y-6">
           {/* Header mejorado */}
@@ -2063,7 +2063,7 @@ export default function AdminDashboard() {
                 return (
                   <div 
                     key={`${titulo}-${item.fecha}`} 
-                    className="group flex items-center gap-2 sm:gap-3 lg:gap-4 rounded-lg sm:rounded-xl border border-white/60 bg-white/80 p-2 sm:p-3 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md"
+                    className="group flex items-center gap-2 sm:gap-3 lg:gap-4 rounded-lg sm:rounded-xl border border-white/60 bg-white/80 p-2 sm:p-3 shadow-sm transition-transform hover:scale-[1.02] hover:shadow-md"
                   >
                     {/* Fecha con mejor diseño */}
                     <span className="w-10 sm:w-12 lg:w-14 text-[10px] sm:text-xs font-bold text-gray-600 text-center">
@@ -2074,7 +2074,7 @@ export default function AdminDashboard() {
                     <div className="relative flex-1 min-w-0">
                       <div className="h-4 sm:h-5 lg:h-6 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden shadow-inner">
                         <div 
-                          className={`h-full bg-gradient-to-r ${config.gradient} transition-all duration-500 ease-out flex items-center justify-end pr-1.5 sm:pr-2`}
+                          className={`h-full bg-gradient-to-r ${config.gradient} transition-all duration-300 ease-out flex items-center justify-end pr-1.5 sm:pr-2`}
                           style={{ width: ancho }}
                         >
                           {porcentaje > 15 && (
@@ -2374,8 +2374,8 @@ export default function AdminDashboard() {
         )}
 
         <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(14,165,233,0.18)] backdrop-blur">
-          <div className="pointer-events-none absolute -top-24 -left-14 h-48 w-48 rounded-full bg-cyan-300/30 blur-3xl animate-blob"></div>
-          <div className="pointer-events-none absolute -bottom-28 right-0 h-64 w-64 rounded-full bg-blue-200/35 blur-[100px] animate-blob-slow"></div>
+          <div className="pointer-events-none absolute -top-24 -left-14 h-48 w-48 rounded-full bg-cyan-300/30 blur-2xl animate-blob"></div>
+          <div className="pointer-events-none absolute -bottom-28 right-0 h-64 w-64 rounded-full bg-blue-200/35 blur-[50px] animate-blob-slow"></div>
           <div className="relative space-y-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-3">
@@ -2460,8 +2460,8 @@ export default function AdminDashboard() {
         </section>
 
   <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-[0_18px_60px_rgba(244,114,182,0.15)]">
-          <div className="pointer-events-none absolute -top-24 left-12 h-56 w-56 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
-          <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-200/35 blur-[110px] animate-blob-slow"></div>
+          <div className="pointer-events-none absolute -top-24 left-12 h-56 w-56 rounded-full bg-cyan-200/35 blur-2xl animate-blob"></div>
+          <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-200/35 blur-[50px] animate-blob-slow"></div>
           <div className="relative">
             {cargandoReportes ? (
               <div className="flex flex-col items-center justify-center gap-3 py-12 text-cyan-500">
@@ -2603,7 +2603,7 @@ export default function AdminDashboard() {
                     <button
                       onClick={() => setPaginaReportes(Math.max(0, paginaReportes - 1))}
                       disabled={paginaReportes === 0}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                     >
                       <ChevronLeftIcon className="w-5 h-5" />
                       Anterior
@@ -2623,7 +2623,7 @@ export default function AdminDashboard() {
                     <button
                       onClick={() => setPaginaReportes(Math.min(Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA) - 1, paginaReportes + 1))}
                       disabled={paginaReportes >= Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA) - 1}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                     >
                       Siguiente
                       <ChevronRightIcon className="w-5 h-5" />
@@ -2644,8 +2644,8 @@ export default function AdminDashboard() {
   const renderMantenimiento = () => (
     <div className="space-y-8">
   <section className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(251,191,36,0.16)] backdrop-blur">
-        <div className="pointer-events-none absolute -top-24 -left-16 h-48 w-48 rounded-full bg-blue-200/40 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-28 right-0 h-60 w-60 rounded-full bg-cyan-200/35 blur-[100px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-24 -left-16 h-48 w-48 rounded-full bg-blue-200/40 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-28 right-0 h-60 w-60 rounded-full bg-cyan-200/35 blur-[50px] animate-blob-slow"></div>
         <div className="relative space-y-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="flex items-start gap-4">
@@ -2735,8 +2735,8 @@ export default function AdminDashboard() {
       </section>
 
       <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-[0_18px_50px_rgba(59,130,246,0.15)]">
-        <div className="pointer-events-none absolute -top-20 left-8 h-48 w-48 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-200/35 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-20 left-8 h-48 w-48 rounded-full bg-cyan-200/35 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-200/35 blur-[50px] animate-blob-slow"></div>
         <div className="relative">
           <div className="mb-4 flex items-center justify-between">
             <h4 className="text-lg font-semibold text-slate-900">Historial de activaciones</h4>
@@ -2787,7 +2787,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaMantenimiento(Math.max(0, paginaMantenimiento - 1))}
                   disabled={paginaMantenimiento === 0}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   <ChevronLeftIcon className="w-5 h-5" />
                   Anterior
@@ -2807,7 +2807,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaMantenimiento(Math.min(Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA) - 1, paginaMantenimiento + 1))}
                   disabled={paginaMantenimiento >= Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA) - 1}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
                 >
                   Siguiente
                   <ChevronRightIcon className="w-5 h-5" />
@@ -2824,8 +2824,8 @@ export default function AdminDashboard() {
   const renderHistorial = () => (
     <div className="space-y-8">
       <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(79,70,229,0.15)] backdrop-blur">
-        <div className="pointer-events-none absolute -top-24 -left-20 h-52 w-52 rounded-full bg-cyan-300/30 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-cyan-200/30 blur-[100px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-24 -left-20 h-52 w-52 rounded-full bg-cyan-300/30 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-cyan-200/30 blur-[50px] animate-blob-slow"></div>
         <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-500 to-cyan-500 text-white shadow-lg animate-float">
@@ -2846,8 +2846,8 @@ export default function AdminDashboard() {
       </section>
 
       <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-[0_18px_50px_rgba(99,102,241,0.15)]">
-        <div className="pointer-events-none absolute -top-16 left-8 h-44 w-44 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-200/35 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-16 left-8 h-44 w-44 rounded-full bg-cyan-200/35 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-200/35 blur-[50px] animate-blob-slow"></div>
         <div className="relative">
           {cargandoHistorial ? (
             <div className="py-10 text-center text-slate-500">Cargando historial...</div>
@@ -2890,7 +2890,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaHistorial(Math.max(0, paginaHistorial - 1))}
                   disabled={paginaHistorial === 0}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   <ChevronLeftIcon className="w-5 h-5" />
                   Anterior
@@ -2910,7 +2910,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaHistorial(Math.min(Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1, paginaHistorial + 1))}
                   disabled={paginaHistorial >= Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-transform duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
                 >
                   Siguiente
                   <ChevronRightIcon className="w-5 h-5" />
@@ -2970,8 +2970,8 @@ export default function AdminDashboard() {
 
     return (
       <section className="relative mb-6 sm:mb-8 lg:mb-10 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/80 px-4 sm:px-6 lg:px-10 py-6 sm:py-8 lg:py-10 shadow-[0px_25px_60px_rgba(59,130,246,0.25)] backdrop-blur-xl">
-        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-cyan-400/40 via-blue-400/30 to-cyan-400/20 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-cyan-400/30 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-cyan-400/40 via-blue-400/30 to-cyan-400/20 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-cyan-400/30 blur-[50px] animate-blob-slow"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
 
         <div className="relative flex flex-col gap-6 sm:gap-8 lg:gap-10 lg:flex-row lg:items-center lg:justify-between">
@@ -3159,7 +3159,7 @@ export default function AdminDashboard() {
       {/* Botón Hamburguesa Móvil */}
       <button
         onClick={() => setMenuAbierto(!menuAbierto)}
-        className="fixed top-4 left-4 z-50 lg:hidden flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+        className="fixed top-4 left-4 z-50 lg:hidden flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-transform duration-200"
         aria-label="Menú"
       >
         {menuAbierto ? (
@@ -3183,8 +3183,8 @@ export default function AdminDashboard() {
           menuAbierto ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="pointer-events-none absolute -top-28 -left-20 h-60 w-60 rounded-full bg-cyan-300/45 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-cyan-400/50 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-28 -left-20 h-60 w-60 rounded-full bg-cyan-300/45 blur-2xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-cyan-400/50 blur-[50px] animate-blob-slow"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/50"></div>
 
         <div className="relative flex min-h-full flex-col justify-between">
@@ -3284,8 +3284,8 @@ export default function AdminDashboard() {
       </aside>
 
       <main className="relative flex-1 overflow-hidden px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-12 lg:ml-0">
-        <div className="pointer-events-none absolute -top-32 right-16 h-80 w-80 rounded-full bg-cyan-200/45 blur-[120px] animate-blob"></div>
-        <div className="pointer-events-none absolute bottom-10 left-1/3 h-64 w-64 rounded-full bg-cyan-200/35 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-32 right-16 h-80 w-80 rounded-full bg-cyan-200/45 blur-[50px] animate-blob"></div>
+        <div className="pointer-events-none absolute bottom-10 left-1/3 h-64 w-64 rounded-full bg-cyan-200/35 blur-[50px] animate-blob-slow"></div>
 
         <div className="relative mb-6 sm:mb-8 lg:mb-10 flex flex-col gap-3 sm:gap-4 md:gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex-1 min-w-0">
@@ -3561,6 +3561,8 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+
 
 
 
