@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { iniciarSesionConGoogle } from '../services/api';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { HiSparkles, HiLightningBolt, HiShieldCheck } from 'react-icons/hi';
+import { HiSparkles, HiShieldCheck } from 'react-icons/hi';
 import { IoRocketSharp } from 'react-icons/io5';
 import { FiClock } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
