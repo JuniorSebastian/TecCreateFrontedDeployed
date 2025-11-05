@@ -1896,67 +1896,193 @@ export default function AdminDashboard() {
 
   const renderRankingSection = (titulo, items, descripcion) => {
     const lista = Array.isArray(items) ? items.slice(0, 5) : [];
+    
+    // Colores dinámicos según el título
+    const colorConfig = {
+      gradient: 'from-purple-500 via-pink-500 to-rose-500',
+      bg: 'bg-purple-50',
+      border: 'border-purple-200',
+      medal: ['from-amber-400 to-yellow-500', 'from-slate-300 to-gray-400', 'from-amber-600 to-orange-500'],
+    };
+    
     return (
-      <div className="bg-white rounded-xl border shadow-sm p-5 flex flex-col gap-4">
-        <div>
-          <h4 className="text-sm font-semibold text-gray-900">{titulo}</h4>
-          {descripcion && <p className="text-xs text-gray-500">{descripcion}</p>}
+      <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(168,85,247,0.15)] backdrop-blur">
+        {/* Gradientes de fondo */}
+        <div className="pointer-events-none absolute -top-12 -right-10 h-36 w-36 rounded-full bg-gradient-to-br from-purple-200/30 to-pink-200/25 blur-2xl"></div>
+        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-rose-200/25 to-purple-200/20 blur-3xl"></div>
+
+        <div className="relative space-y-5">
+          {/* Header mejorado */}
+          <div className="flex items-start justify-between">
+            <div>
+              <h4 className="text-base font-black text-gray-900">{titulo}</h4>
+              {descripcion && (
+                <p className="mt-1 text-xs font-medium text-gray-600">{descripcion}</p>
+              )}
+            </div>
+            <span className={`inline-flex items-center gap-1.5 rounded-full border ${colorConfig.border} ${colorConfig.bg} px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-purple-700`}>
+              <SparklesIcon className="h-3.5 w-3.5" />
+              Top {lista.length}
+            </span>
+          </div>
+
+          {lista.length ? (
+            <ul className="space-y-3">
+              {lista.map((item, index) => {
+                const etiqueta = resolverLabelRanking(item);
+                const total = resolverTotalRanking(item);
+                const esPodio = index < 3;
+                const medalGradient = esPodio ? colorConfig.medal[index] : 'from-gray-200 to-gray-300';
+                
+                return (
+                  <li 
+                    key={`${titulo}-${etiqueta}-${index}`} 
+                    className={`group flex items-center justify-between gap-4 rounded-xl border p-3 transition-all hover:scale-[1.02] hover:shadow-md ${
+                      esPodio 
+                        ? 'border-purple-200 bg-gradient-to-r from-purple-50 via-white to-pink-50' 
+                        : 'border-white/60 bg-white/80'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      {/* Medalla/Número con efecto premium */}
+                      <div className={`relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${medalGradient} text-white shadow-lg ${esPodio ? 'ring-2 ring-white' : ''}`}>
+                        <span className="text-xs font-black drop-shadow">
+                          {index + 1}
+                        </span>
+                        {esPodio && (
+                          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-yellow-400/30 to-orange-500/30 blur-sm"></div>
+                        )}
+                      </div>
+                      
+                      {/* Etiqueta con tooltip */}
+                      <span className={`text-sm font-semibold ${esPodio ? 'text-gray-900' : 'text-gray-700'} truncate max-w-[12rem]`} title={etiqueta}>
+                        {etiqueta}
+                      </span>
+                    </div>
+                    
+                    {/* Total con badge */}
+                    <span className={`min-w-[3rem] text-center rounded-lg border px-2.5 py-1 text-sm font-black ${
+                      esPodio 
+                        ? 'border-purple-300 bg-purple-100 text-purple-800' 
+                        : 'border-gray-200 bg-gray-50 text-gray-800'
+                    }`}>
+                      {formatearNumero(total)}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-gray-300 bg-gray-50/50 py-10 text-center">
+              <BoltIcon className="h-8 w-8 text-gray-400" />
+              <p className="text-sm font-semibold text-gray-600">Sin datos disponibles</p>
+            </div>
+          )}
         </div>
-        {lista.length ? (
-          <ul className="space-y-3">
-            {lista.map((item, index) => {
-              const etiqueta = resolverLabelRanking(item);
-              const total = resolverTotalRanking(item);
-              return (
-                <li key={`${titulo}-${etiqueta}-${index}`} className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-xs font-semibold text-blue-600">
-                      {index + 1}
-                    </span>
-                    <span className="text-sm text-gray-700 truncate max-w-[12rem]" title={etiqueta}>
-                      {etiqueta}
-                    </span>
-                  </div>
-                  <span className="text-sm font-semibold text-gray-900">{formatearNumero(total)}</span>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p className="text-sm text-gray-500">Sin datos disponibles.</p>
-        )}
       </div>
     );
   };
 
-  const renderSerieDiaria = (titulo, serie, color = 'bg-indigo-500') => {
+  const renderSerieDiaria = (titulo, serie, color = 'from-indigo-500 to-blue-500') => {
     const datos = normalizarSerieDiaria(serie);
     const maxValor = datos.reduce((acc, item) => Math.max(acc, item.total), 0);
 
+    // Mapeo de colores según el título
+    const colorMap = {
+      'Presentaciones creadas por dia': {
+        gradient: 'from-cyan-500 via-blue-500 to-indigo-500',
+        bg: 'bg-cyan-50',
+        border: 'border-cyan-200',
+        icon: DocumentChartBarIcon,
+      },
+      'Usuarios registrados por dia': {
+        gradient: 'from-emerald-500 via-teal-500 to-green-500',
+        bg: 'bg-emerald-50',
+        border: 'border-emerald-200',
+        icon: UserGroupIcon,
+      },
+    };
+
+    const config = colorMap[titulo] || {
+      gradient: 'from-indigo-500 to-blue-500',
+      bg: 'bg-indigo-50',
+      border: 'border-indigo-200',
+      icon: SparklesIcon,
+    };
+
+    const IconComponent = config.icon;
+
     return (
-      <div className="bg-white rounded-xl border shadow-sm p-6 space-y-4">
-        <div>
-          <h4 className="text-sm font-semibold text-gray-900">{titulo}</h4>
-          <p className="text-xs text-gray-500">Ultimos 14 dias</p>
-        </div>
-        {datos.length ? (
-          <div className="space-y-3">
-            {datos.map((item) => {
-              const ancho = maxValor ? `${(item.total / maxValor) * 100}%` : '0%';
-              return (
-                <div key={`${titulo}-${item.fecha}`} className="flex items-center gap-3">
-                  <span className="w-16 text-xs text-gray-500">{formatearFechaCorta(item.fecha)}</span>
-                  <div className="flex-1 h-2 rounded-full bg-gray-100 overflow-hidden">
-                    <div className={`h-full ${color}`} style={{ width: ancho }}></div>
-                  </div>
-                  <span className="w-10 text-right text-sm font-semibold text-gray-800">{item.total}</span>
-                </div>
-              );
-            })}
+      <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
+        {/* Gradientes de fondo */}
+        <div className="pointer-events-none absolute -top-16 -left-12 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
+        <div className="pointer-events-none absolute -bottom-12 right-0 h-48 w-48 rounded-full bg-gradient-to-br from-indigo-200/25 to-cyan-200/20 blur-3xl"></div>
+
+        <div className="relative space-y-6">
+          {/* Header mejorado */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className={`flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${config.gradient} text-white shadow-lg`}>
+                <IconComponent className="h-6 w-6" />
+              </div>
+              <div>
+                <h4 className="text-base font-black text-gray-900">{titulo}</h4>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Últimos 14 días</p>
+              </div>
+            </div>
+            <span className={`inline-flex items-center gap-2 rounded-full border ${config.border} ${config.bg} px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-gray-700`}>
+              {datos.length} días
+            </span>
           </div>
-        ) : (
-          <p className="text-sm text-gray-500">Aun no hay actividad registrada.</p>
-        )}
+
+          {datos.length ? (
+            <div className="space-y-3">
+              {datos.map((item, index) => {
+                const ancho = maxValor ? `${(item.total / maxValor) * 100}%` : '0%';
+                const porcentaje = maxValor ? Math.round((item.total / maxValor) * 100) : 0;
+                
+                return (
+                  <div 
+                    key={`${titulo}-${item.fecha}`} 
+                    className="group flex items-center gap-4 rounded-xl border border-white/60 bg-white/80 p-3 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md"
+                  >
+                    {/* Fecha con mejor diseño */}
+                    <span className="w-14 text-xs font-bold text-gray-600 text-center">
+                      {formatearFechaCorta(item.fecha)}
+                    </span>
+                    
+                    {/* Barra de progreso mejorada */}
+                    <div className="relative flex-1">
+                      <div className="h-6 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden shadow-inner">
+                        <div 
+                          className={`h-full bg-gradient-to-r ${config.gradient} transition-all duration-500 ease-out flex items-center justify-end pr-2`}
+                          style={{ width: ancho }}
+                        >
+                          {porcentaje > 15 && (
+                            <span className="text-[10px] font-bold text-white drop-shadow">
+                              {porcentaje}%
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Valor con badge */}
+                    <span className={`min-w-[2.5rem] text-center rounded-lg ${config.bg} border ${config.border} px-2.5 py-1 text-sm font-black text-gray-800`}>
+                      {item.total}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-gray-300 bg-gray-50/50 py-12 text-center">
+              <BoltIcon className="h-8 w-8 text-gray-400" />
+              <p className="text-sm font-semibold text-gray-600">Aún no hay actividad registrada</p>
+              <p className="text-xs text-gray-500">Los datos aparecerán cuando haya registros</p>
+            </div>
+          )}
+        </div>
       </div>
     );
   };
