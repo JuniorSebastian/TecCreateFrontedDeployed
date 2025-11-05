@@ -44,32 +44,50 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
         
-        {/* Título CORTO Y DIRECTO */}
+        {/* Badge Superior */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm border border-cyan-200 rounded-full mb-6 shadow-lg"
+        >
+          <span className="text-2xl">⚡</span>
+          <span className="text-sm font-bold text-gray-700">Inspirado en la innovación educativa de TECSUP</span>
+        </motion.div>
+
+        {/* Título IMPACTANTE Y CORTO */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[1.1] tracking-tight px-4 sm:px-0"
         >
-          <span className="block text-gray-900 mb-4">
-            IA que crea
+          <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+            PPTs automáticas
           </span>
-          <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            presentaciones
-          </span>
-          <span className="block text-gray-700 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 font-bold">
-            para TECSUP
+          <span className="block text-gray-900">
+            en menos de 5 minutos
           </span>
         </motion.h1>
 
-        {/* Descripción CORTA Y CLARA */}
+        {/* Descripción CON BULLET POINTS */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
+          className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto px-4 sm:px-6 leading-relaxed font-medium"
         >
           Solo dinos el tema • La IA genera todo • Gratis
+        </motion.p>
+
+        {/* Feature adicional */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          className="text-base sm:text-lg text-gray-500 mb-10 font-medium"
+        >
+          Plantillas educativas TECSUP incluidas
         </motion.p>
 
         {/* Features Profesionales */}
