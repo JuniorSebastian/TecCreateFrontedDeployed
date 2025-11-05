@@ -2032,30 +2032,30 @@ export default function AdminDashboard() {
     const IconComponent = config.icon;
 
     return (
-      <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/70 bg-white/90 p-4 sm:p-5 lg:p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
         {/* Gradientes de fondo */}
         <div className="pointer-events-none absolute -top-16 -left-12 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
         <div className="pointer-events-none absolute -bottom-12 right-0 h-48 w-48 rounded-full bg-gradient-to-br from-indigo-200/25 to-cyan-200/20 blur-3xl"></div>
 
-        <div className="relative space-y-6">
+        <div className="relative space-y-4 sm:space-y-5 lg:space-y-6">
           {/* Header mejorado */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className={`flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${config.gradient} text-white shadow-lg`}>
-                <IconComponent className="h-6 w-6" />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className={`flex h-9 w-9 sm:h-10 sm:w-10 lg:h-11 lg:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${config.gradient} text-white shadow-lg`}>
+                <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
-              <div>
-                <h4 className="text-base font-black text-gray-900">{titulo}</h4>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Últimos 14 días</p>
+              <div className="flex-1 min-w-0">
+                <h4 className="text-sm sm:text-base font-black text-gray-900 truncate">{titulo}</h4>
+                <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-gray-500">Últimos 14 días</p>
               </div>
             </div>
-            <span className={`inline-flex items-center gap-2 rounded-full border ${config.border} ${config.bg} px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-gray-700`}>
+            <span className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border ${config.border} ${config.bg} px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-700 self-start sm:self-auto`}>
               {datos.length} días
             </span>
           </div>
 
           {datos.length ? (
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {datos.map((item, index) => {
                 const ancho = maxValor ? `${(item.total / maxValor) * 100}%` : '0%';
                 const porcentaje = maxValor ? Math.round((item.total / maxValor) * 100) : 0;
@@ -2063,22 +2063,22 @@ export default function AdminDashboard() {
                 return (
                   <div 
                     key={`${titulo}-${item.fecha}`} 
-                    className="group flex items-center gap-4 rounded-xl border border-white/60 bg-white/80 p-3 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md"
+                    className="group flex items-center gap-2 sm:gap-3 lg:gap-4 rounded-lg sm:rounded-xl border border-white/60 bg-white/80 p-2 sm:p-3 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md"
                   >
                     {/* Fecha con mejor diseño */}
-                    <span className="w-14 text-xs font-bold text-gray-600 text-center">
+                    <span className="w-10 sm:w-12 lg:w-14 text-[10px] sm:text-xs font-bold text-gray-600 text-center">
                       {formatearFechaCorta(item.fecha)}
                     </span>
                     
                     {/* Barra de progreso mejorada */}
-                    <div className="relative flex-1">
-                      <div className="h-6 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden shadow-inner">
+                    <div className="relative flex-1 min-w-0">
+                      <div className="h-4 sm:h-5 lg:h-6 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 overflow-hidden shadow-inner">
                         <div 
-                          className={`h-full bg-gradient-to-r ${config.gradient} transition-all duration-500 ease-out flex items-center justify-end pr-2`}
+                          className={`h-full bg-gradient-to-r ${config.gradient} transition-all duration-500 ease-out flex items-center justify-end pr-1.5 sm:pr-2`}
                           style={{ width: ancho }}
                         >
                           {porcentaje > 15 && (
-                            <span className="text-[10px] font-bold text-white drop-shadow">
+                            <span className="text-[9px] sm:text-[10px] font-bold text-white drop-shadow">
                               {porcentaje}%
                             </span>
                           )}
@@ -2087,7 +2087,7 @@ export default function AdminDashboard() {
                     </div>
                     
                     {/* Valor con badge */}
-                    <span className={`min-w-[2.5rem] text-center rounded-lg ${config.bg} border ${config.border} px-2.5 py-1 text-sm font-black text-gray-800`}>
+                    <span className={`min-w-[2rem] sm:min-w-[2.5rem] text-center rounded-lg ${config.bg} border ${config.border} px-1.5 sm:px-2.5 py-0.5 sm:py-1 text-xs sm:text-sm font-black text-gray-800`}>
                       {item.total}
                     </span>
                   </div>
@@ -2095,10 +2095,10 @@ export default function AdminDashboard() {
               })}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-gray-300 bg-gray-50/50 py-12 text-center">
-              <BoltIcon className="h-8 w-8 text-gray-400" />
-              <p className="text-sm font-semibold text-gray-600">Aún no hay actividad registrada</p>
-              <p className="text-xs text-gray-500">Los datos aparecerán cuando haya registros</p>
+            <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-dashed border-gray-300 bg-gray-50/50 py-8 sm:py-10 lg:py-12 text-center">
+              <BoltIcon className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400" />
+              <p className="text-xs sm:text-sm font-semibold text-gray-600">Aún no hay actividad registrada</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">Los datos aparecerán cuando haya registros</p>
             </div>
           )}
         </div>
