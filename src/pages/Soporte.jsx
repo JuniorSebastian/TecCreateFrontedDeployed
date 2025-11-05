@@ -2080,22 +2080,23 @@ export default function Soporte() {
         <div className="grid gap-5 sm:gap-6 grid-cols-1 lg:grid-cols-[2fr,1.05fr]">
           <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
             {cargandoUsuarios ? (
-              <div className="py-12 text-center text-gray-500">Cargando usuarios...</div>
+              <div className="py-8 sm:py-12 text-center text-gray-500 text-sm sm:text-base">Cargando usuarios...</div>
             ) : usuarios.length === 0 ? (
-              <div className="py-12 text-center text-gray-500">No se encontraron usuarios.</div>
+              <div className="py-8 sm:py-12 text-center text-gray-500 text-sm sm:text-base">No se encontraron usuarios.</div>
             ) : (
               <>
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      {['Usuario', 'Email', 'Rol', 'Estado', 'Registrado', 'Acciones'].map((header) => (
-                        <th key={header} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          {header}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        {['Usuario', 'Email', 'Rol', 'Estado', 'Registrado', 'Acciones'].map((header) => (
+                          <th key={header} className="px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase">
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
                     {usuarios
                       .slice(paginaUsuarios * ITEMS_POR_PAGINA, (paginaUsuarios + 1) * ITEMS_POR_PAGINA)
                       .map((user, index) => {
@@ -2113,44 +2114,44 @@ export default function Soporte() {
                         key={user.id || correoBase || index}
                         className={`transition-colors hover:bg-gray-50 ${esSeleccionado ? 'bg-blue-50/70' : ''}`}
                       >
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-3">
+                        <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
+                          <div className="flex items-center gap-2 sm:gap-3">
                             <img
                               src={obtenerAvatarUrl(user?.foto, user?.nombre)}
                               alt={user?.nombre || 'Usuario'}
-                              className="w-9 h-9 rounded-full object-cover border"
+                              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border"
                               onError={(e) => {
                                 e.currentTarget.onerror = null;
                                 e.currentTarget.src = obtenerAvatarUrl(null, user?.nombre);
                               }}
                             />
                             <div>
-                              <p className="text-sm font-semibold text-gray-900">{user.nombre || 'Sin nombre'}</p>
+                              <p className="text-xs sm:text-sm font-semibold text-gray-900">{user.nombre || 'Sin nombre'}</p>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-sm text-blue-600 break-all">{correoBase || 'Sin correo'}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 capitalize">{user.rol || 'N/A'}</td>
-                        <td className="px-6 py-4 text-sm">
-                          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm text-blue-600 break-all">{correoBase || 'Sin correo'}</td>
+                        <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-700 capitalize">{user.rol || 'N/A'}</td>
+                        <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm">
+                          <div className="flex flex-col gap-1.5 sm:gap-2 sm:flex-row sm:items-center">
                             {puedeGestionarEstado ? (
                               <select
                                 value={estadoUsuario}
                                 onChange={(event) => actualizarEstadoUsuarioSoporte(user, event.target.value)}
                                 disabled={!userId || actualizandoEstadoUsuarioId === userId}
-                                className="w-full rounded-lg border border-gray-300 px-2 py-1 text-xs font-semibold text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 sm:w-auto"
+                                className="w-full rounded-lg border border-gray-300 px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 sm:w-auto"
                               >
                                 <option value="activo">Activo</option>
                                 <option value="inactivo">Inactivo</option>
                                 <option value="suspendido">Suspendido</option>
                               </select>
                             ) : (
-                              <span className="text-xs font-semibold text-gray-600">
+                              <span className="text-[10px] sm:text-xs font-semibold text-gray-600">
                                 {toLabel(estadoUsuario || 'N/A')}
                               </span>
                             )}
                             <span
-                              className={`inline-block rounded-full px-2 py-1 text-xs font-semibold ${
+                              className={`inline-block rounded-full px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold ${
                                 estadoUsuario === 'activo'
                                   ? 'bg-cyan-100 text-cyan-700'
                                   : estadoUsuario === 'inactivo'
@@ -2164,14 +2165,14 @@ export default function Soporte() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-500">
+                        <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-500">
                           {user.fecha_registro ? formatearFecha(user.fecha_registro) : 'N/A'}
                         </td>
-                        <td className="px-6 py-4 text-sm">
+                        <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm">
                           <button
                             type="button"
                             onClick={() => seleccionarUsuario(user)}
-                            className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition ${
+                            className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border px-2.5 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-xs font-semibold transition ${
                               esSeleccionado
                                 ? 'border-blue-300 bg-blue-50 text-blue-700'
                                 : 'border-blue-200 text-blue-700 hover:bg-blue-50'
@@ -2185,26 +2186,27 @@ export default function Soporte() {
                   })}
                 </tbody>
               </table>
+            </div>
 
               {/* Paginación de Usuarios */}
               {usuarios && usuarios.length > ITEMS_POR_PAGINA && (
-                <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-50 px-6 py-4 rounded-xl border border-cyan-100/50">
+                <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-0 bg-gradient-to-r from-cyan-50 to-cyan-50 px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-cyan-100/50">
                   <button
                     onClick={() => setPaginaUsuarios(Math.max(0, paginaUsuarios - 1))}
                     disabled={paginaUsuarios === 0}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
                   >
-                    <ChevronLeftIcon className="w-5 h-5" />
+                    <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     Anterior
                   </button>
 
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm font-bold text-gray-700">
-                      Página <span className="text-cyan-600 text-lg">{paginaUsuarios + 1}</span> de{' '}
-                      <span className="text-blue-600 text-lg">{Math.ceil(usuarios.length / ITEMS_POR_PAGINA)}</span>
+                  <div className="flex items-center justify-center gap-2 sm:gap-3">
+                    <span className="text-xs sm:text-sm font-bold text-gray-700">
+                      Página <span className="text-cyan-600 text-base sm:text-lg">{paginaUsuarios + 1}</span> de{' '}
+                      <span className="text-blue-600 text-base sm:text-lg">{Math.ceil(usuarios.length / ITEMS_POR_PAGINA)}</span>
                     </span>
-                    <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-                    <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
+                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full" />
+                    <span className="text-[10px] sm:text-xs text-gray-600 bg-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold">
                       {usuarios.length} usuarios
                     </span>
                   </div>
@@ -2212,10 +2214,10 @@ export default function Soporte() {
                   <button
                     onClick={() => setPaginaUsuarios(Math.min(Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1, paginaUsuarios + 1))}
                     disabled={paginaUsuarios >= Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                   >
                     Siguiente
-                    <ChevronRightIcon className="w-5 h-5" />
+                    <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 </div>
               )}
@@ -2432,38 +2434,38 @@ export default function Soporte() {
   };
 
   const renderMantenimiento = () => (
-    <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-lg border p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <WrenchScrewdriverIcon className="w-8 h-8 text-blue-600" />
+    <div className="space-y-5 sm:space-y-6">
+      <div className="bg-white rounded-xl shadow-lg border p-4 sm:p-5 lg:p-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-4">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <WrenchScrewdriverIcon className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600" />
             <div>
-              <h3 className="text-xl font-bold text-gray-900">Modo Mantenimiento</h3>
-              <p className="text-sm text-gray-500">Controla el acceso al sistema durante mantenimiento</p>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">Modo Mantenimiento</h3>
+              <p className="text-xs sm:text-sm text-gray-500">Controla el acceso al sistema durante mantenimiento</p>
             </div>
           </div>
-          {cargandoMantenimiento && <span className="text-sm text-blue-600">Cargando...</span>}
+          {cargandoMantenimiento && <span className="text-xs sm:text-sm text-blue-600">Cargando...</span>}
         </div>
 
-        <div className="bg-gray-50 rounded-lg p-5 mb-4">
-          <div className="flex items-center justify-between">
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-5 mb-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold text-gray-700">Estado actual</p>
+              <p className="text-xs sm:text-sm font-semibold text-gray-700">Estado actual</p>
               <p
-                className={`text-2xl font-bold ${
+                className={`text-xl sm:text-2xl font-bold ${
                   mantenimiento?.activo ? 'text-blue-600' : 'text-green-600'
                 }`}
               >
                 {mantenimiento?.activo ? 'ACTIVO' : 'DESACTIVADO'}
               </p>
               {mantenimiento?.mensaje && (
-                <p className="text-sm text-gray-600 mt-2">Mensaje: {mantenimiento.mensaje}</p>
+                <p className="text-xs sm:text-sm text-gray-600 mt-2">Mensaje: {mantenimiento.mensaje}</p>
               )}
             </div>
             <button
               onClick={toggleMantenimiento}
               disabled={activandoMantenimiento}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg transition disabled:opacity-60 ${
+              className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-white text-sm font-semibold shadow-lg transition disabled:opacity-60 ${
                 mantenimiento?.activo
                   ? 'bg-green-600 hover:bg-green-700'
                   : 'bg-blue-600 hover:bg-orange-700'
@@ -2471,12 +2473,12 @@ export default function Soporte() {
             >
               {activandoMantenimiento ? (
                 <>
-                  <ArrowPathIcon className="w-5 h-5 animate-spin" />
+                  <ArrowPathIcon className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
                   Procesando...
                 </>
               ) : (
                 <>
-                  <ShieldCheckIcon className="w-5 h-5" />
+                  <ShieldCheckIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   {mantenimiento?.activo ? 'Desactivar' : 'Activar'}
                 </>
               )}
@@ -2484,7 +2486,7 @@ export default function Soporte() {
           </div>
         </div>
 
-        <div className="text-sm text-gray-600 space-y-2">
+        <div className="text-xs sm:text-sm text-gray-600 space-y-1.5 sm:space-y-2">
           <p className="flex items-center gap-2">
             <strong>Activado por:</strong> {mantenimiento?.activado_por || 'N/A'}
           </p>
@@ -2570,29 +2572,29 @@ export default function Soporte() {
   );
 
   const renderHistorial = () => (
-    <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-lg border p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Historial de acciones de soporte</h3>
+    <div className="space-y-5 sm:space-y-6">
+      <div className="bg-white rounded-xl shadow-lg border p-4 sm:p-5 lg:p-6">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Historial de acciones de soporte</h3>
         {cargandoHistorial ? (
-          <div className="py-12 text-center text-gray-500">Cargando historial...</div>
+          <div className="py-8 sm:py-12 text-center text-gray-500 text-sm sm:text-base">Cargando historial...</div>
         ) : historialReportes.length === 0 ? (
-          <div className="py-12 text-center text-gray-500">No hay historial de acciones.</div>
+          <div className="py-8 sm:py-12 text-center text-gray-500 text-sm sm:text-base">No hay historial de acciones.</div>
         ) : (
           <>
-            <div className="space-y-3">
+            <div className="space-y-2.5 sm:space-y-3">
               {historialReportes
                 .slice(paginaHistorial * ITEMS_POR_PAGINA, (paginaHistorial + 1) * ITEMS_POR_PAGINA)
                 .map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-start justify-between border-b border-gray-100 pb-3 last:border-0"
+                className="flex flex-col sm:flex-row items-start justify-between border-b border-gray-100 pb-2.5 sm:pb-3 gap-2 sm:gap-0 last:border-0"
               >
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">{item.accion || 'Acción'}</p>
-                  <p className="text-sm text-gray-600">{item.detalle || 'Sin detalles'}</p>
-                  <p className="text-xs text-gray-400 mt-1">Realizado por: {item.soporte_email || 'N/A'}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-gray-900">{item.accion || 'Acción'}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">{item.detalle || 'Sin detalles'}</p>
+                  <p className="text-[10px] sm:text-xs text-gray-400 mt-1">Realizado por: {item.soporte_email || 'N/A'}</p>
                 </div>
-                <div className="text-right text-xs text-gray-500 ml-4">
+                <div className="text-right text-[10px] sm:text-xs text-gray-500 sm:ml-4">
                   {item.fecha ? formatearFecha(item.fecha) : 'N/A'}
                 </div>
               </div>
@@ -2601,23 +2603,23 @@ export default function Soporte() {
 
           {/* Paginación de Historial */}
           {historialReportes && historialReportes.length > ITEMS_POR_PAGINA && (
-            <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-50 px-6 py-4 rounded-xl border border-cyan-100/50">
+            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-0 bg-gradient-to-r from-cyan-50 to-cyan-50 px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-cyan-100/50">
               <button
                 onClick={() => setPaginaHistorial(Math.max(0, paginaHistorial - 1))}
                 disabled={paginaHistorial === 0}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
               >
-                <ChevronLeftIcon className="w-5 h-5" />
+                <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 Anterior
               </button>
 
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-bold text-gray-700">
-                  Página <span className="text-cyan-600 text-lg">{paginaHistorial + 1}</span> de{' '}
-                  <span className="text-blue-600 text-lg">{Math.ceil(historialReportes.length / ITEMS_POR_PAGINA)}</span>
+              <div className="flex items-center justify-center gap-2 sm:gap-3">
+                <span className="text-xs sm:text-sm font-bold text-gray-700">
+                  Página <span className="text-cyan-600 text-base sm:text-lg">{paginaHistorial + 1}</span> de{' '}
+                  <span className="text-blue-600 text-base sm:text-lg">{Math.ceil(historialReportes.length / ITEMS_POR_PAGINA)}</span>
                 </span>
-                <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-                <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
+                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full" />
+                <span className="text-[10px] sm:text-xs text-gray-600 bg-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold">
                   {historialReportes.length} acciones
                 </span>
               </div>
@@ -2625,10 +2627,10 @@ export default function Soporte() {
               <button
                 onClick={() => setPaginaHistorial(Math.min(Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1, paginaHistorial + 1))}
                 disabled={paginaHistorial >= Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
               >
                 Siguiente
-                <ChevronRightIcon className="w-5 h-5" />
+                <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           )}
