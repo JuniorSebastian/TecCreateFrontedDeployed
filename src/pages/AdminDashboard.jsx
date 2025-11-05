@@ -1350,7 +1350,7 @@ export default function AdminDashboard() {
         label: 'Reportes de soporte',
         icon: LifebuoyIcon,
         badge: totalPendientes || (reportes.length ? reportes.length : null),
-        badgeClass: totalPendientes ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-800',
+        badgeClass: totalPendientes ? 'bg-blue-100 text-blue-700' : 'bg-blue-100 text-blue-800',
       },
       { id: 'mantenimiento', label: 'Mantenimiento', icon: CogIcon },
   { id: 'historial', label: 'Historial', icon: ClockIcon },
@@ -1389,7 +1389,7 @@ export default function AdminDashboard() {
         <button
           onClick={fetchDashboard}
           disabled={cargandoDashboard}
-          className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <ArrowPathIcon className={`w-4 h-4 ${cargandoDashboard ? 'animate-spin' : ''}`} />
           {cargandoDashboard ? 'Actualizando...' : 'Actualizar resumen'}
@@ -1401,7 +1401,7 @@ export default function AdminDashboard() {
       return (
         <button
           onClick={exportarCSV}
-          className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+          className="flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition-colors"
         >
           <ArrowDownTrayIcon className="w-4 h-4" />
           Exportar CSV
@@ -1429,11 +1429,11 @@ export default function AdminDashboard() {
     <div className="space-y-8">
       <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(14,165,233,0.18)] backdrop-blur">
         <div className="pointer-events-none absolute -top-20 -left-16 h-48 w-48 rounded-full bg-cyan-300/30 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-sky-400/30 blur-[90px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-blue-400/30 blur-[90px] animate-blob-slow"></div>
         <div className="relative space-y-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500 text-white shadow-lg animate-float">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-500 to-blue-600 text-white shadow-lg animate-float">
                 <UserGroupIcon className="h-6 w-6" />
               </div>
               <div>
@@ -1528,8 +1528,8 @@ export default function AdminDashboard() {
               <div
                 className={`mb-4 rounded-2xl border px-4 py-3 text-sm font-medium shadow-inner ${
                   mensajeUsuarios.tipo === 'success'
-                    ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-                    : 'border-rose-200 bg-rose-50 text-rose-600'
+                    ? 'border-cyan-200 bg-cyan-50 text-cyan-700'
+                    : 'border-blue-200 bg-blue-50 text-blue-600'
                 }`}
               >
                 {mensajeUsuarios.texto}
@@ -1537,7 +1537,7 @@ export default function AdminDashboard() {
             )}
 
             {errorUsuarios ? (
-              <div className="rounded-2xl border border-rose-200 bg-rose-50 py-12 text-center text-rose-600">
+              <div className="rounded-2xl border border-cyan-200 bg-cyan-50 py-12 text-center text-cyan-600">
                 {errorUsuarios}
               </div>
             ) : cargandoUsuarios ? (
@@ -1552,7 +1552,7 @@ export default function AdminDashboard() {
             ) : (
               <div className="overflow-x-auto rounded-2xl border border-white/60">
                 <table className="min-w-full divide-y divide-cyan-100/60">
-                  <thead className="bg-gradient-to-r from-cyan-50 via-white to-sky-50 text-left text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                  <thead className="bg-gradient-to-r from-cyan-50 via-white to-blue-50 text-left text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-500">
                     <tr>
                       {['Usuario', 'Rol', 'Estado', 'Ultima actividad', 'Presentaciones'].map((header) => (
                         <th key={header} className="px-6 py-4 text-xs text-slate-500">
@@ -1611,11 +1611,11 @@ export default function AdminDashboard() {
                             <span
                               className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wide ${
                                 estadoActual.toLowerCase() === 'activo'
-                                  ? 'bg-emerald-100 text-emerald-700'
+                                  ? 'bg-cyan-100 text-cyan-700'
                                   : estadoActual.toLowerCase() === 'inactivo'
                                     ? 'bg-slate-200 text-slate-700'
                                     : estadoActual.toLowerCase() === 'suspendido'
-                                      ? 'bg-amber-100 text-amber-700'
+                                      ? 'bg-blue-100 text-blue-700'
                                       : 'bg-cyan-100 text-cyan-700'
                               }`}
                             >
@@ -1673,7 +1673,7 @@ export default function AdminDashboard() {
                               </select>
                               <button
                                 type="button"
-                                className="inline-flex items-center rounded-full bg-gradient-to-r from-rose-500 to-red-500 px-4 py-1.5 text-xs font-semibold text-white shadow-lg shadow-rose-500/30 transition hover:-translate-y-0.5"
+                                className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-1.5 text-xs font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:-translate-y-0.5"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   eliminarUsuarioPanel(usuario);
@@ -1696,11 +1696,11 @@ export default function AdminDashboard() {
 
             {/* Paginación de Usuarios */}
             {usuarios && usuarios.length > ITEMS_POR_PAGINA && (
-              <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-sky-50 px-6 py-4 rounded-2xl border border-cyan-100/50 shadow-lg">
+              <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-blue-50 px-6 py-4 rounded-2xl border border-cyan-100/50 shadow-lg">
                 <button
                   onClick={() => setPaginaUsuarios(Math.max(0, paginaUsuarios - 1))}
                   disabled={paginaUsuarios === 0}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   <ChevronLeftIcon className="w-5 h-5" />
                   Anterior
@@ -1709,7 +1709,7 @@ export default function AdminDashboard() {
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-bold text-gray-700">
                     Página <span className="text-cyan-600 text-lg">{paginaUsuarios + 1}</span> de{' '}
-                    <span className="text-sky-600 text-lg">{Math.ceil(usuarios.length / ITEMS_POR_PAGINA)}</span>
+                    <span className="text-blue-600 text-lg">{Math.ceil(usuarios.length / ITEMS_POR_PAGINA)}</span>
                   </span>
                   <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                   <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -1720,7 +1720,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaUsuarios(Math.min(Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1, paginaUsuarios + 1))}
                   disabled={paginaUsuarios >= Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-sky-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   Siguiente
                   <ChevronRightIcon className="w-5 h-5" />
@@ -1734,7 +1734,7 @@ export default function AdminDashboard() {
         </div>
 
         <aside className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(59,130,246,0.18)]">
-          <div className="pointer-events-none absolute -top-20 left-8 h-44 w-44 rounded-full bg-sky-200/40 blur-3xl animate-blob"></div>
+          <div className="pointer-events-none absolute -top-20 left-8 h-44 w-44 rounded-full bg-cyan-200/40 blur-3xl animate-blob"></div>
           <div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-cyan-200/40 blur-[110px] animate-blob-slow"></div>
           <div className="relative space-y-5">
             <div className="flex items-center gap-3">
@@ -1751,7 +1751,7 @@ export default function AdminDashboard() {
                 Selecciona un usuario de la tabla para ver su detalle.
               </div>
             ) : errorDetalleUsuario ? (
-              <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-600">
+              <div className="rounded-2xl border border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-600">
                 {errorDetalleUsuario}
               </div>
             ) : cargandoDetalleUsuario && !usuarioDetalle ? (
@@ -1790,8 +1790,8 @@ export default function AdminDashboard() {
                         <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-cyan-600">Rol actual</p>
                         <p className="text-sm font-semibold text-slate-900">{toLabel(obtenerRolUsuarioNormalizado(usuarioDetalle) || usuarioDetalle?.rol || 'usuario')}</p>
                       </div>
-                      <div className="rounded-xl border border-emerald-100 bg-emerald-50/70 p-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-600">Estado actual</p>
+                      <div className="rounded-xl border border-cyan-100 bg-cyan-50/70 p-3">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-cyan-600">Estado actual</p>
                         <p className="text-sm font-semibold text-slate-900">{toLabel(obtenerEstadoUsuarioNormalizado(usuarioDetalle) || usuarioDetalle?.estado || 'activo')}</p>
                       </div>
                     </div>
@@ -1831,7 +1831,7 @@ export default function AdminDashboard() {
                     </span>
                   </div>
                   {errorPresentacionesUsuario ? (
-                    <div className="mt-3 rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs text-rose-600">
+                    <div className="mt-3 rounded-xl border border-cyan-200 bg-cyan-50 p-3 text-xs text-cyan-600">
                       {errorPresentacionesUsuario}
                     </div>
                   ) : (
@@ -1840,8 +1840,8 @@ export default function AdminDashboard() {
                         <div
                           className={`mt-3 rounded-xl border p-3 text-xs font-medium ${
                             mensajePresentacionesUsuario.tipo === 'success'
-                              ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-                              : 'border-rose-200 bg-rose-50 text-rose-600'
+                              ? 'border-cyan-200 bg-cyan-50 text-cyan-700'
+                              : 'border-blue-200 bg-blue-50 text-blue-600'
                           }`}
                         >
                           {mensajePresentacionesUsuario.texto}
@@ -1871,7 +1871,7 @@ export default function AdminDashboard() {
                                     type="button"
                                     onClick={() => eliminarPresentacionUsuario(presentacion)}
                                     disabled={estaEliminando || !presentacionId}
-                                    className="inline-flex items-center rounded-full border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-100 disabled:cursor-not-allowed disabled:opacity-60"
+                                    className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-600 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-60"
                                   >
                                     {estaEliminando ? 'Eliminando...' : presentacionId ? 'Eliminar' : 'ID no disponible'}
                                   </button>
@@ -1916,10 +1916,10 @@ export default function AdminDashboard() {
     
     // Colores clásicos consistentes (cyan, blue, indigo) - sin purple/pink
     const colorConfig = {
-      gradient: 'from-cyan-500 via-blue-500 to-indigo-600',
+      gradient: 'from-cyan-500 via-blue-500 to-cyan-600',
       bg: 'bg-cyan-50',
       border: 'border-cyan-200',
-      medal: ['from-cyan-400 to-blue-500', 'from-blue-400 to-indigo-500', 'from-indigo-400 to-cyan-500'],
+      medal: ['from-cyan-400 to-blue-500', 'from-blue-400 to-cyan-500', 'from-cyan-400 to-cyan-500'],
       podioBg: 'from-cyan-50 via-white to-blue-50',
       badgeColors: 'border-cyan-300 bg-cyan-100 text-cyan-800',
     };
@@ -1928,7 +1928,7 @@ export default function AdminDashboard() {
       <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
         {/* Gradientes de fondo clásicos */}
         <div className="pointer-events-none absolute -top-12 -right-10 h-36 w-36 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
-        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-blue-200/25 to-indigo-200/20 blur-3xl"></div>
+        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-blue-200/25 to-cyan-200/20 blur-3xl"></div>
 
         <div className="relative space-y-5">
           {/* Header mejorado */}
@@ -2002,20 +2002,20 @@ export default function AdminDashboard() {
     );
   };
 
-  const renderSerieDiaria = (titulo, serie, color = 'from-indigo-500 to-blue-500') => {
+  const renderSerieDiaria = (titulo, serie, color = 'from-cyan-500 to-blue-500') => {
     const datos = normalizarSerieDiaria(serie);
     const maxValor = datos.reduce((acc, item) => Math.max(acc, item.total), 0);
 
     // Colores clásicos consistentes (cyan, blue, indigo)
     const colorMap = {
       'Presentaciones creadas por dia': {
-        gradient: 'from-cyan-500 via-blue-500 to-indigo-600',
+        gradient: 'from-cyan-500 via-blue-500 to-cyan-600',
         bg: 'bg-cyan-50',
         border: 'border-cyan-200',
         icon: DocumentChartBarIcon,
       },
       'Usuarios registrados por dia': {
-        gradient: 'from-blue-500 via-indigo-500 to-cyan-600',
+        gradient: 'from-blue-500 via-cyan-500 to-cyan-600',
         bg: 'bg-blue-50',
         border: 'border-blue-200',
         icon: UserGroupIcon,
@@ -2023,9 +2023,9 @@ export default function AdminDashboard() {
     };
 
     const config = colorMap[titulo] || {
-      gradient: 'from-indigo-500 via-blue-500 to-cyan-600',
-      bg: 'bg-indigo-50',
-      border: 'border-indigo-200',
+      gradient: 'from-cyan-500 via-blue-500 to-cyan-600',
+      bg: 'bg-cyan-50',
+      border: 'border-cyan-200',
       icon: SparklesIcon,
     };
 
@@ -2035,7 +2035,7 @@ export default function AdminDashboard() {
       <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/70 bg-white/90 p-4 sm:p-5 lg:p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
         {/* Gradientes de fondo */}
         <div className="pointer-events-none absolute -top-16 -left-12 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
-        <div className="pointer-events-none absolute -bottom-12 right-0 h-48 w-48 rounded-full bg-gradient-to-br from-indigo-200/25 to-cyan-200/20 blur-3xl"></div>
+        <div className="pointer-events-none absolute -bottom-12 right-0 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-200/25 to-cyan-200/20 blur-3xl"></div>
 
         <div className="relative space-y-4 sm:space-y-5 lg:space-y-6">
           {/* Header mejorado */}
@@ -2109,13 +2109,13 @@ export default function AdminDashboard() {
   const renderDashboard = () => {
     if (errorDashboard) {
       return (
-        <div className="bg-red-50 border border-red-200 text-red-700 p-5 rounded-xl">
+        <div className="bg-blue-50 border border-blue-200 text-blue-700 p-5 rounded-xl">
           <div className="flex items-center justify-between gap-4">
             <span>{errorDashboard}</span>
             <button
               type="button"
               onClick={fetchDashboard}
-              className="rounded-lg border border-red-200 px-3 py-1 text-sm font-semibold text-red-700 hover:bg-red-100"
+              className="rounded-lg border border-blue-200 px-3 py-1 text-sm font-semibold text-blue-700 hover:bg-blue-100"
             >
               Reintentar
             </button>
@@ -2166,7 +2166,7 @@ export default function AdminDashboard() {
         valor: formatearNumero(totales.presentaciones ?? 0),
         descripcion: 'Documentos generados en la plataforma',
         icono: DocumentChartBarIcon,
-        fondo: 'from-blue-500 to-indigo-500',
+        fondo: 'from-blue-500 to-cyan-500',
       },
     ];
 
@@ -2315,8 +2315,8 @@ export default function AdminDashboard() {
                           </p>
                           <p className="text-xs text-gray-500">Key: {plantillaKey}</p>
                         </div>
-                        <div className="rounded-lg bg-white border border-emerald-100 p-3">
-                          <p className="text-xs uppercase tracking-wide text-emerald-500">Fuente</p>
+                        <div className="rounded-lg bg-white border border-cyan-100 p-3">
+                          <p className="text-xs uppercase tracking-wide text-cyan-500">Fuente</p>
                           <p className="text-sm font-semibold text-gray-900" title={fuenteLabel}>
                             {fuenteLabel}
                           </p>
@@ -2340,8 +2340,8 @@ export default function AdminDashboard() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {renderSerieDiaria('Presentaciones creadas por dia', actividad.presentacionesPorDia, 'bg-indigo-500')}
-          {renderSerieDiaria('Usuarios registrados por dia', actividad.usuariosPorDia, 'bg-emerald-500')}
+          {renderSerieDiaria('Presentaciones creadas por dia', actividad.presentacionesPorDia, 'bg-cyan-500')}
+          {renderSerieDiaria('Usuarios registrados por dia', actividad.usuariosPorDia, 'bg-blue-500')}
         </div>
       </div>
     );
@@ -2350,7 +2350,7 @@ export default function AdminDashboard() {
   const renderReportes = () => {
     if (errorReportes) {
       return (
-        <div className="rounded-3xl border border-rose-200 bg-rose-50 p-6 text-rose-700 shadow-lg">
+        <div className="rounded-3xl border border-cyan-200 bg-cyan-50 p-6 text-cyan-700 shadow-lg">
           {errorReportes}
         </div>
       );
@@ -2365,68 +2365,68 @@ export default function AdminDashboard() {
           <div
             className={`rounded-2xl border px-4 py-3 text-sm font-medium shadow-inner ${
               mensajeReportes.tipo === 'success'
-                ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-                : 'border-rose-200 bg-rose-50 text-rose-600'
+                ? 'border-cyan-200 bg-cyan-50 text-cyan-700'
+                : 'border-blue-200 bg-blue-50 text-blue-600'
             }`}
           >
             {mensajeReportes.texto}
           </div>
         )}
 
-        <section className="relative overflow-hidden rounded-3xl border border-rose-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(244,114,182,0.18)] backdrop-blur">
-          <div className="pointer-events-none absolute -top-24 -left-14 h-48 w-48 rounded-full bg-rose-300/30 blur-3xl animate-blob"></div>
-          <div className="pointer-events-none absolute -bottom-28 right-0 h-64 w-64 rounded-full bg-amber-200/35 blur-[100px] animate-blob-slow"></div>
+        <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(14,165,233,0.18)] backdrop-blur">
+          <div className="pointer-events-none absolute -top-24 -left-14 h-48 w-48 rounded-full bg-cyan-300/30 blur-3xl animate-blob"></div>
+          <div className="pointer-events-none absolute -bottom-28 right-0 h-64 w-64 rounded-full bg-blue-200/35 blur-[100px] animate-blob-slow"></div>
           <div className="relative space-y-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 via-pink-500 to-amber-500 text-white shadow-lg animate-float">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-500 to-blue-600 text-white shadow-lg animate-float">
                   <LifebuoyIcon className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.45em] text-rose-500">Soporte</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.45em] text-cyan-500">Soporte</p>
                   <h2 className="mt-1 text-xl font-bold text-slate-900">Monitorea reportes críticos</h2>
                   <p className="text-sm text-slate-600">
                     Atiende tickets pendientes y coordina respuestas con tu equipo.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-rose-600">
-                <span className="inline-flex items-center gap-2 rounded-full border border-rose-200/60 bg-white/70 px-3 py-1">
+              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-600">
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/60 bg-white/70 px-3 py-1">
                   {formatearNumero(totalReportesListado)} filtrados
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-amber-200/60 bg-white/70 px-3 py-1">
+                <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-white/70 px-3 py-1">
                   {formatearNumero(totalPendientes)} abiertos
                 </span>
               </div>
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg shadow-rose-200/40">
+              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg shadow-cyan-200/40">
                 <div className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.4em] text-slate-500">
-                  <MagnifyingGlassIcon className="h-4 w-4 text-rose-500" />
+                  <MagnifyingGlassIcon className="h-4 w-4 text-cyan-500" />
                   Búsqueda
                 </div>
                 <div className="relative">
-                  <MagnifyingGlassIcon className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-rose-400" />
+                  <MagnifyingGlassIcon className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-400" />
                   <input
                     type="text"
                     placeholder="Buscar por categoria, contacto o detalle..."
                     value={busquedaReportes}
                     onChange={(e) => setBusquedaReportes(e.target.value)}
-                    className="w-full rounded-xl border border-rose-100 bg-white/90 pl-11 pr-4 py-2.5 text-sm text-slate-700 shadow-inner focus:border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-100"
+                    className="w-full rounded-xl border border-cyan-100 bg-white/90 pl-11 pr-4 py-2.5 text-sm text-slate-700 shadow-inner focus:border-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100"
                   />
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg shadow-rose-200/40">
+              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg shadow-cyan-200/40">
                 <div className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.4em] text-slate-500">
-                  <FunnelIcon className="h-4 w-4 text-rose-500" />
+                  <FunnelIcon className="h-4 w-4 text-cyan-500" />
                   Estado
                 </div>
                 <select
                   value={estadoFiltro}
                   onChange={(e) => setEstadoFiltro(e.target.value)}
-                  className="w-full rounded-xl border border-rose-100 bg-white/90 px-3 py-2 text-sm text-slate-700 shadow-inner focus:border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-100"
+                  className="w-full rounded-xl border border-cyan-100 bg-white/90 px-3 py-2 text-sm text-slate-700 shadow-inner focus:border-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100"
                 >
                   <option value="todos">Todos</option>
                   {estadosDisponibles.map((estado) => (
@@ -2437,15 +2437,15 @@ export default function AdminDashboard() {
                 </select>
               </div>
 
-              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg shadow-rose-200/40">
+              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-lg shadow-cyan-200/40">
                 <div className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.4em] text-slate-500">
-                  <FunnelIcon className="h-4 w-4 text-rose-500" />
+                  <FunnelIcon className="h-4 w-4 text-cyan-500" />
                   Categoria
                 </div>
                 <select
                   value={categoriaFiltro}
                   onChange={(e) => setCategoriaFiltro(e.target.value)}
-                  className="w-full rounded-xl border border-rose-100 bg-white/90 px-3 py-2 text-sm text-slate-700 shadow-inner focus:border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-100"
+                  className="w-full rounded-xl border border-cyan-100 bg-white/90 px-3 py-2 text-sm text-slate-700 shadow-inner focus:border-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100"
                 >
                   <option value="todas">Todas</option>
                   {categoriasDisponibles.map((categoria) => (
@@ -2460,19 +2460,19 @@ export default function AdminDashboard() {
         </section>
 
   <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-[0_18px_60px_rgba(244,114,182,0.15)]">
-          <div className="pointer-events-none absolute -top-24 left-12 h-56 w-56 rounded-full bg-rose-200/35 blur-3xl animate-blob"></div>
-          <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-amber-200/35 blur-[110px] animate-blob-slow"></div>
+          <div className="pointer-events-none absolute -top-24 left-12 h-56 w-56 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
+          <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-200/35 blur-[110px] animate-blob-slow"></div>
           <div className="relative">
             {cargandoReportes ? (
-              <div className="flex flex-col items-center justify-center gap-3 py-12 text-rose-500">
+              <div className="flex flex-col items-center justify-center gap-3 py-12 text-cyan-500">
                 <ArrowPathIcon className="h-6 w-6 animate-spin-slow" />
                 <span>Cargando reportes...</span>
               </div>
             ) : (
               <>
                 <div className="overflow-x-auto rounded-2xl border border-white/60">
-                  <table className="min-w-full divide-y divide-rose-100/60">
-                    <thead className="bg-gradient-to-r from-rose-50 via-white to-amber-50 text-left text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-500">
+                  <table className="min-w-full divide-y divide-cyan-100/60">
+                    <thead className="bg-gradient-to-r from-cyan-50 via-white to-blue-50 text-left text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-500">
                       <tr>
                         {columnasReportes.map((header, idx) => (
                           <th
@@ -2484,7 +2484,7 @@ export default function AdminDashboard() {
                         ))}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-rose-100/70">
+                    <tbody className="divide-y divide-cyan-100/70">
                       {reportesFiltrados
                         .slice(paginaReportes * ITEMS_POR_PAGINA, (paginaReportes + 1) * ITEMS_POR_PAGINA)
                         .map((reporte, index) => {
@@ -2521,9 +2521,9 @@ export default function AdminDashboard() {
                           'Sin descripción';
 
                         return (
-                          <tr key={idReporte} className="align-top transition hover:bg-rose-50/60">
+                          <tr key={idReporte} className="align-top transition hover:bg-cyan-50/60">
                             <td className="px-6 py-4 text-sm text-slate-900">
-                              <div className="font-semibold text-rose-600">{categoriaLabel}</div>
+                              <div className="font-semibold text-cyan-600">{categoriaLabel}</div>
                               <div className="text-xs text-slate-500">ID: {idReporte}</div>
                               <div className="text-[11px] text-slate-400">Categoria key: {categoriaKey || 'N/A'}</div>
                             </td>
@@ -2538,7 +2538,7 @@ export default function AdminDashboard() {
                                 value={valorSelect}
                                 onChange={(e) => gestionarEstadoReporte(reporte, e.target.value, index)}
                                 disabled={actualizandoReporteId === idReporte}
-                                className="w-full rounded-xl border border-rose-100 bg-white/90 px-3 py-2 text-xs font-semibold text-slate-600 shadow-inner focus:border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-100 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="w-full rounded-xl border border-cyan-100 bg-white/90 px-3 py-2 text-xs font-semibold text-slate-600 shadow-inner focus:border-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-100 disabled:cursor-not-allowed disabled:opacity-60"
                               >
                                 {estadosSelect.map((estado) => (
                                   <option key={estado.value} value={estado.value}>
@@ -2547,7 +2547,7 @@ export default function AdminDashboard() {
                                 ))}
                               </select>
                               {actualizandoReporteId === idReporte && (
-                                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-rose-500">
+                                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-cyan-500">
                                   Actualizando...
                                 </p>
                               )}
@@ -2558,7 +2558,7 @@ export default function AdminDashboard() {
                             </td>
                             <td className="px-6 py-4 text-sm text-slate-700">
                               <div className="font-semibold text-slate-900">{contactoNombre}</div>
-                              <div className="text-xs text-rose-500 break-all">{contactoCorreo}</div>
+                              <div className="text-xs text-cyan-500 break-all">{contactoCorreo}</div>
                             </td>
                             <td className="px-6 py-4 text-sm text-slate-500">
                               {fechaReporte ? new Date(fechaReporte).toLocaleString('es-ES') : 'N/A'}
@@ -2568,7 +2568,7 @@ export default function AdminDashboard() {
                                 <button
                                   type="button"
                                   onClick={() => abrirComentarios(reporte, index)}
-                                  className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 px-4 py-1.5 text-xs font-semibold text-white shadow-lg shadow-rose-500/30 transition hover:-translate-y-0.5"
+                                  className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-500 px-4 py-1.5 text-xs font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5"
                                   title="Ver comentarios"
                                 >
                                   <ChatBubbleOvalLeftEllipsisIcon className="h-4 w-4" />
@@ -2578,7 +2578,7 @@ export default function AdminDashboard() {
                                   type="button"
                                   onClick={() => eliminarReporte(reporte, index)}
                                   disabled={eliminandoReporteId === idReporte}
-                                  className="inline-flex items-center rounded-full border border-rose-300 bg-white/80 px-4 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                  className="inline-flex items-center rounded-full border border-cyan-300 bg-white/80 px-4 py-1.5 text-xs font-semibold text-cyan-600 transition hover:bg-cyan-50 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                   {eliminandoReporteId === idReporte ? 'Eliminando...' : 'Eliminar'}
                                 </button>
@@ -2599,11 +2599,11 @@ export default function AdminDashboard() {
 
                 {/* Paginación de Reportes */}
                 {reportesFiltrados && reportesFiltrados.length > ITEMS_POR_PAGINA && (
-                  <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-rose-50 to-amber-50 px-6 py-4 rounded-2xl border border-rose-100/50 shadow-lg">
+                  <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-blue-50 px-6 py-4 rounded-2xl border border-cyan-100/50 shadow-lg">
                     <button
                       onClick={() => setPaginaReportes(Math.max(0, paginaReportes - 1))}
                       disabled={paginaReportes === 0}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                     >
                       <ChevronLeftIcon className="w-5 h-5" />
                       Anterior
@@ -2611,8 +2611,8 @@ export default function AdminDashboard() {
 
                     <div className="flex items-center gap-3">
                       <span className="text-sm font-bold text-gray-700">
-                        Página <span className="text-rose-600 text-lg">{paginaReportes + 1}</span> de{' '}
-                        <span className="text-amber-600 text-lg">{Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA)}</span>
+                        Página <span className="text-cyan-600 text-lg">{paginaReportes + 1}</span> de{' '}
+                        <span className="text-blue-600 text-lg">{Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA)}</span>
                       </span>
                       <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                       <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -2623,7 +2623,7 @@ export default function AdminDashboard() {
                     <button
                       onClick={() => setPaginaReportes(Math.min(Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA) - 1, paginaReportes + 1))}
                       disabled={paginaReportes >= Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA) - 1}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                     >
                       Siguiente
                       <ChevronRightIcon className="w-5 h-5" />
@@ -2643,17 +2643,17 @@ export default function AdminDashboard() {
 
   const renderMantenimiento = () => (
     <div className="space-y-8">
-  <section className="relative overflow-hidden rounded-3xl border border-amber-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(251,191,36,0.16)] backdrop-blur">
-        <div className="pointer-events-none absolute -top-24 -left-16 h-48 w-48 rounded-full bg-amber-200/40 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-28 right-0 h-60 w-60 rounded-full bg-emerald-200/35 blur-[100px] animate-blob-slow"></div>
+  <section className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(251,191,36,0.16)] backdrop-blur">
+        <div className="pointer-events-none absolute -top-24 -left-16 h-48 w-48 rounded-full bg-blue-200/40 blur-3xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-28 right-0 h-60 w-60 rounded-full bg-cyan-200/35 blur-[100px] animate-blob-slow"></div>
         <div className="relative space-y-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 via-orange-400 to-emerald-400 text-white shadow-lg animate-float">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-white shadow-lg animate-float">
                 <WrenchScrewdriverIcon className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-amber-500">Mantenimiento</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-blue-500">Mantenimiento</p>
                 <h2 className="mt-1 text-xl font-bold text-slate-900">Administra ventanas de servicio</h2>
                 <p className="text-sm text-slate-600">
                   Activa mensajes personalizados y coordina intervenciones sin perder visibilidad.
@@ -2661,7 +2661,7 @@ export default function AdminDashboard() {
               </div>
             </div>
             {cargandoMantenimiento && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-amber-200/60 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-amber-600">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
                 <ArrowPathIcon className="h-4 w-4 animate-spin-slow" />
                 Actualizando
               </span>
@@ -2675,7 +2675,7 @@ export default function AdminDashboard() {
                   <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">Estado actual</p>
                   <p
                     className={`text-3xl font-black tracking-tight ${
-                      mantenimiento?.activo ? 'text-amber-600' : 'text-emerald-600'
+                      mantenimiento?.activo ? 'text-blue-600' : 'text-cyan-600'
                     }`}
                   >
                     {mantenimiento?.activo ? 'MODO ACTIVO' : 'MODO DESACTIVADO'}
@@ -2689,8 +2689,8 @@ export default function AdminDashboard() {
                   disabled={activandoMantenimiento}
                   className={`group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 ${
                     mantenimiento?.activo
-                      ? 'bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'
-                      : 'bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500'
+                      ? 'bg-gradient-to-r from-cyan-500 via-cyan-500 to-cyan-500'
+                      : 'bg-gradient-to-r from-blue-500 via-blue-500 to-cyan-500'
                   }`}
                 >
                   {activandoMantenimiento ? (
@@ -2726,7 +2726,7 @@ export default function AdminDashboard() {
               <p className="mt-2 text-sm text-slate-600">
                 Informa al equipo antes de activar el modo mantenimiento y comparte el mensaje que verán los usuarios.
               </p>
-              <p className="mt-4 rounded-xl border border-amber-200/60 bg-amber-50/70 px-3 py-3 text-xs text-amber-600">
+              <p className="mt-4 rounded-xl border border-blue-200/60 bg-blue-50/70 px-3 py-3 text-xs text-blue-600">
                 Las activaciones quedan registradas automáticamente en el historial para auditoría y seguimiento.
               </p>
             </div>
@@ -2735,8 +2735,8 @@ export default function AdminDashboard() {
       </section>
 
       <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-[0_18px_50px_rgba(59,130,246,0.15)]">
-        <div className="pointer-events-none absolute -top-20 left-8 h-48 w-48 rounded-full bg-sky-200/35 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-emerald-200/35 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-20 left-8 h-48 w-48 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
+        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-200/35 blur-[110px] animate-blob-slow"></div>
         <div className="relative">
           <div className="mb-4 flex items-center justify-between">
             <h4 className="text-lg font-semibold text-slate-900">Historial de activaciones</h4>
@@ -2758,7 +2758,7 @@ export default function AdminDashboard() {
                 const resumen = item?.mensaje || item?.detalle || 'Sin mensaje configurado';
                 const agente = item?.activado_por || item?.soporte_email || 'N/A';
                 const fechaRaw = item?.fecha_activacion || item?.fecha || item?.created_at || item?.createdAt || null;
-                const accent = item?.activo ? 'from-amber-500 via-orange-400 to-rose-400' : 'from-emerald-500 via-teal-400 to-sky-400';
+                const accent = item?.activo ? 'from-blue-500 via-blue-400 to-cyan-400' : 'from-cyan-500 via-cyan-400 to-cyan-400';
 
                 return (
                   <div
@@ -2783,11 +2783,11 @@ export default function AdminDashboard() {
 
             {/* Paginación de Mantenimiento */}
             {historialMantenimientos && historialMantenimientos.length > ITEMS_POR_PAGINA && (
-              <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-amber-50 to-emerald-50 px-6 py-4 rounded-2xl border border-amber-100/50 shadow-lg">
+              <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-blue-50 to-cyan-50 px-6 py-4 rounded-2xl border border-blue-100/50 shadow-lg">
                 <button
                   onClick={() => setPaginaMantenimiento(Math.max(0, paginaMantenimiento - 1))}
                   disabled={paginaMantenimiento === 0}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   <ChevronLeftIcon className="w-5 h-5" />
                   Anterior
@@ -2795,8 +2795,8 @@ export default function AdminDashboard() {
 
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-bold text-gray-700">
-                    Página <span className="text-amber-600 text-lg">{paginaMantenimiento + 1}</span> de{' '}
-                    <span className="text-emerald-600 text-lg">{Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA)}</span>
+                    Página <span className="text-blue-600 text-lg">{paginaMantenimiento + 1}</span> de{' '}
+                    <span className="text-cyan-600 text-lg">{Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA)}</span>
                   </span>
                   <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                   <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -2807,7 +2807,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaMantenimiento(Math.min(Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA) - 1, paginaMantenimiento + 1))}
                   disabled={paginaMantenimiento >= Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA) - 1}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
                 >
                   Siguiente
                   <ChevronRightIcon className="w-5 h-5" />
@@ -2823,31 +2823,31 @@ export default function AdminDashboard() {
 
   const renderHistorial = () => (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(79,70,229,0.15)] backdrop-blur">
-        <div className="pointer-events-none absolute -top-24 -left-20 h-52 w-52 rounded-full bg-indigo-300/30 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-sky-200/30 blur-[100px] animate-blob-slow"></div>
+      <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white/80 p-6 shadow-[0_20px_60px_rgba(79,70,229,0.15)] backdrop-blur">
+        <div className="pointer-events-none absolute -top-24 -left-20 h-52 w-52 rounded-full bg-cyan-300/30 blur-3xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-24 right-0 h-60 w-60 rounded-full bg-cyan-200/30 blur-[100px] animate-blob-slow"></div>
         <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-blue-500 to-sky-500 text-white shadow-lg animate-float">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-500 to-cyan-500 text-white shadow-lg animate-float">
               <ClockIcon className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-indigo-500">Historial</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-cyan-500">Historial</p>
               <h2 className="mt-1 text-xl font-bold text-slate-900">Bitácora de acciones de soporte</h2>
               <p className="text-sm text-slate-600">
                 Visualiza cada interacción registrada para mantener el seguimiento transparente.
               </p>
             </div>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200/60 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-600">
+          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/60 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-600">
             {historialReportes.length} eventos
           </span>
         </div>
       </section>
 
       <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-6 shadow-[0_18px_50px_rgba(99,102,241,0.15)]">
-        <div className="pointer-events-none absolute -top-16 left-8 h-44 w-44 rounded-full bg-indigo-200/35 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-sky-200/35 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-16 left-8 h-44 w-44 rounded-full bg-cyan-200/35 blur-3xl animate-blob"></div>
+        <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-200/35 blur-[110px] animate-blob-slow"></div>
         <div className="relative">
           {cargandoHistorial ? (
             <div className="py-10 text-center text-slate-500">Cargando historial...</div>
@@ -2868,7 +2868,7 @@ export default function AdminDashboard() {
                     key={`${item.accion}-${idx}`}
                     className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/80 p-4 shadow-sm"
                   >
-                    <div className="pointer-events-none absolute inset-y-0 left-0 w-1 rounded-full bg-gradient-to-b from-indigo-500 via-blue-500 to-sky-500"></div>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-1 rounded-full bg-gradient-to-b from-cyan-500 via-blue-500 to-cyan-500"></div>
                     <div className="relative ml-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-slate-900">{item.accion || 'Acción'}</p>
@@ -2886,11 +2886,11 @@ export default function AdminDashboard() {
 
             {/* Paginación de Historial */}
             {historialReportes && historialReportes.length > ITEMS_POR_PAGINA && (
-              <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-indigo-50 to-sky-50 px-6 py-4 rounded-2xl border border-indigo-100/50 shadow-lg">
+              <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-50 px-6 py-4 rounded-2xl border border-cyan-100/50 shadow-lg">
                 <button
                   onClick={() => setPaginaHistorial(Math.max(0, paginaHistorial - 1))}
                   disabled={paginaHistorial === 0}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                 >
                   <ChevronLeftIcon className="w-5 h-5" />
                   Anterior
@@ -2898,8 +2898,8 @@ export default function AdminDashboard() {
 
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-bold text-gray-700">
-                    Página <span className="text-indigo-600 text-lg">{paginaHistorial + 1}</span> de{' '}
-                    <span className="text-sky-600 text-lg">{Math.ceil(historialReportes.length / ITEMS_POR_PAGINA)}</span>
+                    Página <span className="text-cyan-600 text-lg">{paginaHistorial + 1}</span> de{' '}
+                    <span className="text-cyan-600 text-lg">{Math.ceil(historialReportes.length / ITEMS_POR_PAGINA)}</span>
                   </span>
                   <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                   <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -2910,7 +2910,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setPaginaHistorial(Math.min(Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1, paginaHistorial + 1))}
                   disabled={paginaHistorial >= Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
                 >
                   Siguiente
                   <ChevronRightIcon className="w-5 h-5" />
@@ -2946,7 +2946,7 @@ export default function AdminDashboard() {
         value: totalUsuariosHero,
         description: 'Cuentas registradas en TEC CREATE',
         gradient: 'from-cyan-500 to-blue-600',
-        glow: 'from-cyan-400/20 via-blue-400/10 to-indigo-500/20',
+        glow: 'from-cyan-400/20 via-blue-400/10 to-cyan-500/20',
       },
       {
         id: 'stats-presentaciones',
@@ -2954,8 +2954,8 @@ export default function AdminDashboard() {
         label: 'Presentaciones creadas',
         value: totalPresentacionesHero,
         description: 'Documentos generados por la comunidad',
-        gradient: 'from-blue-500 to-indigo-600',
-        glow: 'from-blue-400/20 via-indigo-400/10 to-cyan-500/20',
+        gradient: 'from-blue-500 to-cyan-600',
+        glow: 'from-blue-400/20 via-cyan-400/10 to-cyan-500/20',
       },
       {
         id: 'stats-reportes',
@@ -2963,15 +2963,15 @@ export default function AdminDashboard() {
         label: 'Reportes abiertos',
         value: reportesPendientesHero,
         description: 'Casos pendientes de soporte',
-        gradient: 'from-indigo-500 to-blue-500',
-        glow: 'from-indigo-400/20 via-cyan-400/10 to-blue-400/20',
+        gradient: 'from-cyan-500 to-blue-500',
+        glow: 'from-cyan-400/20 via-cyan-400/10 to-blue-400/20',
       },
     ];
 
     return (
       <section className="relative mb-6 sm:mb-8 lg:mb-10 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/80 px-4 sm:px-6 lg:px-10 py-6 sm:py-8 lg:py-10 shadow-[0px_25px_60px_rgba(59,130,246,0.25)] backdrop-blur-xl">
-        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-cyan-400/40 via-blue-400/30 to-indigo-400/20 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-indigo-400/30 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-cyan-400/40 via-blue-400/30 to-cyan-400/20 blur-3xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-cyan-400/30 blur-[110px] animate-blob-slow"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
 
         <div className="relative flex flex-col gap-6 sm:gap-8 lg:gap-10 lg:flex-row lg:items-center lg:justify-between">
@@ -2982,7 +2982,7 @@ export default function AdminDashboard() {
             </span>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900">
               Bienvenido a{' '}
-              <span className="animate-text-shimmer bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+              <span className="animate-text-shimmer bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
                 TEC CREATE Admin
               </span>
             </h1>
@@ -3052,7 +3052,7 @@ export default function AdminDashboard() {
         description: 'Actualiza permisos, estados y privilegios en segundos.',
         chip: 'Usuarios',
         highlight: `${formatearNumero(usuariosTotal)} perfiles`,
-        accent: 'from-cyan-500 via-blue-500 to-indigo-500',
+        accent: 'from-cyan-500 via-blue-500 to-cyan-500',
         onClick: () => setSeccionActiva('usuarios'),
       },
       {
@@ -3062,7 +3062,7 @@ export default function AdminDashboard() {
         description: 'Toma acción inmediata sobre casos pendientes de soporte.',
         chip: 'Soporte',
         highlight: `${formatearNumero(totalPendientes)} abiertos`,
-        accent: 'from-blue-500 via-indigo-500 to-cyan-500',
+        accent: 'from-blue-500 via-cyan-500 to-cyan-500',
         onClick: () => setSeccionActiva('reportes'),
       },
       {
@@ -3072,7 +3072,7 @@ export default function AdminDashboard() {
         description: 'Activa mensajes y controla las ventanas de servicio.',
         chip: mantenimiento?.activo ? 'Activo' : 'Programar',
         highlight: mantenimiento?.activo ? 'En curso' : 'Listo',
-        accent: 'from-indigo-500 via-cyan-500 to-blue-500',
+        accent: 'from-cyan-500 via-cyan-500 to-blue-500',
         onClick: () => setSeccionActiva('mantenimiento'),
       },
     ];
@@ -3155,7 +3155,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100">
       {/* Botón Hamburguesa Móvil */}
       <button
         onClick={() => setMenuAbierto(!menuAbierto)}
@@ -3184,13 +3184,13 @@ export default function AdminDashboard() {
         }`}
       >
         <div className="pointer-events-none absolute -top-28 -left-20 h-60 w-60 rounded-full bg-cyan-300/45 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-sky-400/50 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-cyan-400/50 blur-[110px] animate-blob-slow"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/50"></div>
 
         <div className="relative flex min-h-full flex-col justify-between">
           <div className="border-b border-white/15 p-4 sm:p-6 lg:p-7 pb-4 sm:pb-5 lg:pb-6">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white via-sky-200 to-cyan-200 text-xl sm:text-2xl font-black text-cyan-700 shadow-[0_15px_35px_rgba(56,189,248,0.38)] animate-pulse-soft">
+              <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white via-cyan-200 to-cyan-200 text-xl sm:text-2xl font-black text-cyan-700 shadow-[0_15px_35px_rgba(56,189,248,0.38)] animate-pulse-soft">
                 <span className="tracking-tight">TC</span>
                 <span className="absolute -top-1 -right-1 inline-flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-cyan-500 text-[9px] sm:text-[10px] font-semibold text-white shadow-lg">
                   ✦
@@ -3199,7 +3199,7 @@ export default function AdminDashboard() {
               <div className="flex-1 min-w-0">
                 <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.35em] sm:tracking-[0.45em] text-white/70">Tec Create</p>
                 <h1 className="mt-0.5 sm:mt-1 text-lg sm:text-xl lg:text-2xl font-black leading-snug">
-                  <span className="bg-gradient-to-r from-white via-sky-100 to-cyan-200 bg-clip-text text-transparent animate-text-shimmer">
+                  <span className="bg-gradient-to-r from-white via-cyan-100 to-cyan-200 bg-clip-text text-transparent animate-text-shimmer">
                     Admin Suite
                   </span>
                 </h1>
@@ -3285,7 +3285,7 @@ export default function AdminDashboard() {
 
       <main className="relative flex-1 overflow-hidden px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-12 lg:ml-0">
         <div className="pointer-events-none absolute -top-32 right-16 h-80 w-80 rounded-full bg-cyan-200/45 blur-[120px] animate-blob"></div>
-        <div className="pointer-events-none absolute bottom-10 left-1/3 h-64 w-64 rounded-full bg-sky-200/35 blur-[110px] animate-blob-slow"></div>
+        <div className="pointer-events-none absolute bottom-10 left-1/3 h-64 w-64 rounded-full bg-cyan-200/35 blur-[110px] animate-blob-slow"></div>
 
         <div className="relative mb-6 sm:mb-8 lg:mb-10 flex flex-col gap-3 sm:gap-4 md:gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex-1 min-w-0">
@@ -3308,15 +3308,15 @@ export default function AdminDashboard() {
       {modalMantenimiento.abierto && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
           <div className="relative w-full max-w-xl overflow-hidden rounded-3xl border border-white/20 bg-white/95 shadow-[0_30px_80px_rgba(251,191,36,0.25)]">
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500"></div>
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-blue-500 to-cyan-500"></div>
             <div className="relative p-6 space-y-6">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-emerald-500 text-white shadow-lg">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-blue-500 to-cyan-500 text-white shadow-lg">
                     <WrenchScrewdriverIcon className="h-6 w-6" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber-500">
+                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-500">
                       {modalMantenimiento.activar ? 'Activar' : 'Desactivar'}
                     </p>
                     <h3 className="text-lg font-bold text-slate-900">Modo mantenimiento</h3>
@@ -3342,8 +3342,8 @@ export default function AdminDashboard() {
                   <span
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] ${
                       modalMantenimiento.activar
-                        ? 'bg-amber-100 text-amber-600'
-                        : 'bg-emerald-100 text-emerald-600'
+                        ? 'bg-blue-100 text-blue-600'
+                        : 'bg-cyan-100 text-cyan-600'
                     }`}
                   >
                     <ShieldCheckIcon className="h-4 w-4" />
@@ -3367,7 +3367,7 @@ export default function AdminDashboard() {
                   }
                   placeholder="Detalla el mensaje que verán los usuarios."
                   rows={4}
-                  className="w-full rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 text-sm text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent disabled:opacity-60"
+                  className="w-full rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 text-sm text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent disabled:opacity-60"
                   disabled={!modalMantenimiento.activar || activandoMantenimiento}
                 ></textarea>
                 {modalMantenimiento.activar && (
@@ -3395,8 +3395,8 @@ export default function AdminDashboard() {
                   }
                   className={`inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 disabled:translate-y-0 disabled:opacity-60 ${
                     modalMantenimiento.activar
-                      ? 'bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500'
-                      : 'bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500'
+                      ? 'bg-gradient-to-r from-blue-500 via-blue-500 to-cyan-500'
+                      : 'bg-gradient-to-r from-cyan-500 via-cyan-500 to-cyan-500'
                   }`}
                 >
                   {activandoMantenimiento ? (
@@ -3463,7 +3463,7 @@ export default function AdminDashboard() {
                         tipo === 'respuesta'
                           ? 'bg-blue-50 border-blue-200'
                           : tipo === 'nota'
-                            ? 'bg-yellow-50 border-yellow-200'
+                            ? 'bg-cyan-50 border-cyan-200'
                             : 'bg-gray-50 border-gray-200'
                       }`}
                     >
@@ -3489,7 +3489,7 @@ export default function AdminDashboard() {
                                   tipo === 'respuesta'
                                     ? 'bg-blue-100 text-blue-700'
                                     : tipo === 'nota'
-                                      ? 'bg-yellow-100 text-yellow-700'
+                                      ? 'bg-cyan-100 text-cyan-700'
                                       : 'bg-gray-200 text-gray-700'
                                 }`}
                               >
@@ -3561,3 +3561,12 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
