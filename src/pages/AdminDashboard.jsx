@@ -1897,19 +1897,21 @@ export default function AdminDashboard() {
   const renderRankingSection = (titulo, items, descripcion) => {
     const lista = Array.isArray(items) ? items.slice(0, 5) : [];
     
-    // Colores dinámicos según el título
+    // Colores clásicos consistentes (cyan, blue, indigo) - sin purple/pink
     const colorConfig = {
-      gradient: 'from-purple-500 via-pink-500 to-rose-500',
-      bg: 'bg-purple-50',
-      border: 'border-purple-200',
-      medal: ['from-amber-400 to-yellow-500', 'from-slate-300 to-gray-400', 'from-amber-600 to-orange-500'],
+      gradient: 'from-cyan-500 via-blue-500 to-indigo-600',
+      bg: 'bg-cyan-50',
+      border: 'border-cyan-200',
+      medal: ['from-cyan-400 to-blue-500', 'from-blue-400 to-indigo-500', 'from-indigo-400 to-cyan-500'],
+      podioBg: 'from-cyan-50 via-white to-blue-50',
+      badgeColors: 'border-cyan-300 bg-cyan-100 text-cyan-800',
     };
     
     return (
-      <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(168,85,247,0.15)] backdrop-blur">
-        {/* Gradientes de fondo */}
-        <div className="pointer-events-none absolute -top-12 -right-10 h-36 w-36 rounded-full bg-gradient-to-br from-purple-200/30 to-pink-200/25 blur-2xl"></div>
-        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-rose-200/25 to-purple-200/20 blur-3xl"></div>
+      <div className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/90 p-6 shadow-[0_18px_50px_rgba(6,182,212,0.15)] backdrop-blur">
+        {/* Gradientes de fondo clásicos */}
+        <div className="pointer-events-none absolute -top-12 -right-10 h-36 w-36 rounded-full bg-gradient-to-br from-cyan-200/30 to-blue-200/25 blur-2xl"></div>
+        <div className="pointer-events-none absolute -bottom-10 left-0 h-40 w-40 rounded-full bg-gradient-to-br from-blue-200/25 to-indigo-200/20 blur-3xl"></div>
 
         <div className="relative space-y-5">
           {/* Header mejorado */}
@@ -1920,7 +1922,7 @@ export default function AdminDashboard() {
                 <p className="mt-1 text-xs font-medium text-gray-600">{descripcion}</p>
               )}
             </div>
-            <span className={`inline-flex items-center gap-1.5 rounded-full border ${colorConfig.border} ${colorConfig.bg} px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-purple-700`}>
+            <span className={`inline-flex items-center gap-1.5 rounded-full border ${colorConfig.border} ${colorConfig.bg} px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-700`}>
               <SparklesIcon className="h-3.5 w-3.5" />
               Top {lista.length}
             </span>
@@ -1939,18 +1941,18 @@ export default function AdminDashboard() {
                     key={`${titulo}-${etiqueta}-${index}`} 
                     className={`group flex items-center justify-between gap-4 rounded-xl border p-3 transition-all hover:scale-[1.02] hover:shadow-md ${
                       esPodio 
-                        ? 'border-purple-200 bg-gradient-to-r from-purple-50 via-white to-pink-50' 
+                        ? `border-cyan-200 bg-gradient-to-r ${colorConfig.podioBg}` 
                         : 'border-white/60 bg-white/80'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      {/* Medalla/Número con efecto premium */}
+                      {/* Medalla/Número con colores clásicos */}
                       <div className={`relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${medalGradient} text-white shadow-lg ${esPodio ? 'ring-2 ring-white' : ''}`}>
                         <span className="text-xs font-black drop-shadow">
                           {index + 1}
                         </span>
                         {esPodio && (
-                          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-yellow-400/30 to-orange-500/30 blur-sm"></div>
+                          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-sm"></div>
                         )}
                       </div>
                       
@@ -1960,10 +1962,10 @@ export default function AdminDashboard() {
                       </span>
                     </div>
                     
-                    {/* Total con badge */}
+                    {/* Total con badge en colores clásicos */}
                     <span className={`min-w-[3rem] text-center rounded-lg border px-2.5 py-1 text-sm font-black ${
                       esPodio 
-                        ? 'border-purple-300 bg-purple-100 text-purple-800' 
+                        ? colorConfig.badgeColors 
                         : 'border-gray-200 bg-gray-50 text-gray-800'
                     }`}>
                       {formatearNumero(total)}
@@ -1987,24 +1989,24 @@ export default function AdminDashboard() {
     const datos = normalizarSerieDiaria(serie);
     const maxValor = datos.reduce((acc, item) => Math.max(acc, item.total), 0);
 
-    // Mapeo de colores según el título
+    // Colores clásicos consistentes (cyan, blue, indigo)
     const colorMap = {
       'Presentaciones creadas por dia': {
-        gradient: 'from-cyan-500 via-blue-500 to-indigo-500',
+        gradient: 'from-cyan-500 via-blue-500 to-indigo-600',
         bg: 'bg-cyan-50',
         border: 'border-cyan-200',
         icon: DocumentChartBarIcon,
       },
       'Usuarios registrados por dia': {
-        gradient: 'from-emerald-500 via-teal-500 to-green-500',
-        bg: 'bg-emerald-50',
-        border: 'border-emerald-200',
+        gradient: 'from-blue-500 via-indigo-500 to-cyan-600',
+        bg: 'bg-blue-50',
+        border: 'border-blue-200',
         icon: UserGroupIcon,
       },
     };
 
     const config = colorMap[titulo] || {
-      gradient: 'from-indigo-500 to-blue-500',
+      gradient: 'from-indigo-500 via-blue-500 to-cyan-600',
       bg: 'bg-indigo-50',
       border: 'border-indigo-200',
       icon: SparklesIcon,
