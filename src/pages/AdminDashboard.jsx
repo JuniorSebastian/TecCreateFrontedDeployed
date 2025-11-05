@@ -2158,7 +2158,7 @@ export default function AdminDashboard() {
         valor: formatearNumero(totales.usuarios ?? 0),
         descripcion: 'Cuentas con acceso',
         icono: UserGroupIcon,
-        fondo: 'from-sky-500 to-cyan-500',
+        fondo: 'from-cyan-500 to-blue-500',
       },
       {
         id: 'presentaciones',
@@ -2166,101 +2166,103 @@ export default function AdminDashboard() {
         valor: formatearNumero(totales.presentaciones ?? 0),
         descripcion: 'Documentos generados en la plataforma',
         icono: DocumentChartBarIcon,
-        fondo: 'from-indigo-500 to-blue-500',
+        fondo: 'from-blue-500 to-indigo-500',
       },
     ];
 
     return (
-      <div className="space-y-6">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {cardsTotales.map(({ id, titulo, valor, descripcion, icono: Icono, fondo }) => (
-            <div key={id} className="relative overflow-hidden rounded-2xl border bg-white shadow-sm">
+            <div key={id} className="relative overflow-hidden rounded-xl sm:rounded-2xl border bg-white shadow-sm">
               <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${fondo}`}></div>
-              <div className="p-6 space-y-3">
-                <div className="inline-flex items-center justify-center rounded-xl bg-blue-50 p-3 text-blue-600">
-                  <Icono className="h-6 w-6" />
+              <div className="p-4 sm:p-5 lg:p-6 space-y-2 sm:space-y-3">
+                <div className="inline-flex items-center justify-center rounded-lg sm:rounded-xl bg-cyan-50 p-2 sm:p-3 text-cyan-600">
+                  <Icono className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500">{titulo}</p>
-                  <p className="text-3xl font-bold text-gray-900">{valor}</p>
+                  <p className="text-[10px] sm:text-xs uppercase tracking-wide text-gray-500 truncate">{titulo}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-gray-900">{valor}</p>
                 </div>
-                <p className="text-sm text-gray-500">{descripcion}</p>
+                <p className="text-xs sm:text-sm text-gray-500 line-clamp-2">{descripcion}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="bg-white rounded-2xl border shadow-sm p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h3 className="text-base font-semibold text-gray-900">Tickets resueltos por agente</h3>
-              <p className="text-sm text-gray-500">Desempeño del equipo de soporte en el período reciente.</p>
+        <div className="bg-white rounded-xl sm:rounded-2xl border shadow-sm p-4 sm:p-5 lg:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900">Tickets resueltos por agente</h3>
+              <p className="text-xs sm:text-sm text-gray-500">Desempeño del equipo de soporte en el período reciente.</p>
             </div>
             {cargandoDashboard && (
-              <span className="text-xs text-blue-600">Actualizando…</span>
+              <span className="text-[10px] sm:text-xs text-blue-600">Actualizando…</span>
             )}
           </div>
 
           {ticketsPorAgente.length === 0 ? (
-            <div className="rounded-lg border border-dashed border-gray-200 p-6 text-center text-sm text-gray-500">
+            <div className="rounded-lg border border-dashed border-gray-200 p-4 sm:p-6 text-center text-xs sm:text-sm text-gray-500">
               Aún no hay tickets resueltos registrados por agentes.
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200 text-sm">
-                <thead className="bg-gray-50">
-                  <tr>
-                    {['Agente', 'Email', 'Resueltos', 'Último resuelto'].map((header) => (
-                      <th
-                        key={header}
-                        className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"
-                      >
-                        {header}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {ticketsPorAgente.map((agente, index) => {
-                    const nombre =
-                      agente?.nombre ?? agente?.agente_nombre ?? agente?.displayName ?? agente?.fullName ?? 'Sin nombre';
-                    const correo = agente?.email ?? agente?.correo ?? agente?.agente_email ?? 'Sin correo';
-                    const total = agente?.resueltos ?? agente?.total ?? agente?.conteo ?? agente?.cantidad ?? 0;
-                    const ultimo =
-                      agente?.ultimo_resuelto_en ??
-                      agente?.ultimoResueltoEn ??
-                      agente?.ultima_resolucion ??
-                      agente?.ultimaResolucion ??
-                      null;
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle px-4 sm:px-0">
+                <table className="min-w-full divide-y divide-gray-200 text-xs sm:text-sm">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      {['Agente', 'Email', 'Resueltos', 'Último resuelto'].map((header) => (
+                        <th
+                          key={header}
+                          className="px-2 sm:px-3 lg:px-4 py-2 text-left text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-gray-500"
+                        >
+                          {header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {ticketsPorAgente.map((agente, index) => {
+                      const nombre =
+                        agente?.nombre ?? agente?.agente_nombre ?? agente?.displayName ?? agente?.fullName ?? 'Sin nombre';
+                      const correo = agente?.email ?? agente?.correo ?? agente?.agente_email ?? 'Sin correo';
+                      const total = agente?.resueltos ?? agente?.total ?? agente?.conteo ?? agente?.cantidad ?? 0;
+                      const ultimo =
+                        agente?.ultimo_resuelto_en ??
+                        agente?.ultimoResueltoEn ??
+                        agente?.ultima_resolucion ??
+                        agente?.ultimaResolucion ??
+                        null;
 
-                    return (
-                      <tr key={`${correo}-${index}`} className="hover:bg-gray-50">
-                        <td className="px-4 py-2 text-gray-900 font-semibold">{nombre}</td>
-                        <td className="px-4 py-2 text-blue-600 break-all">{correo}</td>
-                        <td className="px-4 py-2 text-gray-900 font-semibold">{formatearNumero(total)}</td>
-                        <td className="px-4 py-2 text-gray-500">{ultimo ? formatearFechaLarga(ultimo) : 'Sin registro'}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                      return (
+                        <tr key={`${correo}-${index}`} className="hover:bg-gray-50">
+                          <td className="px-2 sm:px-3 lg:px-4 py-2 text-gray-900 font-semibold truncate max-w-[120px] sm:max-w-none">{nombre}</td>
+                          <td className="px-2 sm:px-3 lg:px-4 py-2 text-blue-600 break-all max-w-[150px] sm:max-w-none">{correo}</td>
+                          <td className="px-2 sm:px-3 lg:px-4 py-2 text-gray-900 font-semibold">{formatearNumero(total)}</td>
+                          <td className="px-2 sm:px-3 lg:px-4 py-2 text-gray-500 hidden md:table-cell">{ultimo ? formatearFechaLarga(ultimo) : 'Sin registro'}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.4fr,1fr]">
-          <div className="bg-white rounded-2xl border shadow-sm p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-base font-semibold text-gray-900">Ultimas presentaciones</h3>
-                <p className="text-sm text-gray-500">Resumen de las ultimas actividades en la plataforma.</p>
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1.4fr,1fr]">
+          <div className="bg-white rounded-xl sm:rounded-2xl border shadow-sm p-4 sm:p-5 lg:p-6 space-y-3 sm:space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm sm:text-base font-semibold text-gray-900">Ultimas presentaciones</h3>
+                <p className="text-xs sm:text-sm text-gray-500">Resumen de las ultimas actividades en la plataforma.</p>
               </div>
               {cargandoDashboard && (
-                <span className="text-xs text-blue-600">Actualizando...</span>
+                <span className="text-[10px] sm:text-xs text-blue-600">Actualizando...</span>
               )}
             </div>
             {recientes.length ? (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {recientes.slice(0, 5).map((presentacion, index) => {
                   const presentaId =
                     presentacion?.id ??
@@ -2293,13 +2295,13 @@ export default function AdminDashboard() {
                   const fechaCreacion = formatearFechaLarga(presentacion?.creadaEn ?? presentacion?.createdAt ?? presentacion?.fecha);
 
                   return (
-                    <div key={presentaId} className="rounded-xl border border-gray-100 p-4 hover:bg-gray-50 transition">
-                      <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div key={presentaId} className="rounded-lg sm:rounded-xl border border-gray-100 p-3 sm:p-4 hover:bg-gray-50 transition">
+                      <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3">
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm font-semibold text-gray-900 truncate" title={titulo}>
+                          <p className="text-xs sm:text-sm font-semibold text-gray-900 truncate" title={titulo}>
                             {titulo}
                           </p>
-                          <p className="text-xs text-gray-500">{fechaCreacion}</p>
+                          <p className="text-[10px] sm:text-xs text-gray-500">{fechaCreacion}</p>
                         </div>
                         <span className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full">
                           ID: {presentaId}
