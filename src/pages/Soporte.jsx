@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRightOnRectangleIcon,
+  Bars3Icon,
   BellIcon,
   ClockIcon,
   DocumentTextIcon,
@@ -134,7 +135,7 @@ const getEstadoBadgeClass = (estadoKey) => {
   switch (estadoKey) {
     case 'pendiente':
     case 'abierto':
-      return 'bg-yellow-100 text-yellow-800';
+      return 'bg-cyan-100 text-yellow-800';
     case 'en_proceso':
     case 'enproceso':
       return 'bg-blue-100 text-blue-800';
@@ -429,6 +430,7 @@ export default function Soporte() {
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState(null);
   const [seccionActiva, setSeccionActiva] = useState('reportes');
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
   // Estados generales
   const [mensaje, setMensaje] = useState(null);
@@ -1653,7 +1655,7 @@ export default function Soporte() {
       label: 'Reportes',
       icon: DocumentTextIcon,
       badge: metricas?.pendientes || null,
-      badgeClass: 'bg-red-100 text-red-700',
+      badgeClass: 'bg-blue-100 text-blue-700',
     },
     { id: 'usuarios', label: 'Usuarios', icon: UserGroupIcon },
     { id: 'mantenimiento', label: 'Mantenimiento', icon: WrenchScrewdriverIcon },
@@ -1665,26 +1667,26 @@ export default function Soporte() {
   // ===========================
 
   const renderReportes = () => (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Métricas */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
         {[
-          { label: 'Total', value: metricas?.total || 0, icon: DocumentTextIcon, gradient: 'from-teal-500 to-sky-500', bg: 'from-teal-50 to-sky-50' },
-          { label: 'Pendientes', value: metricas?.pendientes || 0, icon: ClockIcon, gradient: 'from-amber-500 to-orange-500', bg: 'from-amber-50 to-orange-50' },
-          { label: 'En proceso', value: metricas?.en_proceso || 0, icon: ExclamationTriangleIcon, gradient: 'from-sky-500 to-blue-500', bg: 'from-sky-50 to-blue-50' },
-          { label: 'Resueltos', value: metricas?.resueltos || 0, icon: CheckCircleIcon, gradient: 'from-emerald-500 to-teal-500', bg: 'from-emerald-50 to-teal-50' }
+          { label: 'Total', value: metricas?.total || 0, icon: DocumentTextIcon, gradient: 'from-cyan-500 to-cyan-500', bg: 'from-cyan-50 to-cyan-50' },
+          { label: 'Pendientes', value: metricas?.pendientes || 0, icon: ClockIcon, gradient: 'from-blue-500 to-blue-500', bg: 'from-blue-50 to-orange-50' },
+          { label: 'En proceso', value: metricas?.en_proceso || 0, icon: ExclamationTriangleIcon, gradient: 'from-cyan-500 to-blue-500', bg: 'from-cyan-50 to-blue-50' },
+          { label: 'Resueltos', value: metricas?.resueltos || 0, icon: CheckCircleIcon, gradient: 'from-cyan-500 to-cyan-500', bg: 'from-cyan-50 to-cyan-50' }
         ].map((metric, index) => (
           <div key={metric.label} className="group relative animate-fadeIn" style={{ animationDelay: `${index * 100}ms` }}>
-            <div className={`absolute inset-0 bg-gradient-to-br ${metric.gradient} opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-all duration-500`} />
-            <div className={`relative bg-gradient-to-br ${metric.bg} backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br opacity-20 rounded-full blur-2xl" />
+            <div className={`absolute inset-0 bg-gradient-to-br ${metric.gradient} opacity-0 group-hover:opacity-10 rounded-xl sm:rounded-2xl blur-xl transition-all duration-500`} />
+            <div className={`relative bg-gradient-to-br ${metric.bg} backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-white/50 p-4 sm:p-5 lg:p-6 transform transition-all duration-200 hover:scale-105 hover:shadow-2xl overflow-hidden`}>
+              <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br opacity-20 rounded-full blur-xl" />
               <div className="relative flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{metric.label}</p>
-                  <p className={`text-4xl font-bold bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent`}>{metric.value}</p>
+                  <p className="text-[10px] sm:text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5 sm:mb-2">{metric.label}</p>
+                  <p className={`text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent`}>{metric.value}</p>
                 </div>
-                <div className={`p-4 bg-gradient-to-br ${metric.gradient} rounded-xl shadow-lg transform transition-transform group-hover:scale-110 group-hover:rotate-12`}>
-                  <metric.icon className="w-8 h-8 text-white" />
+                <div className={`p-3 sm:p-4 bg-gradient-to-br ${metric.gradient} rounded-xl shadow-lg transform transition-transform group-hover:scale-110 group-hover:rotate-12`}>
+                  <metric.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                 </div>
               </div>
             </div>
@@ -1693,32 +1695,32 @@ export default function Soporte() {
       </div>
 
       {/* Filtros */}
-      <div className="grid gap-4 md:grid-cols-[2fr,1fr,1fr] mb-6">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-[2fr,1fr,1fr] mb-5 sm:mb-6">
         <div className="group relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-sky-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-100/50 p-4">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-cyan-500/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-cyan-100/50 p-3 sm:p-4">
             <div className="relative">
-              <MagnifyingGlassIcon className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-teal-500" />
+              <MagnifyingGlassIcon className="w-4 h-4 sm:w-5 sm:h-5 absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-cyan-500" />
               <input
                 type="text"
                 placeholder="Buscar por categoría, contacto o detalle..."
                 value={busquedaReportes}
                 onChange={(e) => setBusquedaReportes(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border-2 border-teal-200/50 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-white/50 backdrop-blur-sm"
+                className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm border-2 border-cyan-200/50 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white/50 backdrop-blur-sm"
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-100/50 p-4 flex flex-col gap-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-gray-600 flex items-center gap-2">
-            <ClockIcon className="w-4 h-4 text-teal-500" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-cyan-100/50 p-3 sm:p-4 flex flex-col gap-1.5 sm:gap-2">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 flex items-center gap-1.5 sm:gap-2">
+            <ClockIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-500" />
             Estado
           </span>
           <select
             value={estadoFiltro}
             onChange={(e) => setEstadoFiltro(e.target.value)}
-            className="w-full border-2 border-teal-200/50 rounded-xl px-4 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-white/50 backdrop-blur-sm font-semibold"
+            className="w-full text-sm border-2 border-cyan-200/50 rounded-xl px-3 sm:px-4 py-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white/50 backdrop-blur-sm font-semibold"
           >
             <option value="todos">Todos</option>
             {estadosDisponibles.map((estado) => (
@@ -1729,15 +1731,15 @@ export default function Soporte() {
           </select>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-100/50 p-4 flex flex-col gap-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-gray-600 flex items-center gap-2">
-            <DocumentTextIcon className="w-4 h-4 text-teal-500" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-cyan-100/50 p-3 sm:p-4 flex flex-col gap-1.5 sm:gap-2">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 flex items-center gap-1.5 sm:gap-2">
+            <DocumentTextIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-500" />
             Categoría
           </span>
           <select
             value={categoriaFiltro}
             onChange={(e) => setCategoriaFiltro(e.target.value)}
-            className="w-full border-2 border-teal-200/50 rounded-xl px-4 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-white/50 backdrop-blur-sm font-semibold"
+            className="w-full text-sm border-2 border-cyan-200/50 rounded-xl px-3 sm:px-4 py-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all bg-white/50 backdrop-blur-sm font-semibold"
           >
             <option value="todas">Todas</option>
             {categoriasDisponibles.map((categoria) => (
@@ -1749,47 +1751,47 @@ export default function Soporte() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-0 mb-4">
         <button
           onClick={handleRefrescarReportes}
           disabled={consultandoReportes}
-          className="group inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 to-sky-500 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-60 transform hover:scale-105 font-semibold"
+          className="group inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl shadow-lg hover:shadow-2xl transition-all duration-200 disabled:opacity-60 transform hover:scale-105 font-semibold"
         >
-          <ArrowPathIcon className={`w-5 h-5 ${consultandoReportes ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
+          <ArrowPathIcon className={`w-4 h-4 sm:w-5 sm:h-5 ${consultandoReportes ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
           {consultandoReportes ? 'Actualizando…' : 'Actualizar'}
         </button>
 
         <button
           onClick={exportarReportesCSV}
-          className="group inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 font-semibold"
+          className="group inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl shadow-lg hover:shadow-2xl transition-all duration-200 transform hover:scale-105 font-semibold"
         >
-          <ArrowDownTrayIcon className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+          <ArrowDownTrayIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
           Exportar CSV
         </button>
       </div>
 
       {reportesOcultos > 0 && !errorReportes && (
-        <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-700">
+        <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-xs text-blue-700">
           Se ocultaron {reportesOcultos} reportes marcados como eliminados. Puedes consultarlos desde las herramientas de auditoría si necesitas revisarlos.
         </div>
       )}
 
       {/* Tabla de reportes */}
-      <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-teal-100/50 overflow-hidden">
+      <div className="bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-cyan-100/50 overflow-hidden">
         {errorReportes ? (
-          <div className="py-12 px-6">
+          <div className="py-8 sm:py-12 px-4 sm:px-6">
             <div className="max-w-2xl mx-auto">
-              <div className="bg-gradient-to-br from-red-50 to-pink-50 border-2 border-red-200 rounded-2xl p-6 shadow-lg">
-                <div className="flex items-start gap-3">
-                  <ExclamationTriangleIcon className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5 animate-pulse" />
+              <div className="bg-gradient-to-br from-blue-50 to-pink-50 border-2 border-red-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg">
+                <div className="flex items-start gap-2 sm:gap-3">
+                  <ExclamationTriangleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 flex-shrink-0 mt-0.5 animate-pulse" />
                   <div>
-                    <h3 className="font-bold text-red-900 mb-2">❌ Error al cargar reportes</h3>
-                    <p className="text-red-700 text-sm mb-4">{errorReportes}</p>
+                    <h3 className="font-bold text-red-900 mb-2 text-sm sm:text-base">❌ Error al cargar reportes</h3>
+                    <p className="text-blue-700 text-xs sm:text-sm mb-3 sm:mb-4">{errorReportes}</p>
                     <button
                       onClick={handleRefrescarReportes}
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition transform hover:scale-105 shadow-lg"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition transform hover:scale-105 shadow-lg"
                     >
-                      <ArrowPathIcon className="w-4 h-4" />
+                      <ArrowPathIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       Reintentar
                     </button>
                   </div>
@@ -1798,22 +1800,22 @@ export default function Soporte() {
             </div>
           </div>
         ) : cargandoReportes ? (
-          <div className="py-16 text-center">
-            <div className="inline-flex flex-col items-center gap-4">
+          <div className="py-12 sm:py-16 text-center">
+            <div className="inline-flex flex-col items-center gap-3 sm:gap-4">
               <div className="relative">
-                <div className="w-16 h-16 border-4 border-teal-200 border-t-teal-500 rounded-full animate-spin" />
-                <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-sky-500 rounded-full animate-spin animation-delay-150" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 border-4 border-cyan-200 border-t-cyan-500 rounded-full animate-spin" />
+                <div className="absolute inset-0 w-14 h-14 sm:w-16 sm:h-16 border-4 border-transparent border-t-cyan-500 rounded-full animate-spin animation-delay-150" />
               </div>
-              <p className="text-gray-600 font-semibold">Cargando reportes...</p>
+              <p className="text-gray-600 font-semibold text-sm sm:text-base">Cargando reportes...</p>
             </div>
           </div>
         ) : !reportesFiltrados || reportesFiltrados.length === 0 ? (
-          <div className="py-12 px-6">
+          <div className="py-8 sm:py-12 px-4 sm:px-6">
             <div className="max-w-2xl mx-auto">
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-6 text-center shadow-lg">
-                <DocumentTextIcon className="w-16 h-16 text-amber-500 mx-auto mb-4" />
-                <h3 className="font-bold text-amber-900 mb-2 text-lg">📋 No hay reportes disponibles</h3>
-                <p className="text-amber-700 text-sm">
+              <div className="bg-gradient-to-br from-blue-50 to-orange-50 border-2 border-blue-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center shadow-lg">
+                <DocumentTextIcon className="w-12 h-12 sm:w-16 sm:h-16 text-blue-500 mx-auto mb-3 sm:mb-4" />
+                <h3 className="font-bold text-amber-900 mb-2 text-base sm:text-lg">📋 No hay reportes disponibles</h3>
+                <p className="text-blue-700 text-xs sm:text-sm">
                   {!reportes || reportes.length === 0 
                     ? 'No se encontraron reportes en la base de datos.'
                     : 'No hay reportes que coincidan con los filtros aplicados.'}
@@ -1823,13 +1825,13 @@ export default function Soporte() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-teal-100/50">
-              <thead className="bg-gradient-to-r from-teal-50 to-sky-50">
+            <table className="min-w-full divide-y divide-cyan-100/50">
+              <thead className="bg-gradient-to-r from-cyan-50 to-cyan-50">
                 <tr>
                   {['Reporte', 'Detalle', 'Estado', 'Contacto', 'Atendido por', 'Creado', 'Acciones'].map((header) => (
                     <th
                       key={header}
-                      className={`px-6 py-4 text-xs font-bold uppercase text-gray-700 tracking-wider ${
+                      className={`px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-[10px] sm:text-xs font-bold uppercase text-gray-700 tracking-wider ${
                         header === 'Acciones' ? 'text-right' : 'text-left'
                       }`}
                     >
@@ -1838,7 +1840,7 @@ export default function Soporte() {
                   ))}
                 </tr>
                 </thead>
-              <tbody className="divide-y divide-teal-50/50 bg-white/50">
+              <tbody className="divide-y divide-cyan-50/50 bg-white/50">
                 {Array.isArray(reportesFiltrados) && reportesFiltrados
                   .slice(paginaReportes * ITEMS_POR_PAGINA, (paginaReportes + 1) * ITEMS_POR_PAGINA)
                   .map((reporte, index) => {
@@ -1865,26 +1867,26 @@ export default function Soporte() {
                   const comentarioEnProgreso = comentariosActivos && (cargandoComentarios || consultandoComentarios);
 
                   return (
-                    <tr key={id} className="hover:bg-gradient-to-r hover:from-teal-50/50 hover:to-sky-50/50 transition-all duration-200 align-top">
-                      <td className="px-6 py-5 text-sm text-gray-900">
-                        <div className="font-bold text-teal-700 mb-1">{categoriaLabel}</div>
-                        <div className="text-xs text-gray-500 flex items-center gap-1">
-                          <span className="inline-block w-1.5 h-1.5 bg-teal-400 rounded-full" />
+                    <tr key={id} className="hover:bg-gradient-to-r hover:from-cyan-50/50 hover:to-cyan-50/50 transition-all duration-200 align-top">
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-gray-900">
+                        <div className="font-bold text-cyan-700 mb-0.5 sm:mb-1 text-xs sm:text-sm">{categoriaLabel}</div>
+                        <div className="text-[10px] sm:text-xs text-gray-500 flex items-center gap-1">
+                          <span className="inline-block w-1 h-1 sm:w-1.5 sm:h-1.5 bg-cyan-400 rounded-full" />
                           ID: {id}
                         </div>
                       </td>
-                      <td className="px-6 py-5 text-sm text-gray-700">
-                        <div className="text-gray-900 font-semibold mb-1">{acortar(resumenVisible, 80)}</div>
-                        <p className="text-gray-600 leading-relaxed whitespace-pre-line text-xs">
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-gray-700">
+                        <div className="text-gray-900 font-semibold mb-0.5 sm:mb-1 text-xs sm:text-sm">{acortar(resumenVisible, 80)}</div>
+                        <p className="text-gray-600 leading-relaxed whitespace-pre-line text-[10px] sm:text-xs">
                           {acortar(mensajeVisible, 160)}
                         </p>
                       </td>
-                      <td className="px-6 py-5 text-sm text-gray-700">
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-gray-700">
                         <select
                           value={estadoActualKey}
                           onChange={(e) => cambiarEstadoReporte(reporte, e.target.value, index)}
                           disabled={actualizando}
-                          className="border-2 border-teal-200 rounded-xl px-3 py-2 bg-white focus:ring-2 focus:ring-teal-500 focus:border-teal-500 disabled:opacity-60 font-semibold text-sm transition-all"
+                          className="border-2 border-cyan-200 rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 bg-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-60 font-semibold text-xs sm:text-sm transition-all"
                         >
                           {estadosDisponibles.map((estado) => (
                             <option key={estado.value} value={estado.value}>
@@ -1892,50 +1894,50 @@ export default function Soporte() {
                             </option>
                           ))}
                         </select>
-                        {actualizando && <p className="text-xs text-teal-600 mt-1 font-semibold animate-pulse">Actualizando...</p>}
-                        <div className="mt-2 flex items-center gap-2">
-                          <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold shadow-sm ${estadoBadgeClass}`}>
+                        {actualizando && <p className="text-[10px] sm:text-xs text-cyan-600 mt-1 font-semibold animate-pulse">Actualizando...</p>}
+                        <div className="mt-1.5 sm:mt-2 flex items-center gap-1.5 sm:gap-2">
+                          <span className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold shadow-sm ${estadoBadgeClass}`}>
                             {estadoIcon}
                             {estadoDisplay}
                           </span>
                         </div>
                         {resueltoFormateado && (
-                          <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-1.5 text-xs font-bold text-emerald-700 shadow-sm">
-                            <CheckCircleIcon className="w-4 h-4" />
+                          <div className="mt-1.5 sm:mt-2 inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-cyan-100 to-cyan-100 px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold text-cyan-700 shadow-sm">
+                            <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                             Resuelto {resueltoFormateado}
                           </div>
                         )}
                       </td>
-                      <td className="px-6 py-5 text-sm text-gray-700">
-                        <div className="font-bold text-gray-900 mb-1">{contactoNombre}</div>
-                        <div className="text-xs text-teal-600 break-all font-medium">{contactoCorreo}</div>
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-gray-700">
+                        <div className="font-bold text-gray-900 mb-0.5 sm:mb-1 text-xs sm:text-sm">{contactoNombre}</div>
+                        <div className="text-[10px] sm:text-xs text-cyan-600 break-all font-medium">{contactoCorreo}</div>
                       </td>
-                      <td className="px-6 py-5 text-sm text-gray-600">
-                        <div className="font-semibold">{atendidoPor}</div>
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-gray-600">
+                        <div className="font-semibold text-xs sm:text-sm">{atendidoPor}</div>
                       </td>
-                      <td className="px-6 py-5 text-sm text-gray-500 font-medium">{fechaFormateada}</td>
-                      <td className="px-6 py-5 text-sm text-right">
-                        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:justify-end">
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-gray-500 font-medium">{fechaFormateada}</td>
+                      <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-5 text-xs sm:text-sm text-right">
+                        <div className="flex flex-col items-stretch gap-1.5 sm:gap-2 sm:flex-row sm:justify-end">
                           <button
                             type="button"
                             onClick={() => abrirComentarios(reporte, index)}
-                            className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-teal-300 px-4 py-2 text-xs font-bold text-teal-700 transition hover:bg-gradient-to-r hover:from-teal-50 hover:to-sky-50 transform hover:scale-105 shadow-sm"
+                            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl border-2 border-cyan-300 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold text-cyan-700 transition hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-50 transform hover:scale-105 shadow-sm"
                             disabled={comentarioEnProgreso}
                           >
-                            <ChatBubbleOvalLeftEllipsisIcon className={`w-4 h-4 ${comentarioEnProgreso ? 'animate-pulse' : ''}`} />
+                            <ChatBubbleOvalLeftEllipsisIcon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${comentarioEnProgreso ? 'animate-pulse' : ''}`} />
                             {comentarioEnProgreso ? 'Cargando…' : 'Comentarios'}
                           </button>
                           <button
                             type="button"
                             onClick={() => eliminarReporte(reporte, index)}
                             disabled={eliminando}
-                            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 px-4 py-2 text-xs font-bold text-white shadow-lg transition hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 transform hover:scale-105"
+                            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-pink-500 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold text-white shadow-lg transition hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 transform hover:scale-105"
                           >
                             {eliminando ? 'Eliminando…' : 'Eliminar'}
                           </button>
                         </div>
                         {eliminadoEn && (
-                          <p className="mt-2 text-[11px] text-amber-600 font-semibold">
+                          <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-[11px] text-blue-600 font-semibold">
                             Eliminado {formatearFecha(eliminadoEn)}
                           </p>
                         )}
@@ -1951,23 +1953,23 @@ export default function Soporte() {
 
       {/* Paginación de Reportes */}
       {reportesFiltrados && reportesFiltrados.length > ITEMS_POR_PAGINA && (
-        <div className="flex items-center justify-between bg-white/80 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-lg border border-teal-100/50">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-0 bg-white/80 backdrop-blur-sm px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-lg border border-cyan-100/50">
           <button
             onClick={() => setPaginaReportes(Math.max(0, paginaReportes - 1))}
             disabled={paginaReportes === 0}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-teal-500 to-sky-500 text-white shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
           >
-            <ChevronLeftIcon className="w-5 h-5" />
+            <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
             Anterior
           </button>
 
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-bold text-gray-700">
-              Página <span className="text-teal-600 text-lg">{paginaReportes + 1}</span> de{' '}
-              <span className="text-sky-600 text-lg">{Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA)}</span>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="text-xs sm:text-sm font-bold text-gray-700">
+              Página <span className="text-cyan-600 text-base sm:text-lg">{paginaReportes + 1}</span> de{' '}
+              <span className="text-blue-600 text-base sm:text-lg">{Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA)}</span>
             </span>
-            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-            <span className="text-xs text-gray-600 bg-teal-50 px-3 py-1.5 rounded-full font-semibold">
+            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full" />
+            <span className="text-[10px] sm:text-xs text-gray-600 bg-cyan-50 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold">
               {reportesFiltrados.length} reportes
             </span>
           </div>
@@ -1975,23 +1977,23 @@ export default function Soporte() {
           <button
             onClick={() => setPaginaReportes(Math.min(Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA) - 1, paginaReportes + 1))}
             disabled={paginaReportes >= Math.ceil(reportesFiltrados.length / ITEMS_POR_PAGINA) - 1}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-sky-500 to-purple-500 text-white shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
           >
             Siguiente
-            <ChevronRightIcon className="w-5 h-5" />
+            <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
       )}
 
       <div className="mt-6 text-center text-sm font-semibold">
-        <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-teal-100/50">
+        <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-cyan-100/50">
           <span className="text-gray-700">
-            Mostrando <span className="text-teal-600 font-bold">{reportesFiltrados?.length || 0}</span> de <span className="text-sky-600 font-bold">{reportes?.length || 0}</span> reportes
+            Mostrando <span className="text-cyan-600 font-bold">{reportesFiltrados?.length || 0}</span> de <span className="text-blue-600 font-bold">{reportes?.length || 0}</span> reportes
           </span>
           {reportesOcultos > 0 && (
             <>
               <span className="w-1 h-1 bg-gray-400 rounded-full" />
-              <span className="text-amber-600">{reportesOcultos} ocultos</span>
+              <span className="text-blue-600">{reportesOcultos} ocultos</span>
             </>
           )}
         </div>
@@ -2017,8 +2019,8 @@ export default function Soporte() {
           <div
             className={`rounded-lg border px-4 py-3 text-sm ${
               mensajeUsuarios.tipo === 'error'
-                ? 'border-red-200 bg-red-50 text-red-700'
-                : 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                ? 'border-red-200 bg-blue-50 text-blue-700'
+                : 'border-cyan-200 bg-cyan-50 text-cyan-700'
             }`}
           >
             {mensajeUsuarios.texto}
@@ -2150,7 +2152,7 @@ export default function Soporte() {
                             <span
                               className={`inline-block rounded-full px-2 py-1 text-xs font-semibold ${
                                 estadoUsuario === 'activo'
-                                  ? 'bg-emerald-100 text-emerald-700'
+                                  ? 'bg-cyan-100 text-cyan-700'
                                   : estadoUsuario === 'inactivo'
                                     ? 'bg-gray-200 text-gray-700'
                                     : estadoUsuario === 'suspendido'
@@ -2186,11 +2188,11 @@ export default function Soporte() {
 
               {/* Paginación de Usuarios */}
               {usuarios && usuarios.length > ITEMS_POR_PAGINA && (
-                <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-teal-50 to-sky-50 px-6 py-4 rounded-xl border border-teal-100/50">
+                <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-50 px-6 py-4 rounded-xl border border-cyan-100/50">
                   <button
                     onClick={() => setPaginaUsuarios(Math.max(0, paginaUsuarios - 1))}
                     disabled={paginaUsuarios === 0}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-teal-500 to-sky-500 text-white shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
                   >
                     <ChevronLeftIcon className="w-5 h-5" />
                     Anterior
@@ -2198,8 +2200,8 @@ export default function Soporte() {
 
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold text-gray-700">
-                      Página <span className="text-teal-600 text-lg">{paginaUsuarios + 1}</span> de{' '}
-                      <span className="text-sky-600 text-lg">{Math.ceil(usuarios.length / ITEMS_POR_PAGINA)}</span>
+                      Página <span className="text-cyan-600 text-lg">{paginaUsuarios + 1}</span> de{' '}
+                      <span className="text-blue-600 text-lg">{Math.ceil(usuarios.length / ITEMS_POR_PAGINA)}</span>
                     </span>
                     <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                     <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -2210,7 +2212,7 @@ export default function Soporte() {
                   <button
                     onClick={() => setPaginaUsuarios(Math.min(Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1, paginaUsuarios + 1))}
                     disabled={paginaUsuarios >= Math.ceil(usuarios.length / ITEMS_POR_PAGINA) - 1}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-sky-500 to-purple-500 text-white shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
                   >
                     Siguiente
                     <ChevronRightIcon className="w-5 h-5" />
@@ -2248,7 +2250,7 @@ export default function Soporte() {
                     Cargando detalle…
                   </div>
                 ) : !usuarioDetalle ? (
-                  <p className="text-sm text-red-600">No se pudo cargar la información del usuario seleccionado.</p>
+                  <p className="text-sm text-blue-600">No se pudo cargar la información del usuario seleccionado.</p>
                 ) : (
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -2335,7 +2337,7 @@ export default function Soporte() {
                   <span
                     className={`rounded-full px-3 py-1 text-xs font-semibold ${
                       puedeGestionarPresentaciones
-                        ? 'bg-emerald-100 text-emerald-700'
+                        ? 'bg-cyan-100 text-cyan-700'
                         : 'bg-gray-100 text-gray-600'
                     }`}
                   >
@@ -2348,9 +2350,9 @@ export default function Soporte() {
                 <div
                   className={`mt-4 rounded-lg border px-4 py-3 text-sm ${
                     mensajePresentacionesUsuario.tipo === 'error'
-                      ? 'border-red-200 bg-red-50 text-red-700'
+                      ? 'border-red-200 bg-blue-50 text-blue-700'
                       : mensajePresentacionesUsuario.tipo === 'success'
-                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                        ? 'border-cyan-200 bg-cyan-50 text-cyan-700'
                         : 'border-blue-200 bg-blue-50 text-blue-700'
                   }`}
                 >
@@ -2391,7 +2393,7 @@ export default function Soporte() {
                               type="button"
                               onClick={() => eliminarPresentacionSoporte(presentacion)}
                               disabled={eliminando}
-                              className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
+                              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
                             >
                               <TrashIcon className="w-4 h-4" />
                               {eliminando ? 'Eliminando…' : 'Eliminar'}
@@ -2449,7 +2451,7 @@ export default function Soporte() {
               <p className="text-sm font-semibold text-gray-700">Estado actual</p>
               <p
                 className={`text-2xl font-bold ${
-                  mantenimiento?.activo ? 'text-orange-600' : 'text-green-600'
+                  mantenimiento?.activo ? 'text-blue-600' : 'text-green-600'
                 }`}
               >
                 {mantenimiento?.activo ? 'ACTIVO' : 'DESACTIVADO'}
@@ -2464,7 +2466,7 @@ export default function Soporte() {
               className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold shadow-lg transition disabled:opacity-60 ${
                 mantenimiento?.activo
                   ? 'bg-green-600 hover:bg-green-700'
-                  : 'bg-orange-600 hover:bg-orange-700'
+                  : 'bg-blue-600 hover:bg-orange-700'
               }`}
             >
               {activandoMantenimiento ? (
@@ -2530,11 +2532,11 @@ export default function Soporte() {
 
           {/* Paginación de Mantenimiento */}
           {historialMantenimientos && historialMantenimientos.length > ITEMS_POR_PAGINA && (
-            <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-teal-50 to-sky-50 px-6 py-4 rounded-xl border border-teal-100/50">
+            <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-50 px-6 py-4 rounded-xl border border-cyan-100/50">
               <button
                 onClick={() => setPaginaMantenimiento(Math.max(0, paginaMantenimiento - 1))}
                 disabled={paginaMantenimiento === 0}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-teal-500 to-sky-500 text-white shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
               >
                 <ChevronLeftIcon className="w-5 h-5" />
                 Anterior
@@ -2542,8 +2544,8 @@ export default function Soporte() {
 
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold text-gray-700">
-                  Página <span className="text-teal-600 text-lg">{paginaMantenimiento + 1}</span> de{' '}
-                  <span className="text-sky-600 text-lg">{Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA)}</span>
+                  Página <span className="text-cyan-600 text-lg">{paginaMantenimiento + 1}</span> de{' '}
+                  <span className="text-blue-600 text-lg">{Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA)}</span>
                 </span>
                 <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                 <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -2554,7 +2556,7 @@ export default function Soporte() {
               <button
                 onClick={() => setPaginaMantenimiento(Math.min(Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA) - 1, paginaMantenimiento + 1))}
                 disabled={paginaMantenimiento >= Math.ceil(historialMantenimientos.length / ITEMS_POR_PAGINA) - 1}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-sky-500 to-purple-500 text-white shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
               >
                 Siguiente
                 <ChevronRightIcon className="w-5 h-5" />
@@ -2599,11 +2601,11 @@ export default function Soporte() {
 
           {/* Paginación de Historial */}
           {historialReportes && historialReportes.length > ITEMS_POR_PAGINA && (
-            <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-teal-50 to-sky-50 px-6 py-4 rounded-xl border border-teal-100/50">
+            <div className="mt-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-cyan-50 px-6 py-4 rounded-xl border border-cyan-100/50">
               <button
                 onClick={() => setPaginaHistorial(Math.max(0, paginaHistorial - 1))}
                 disabled={paginaHistorial === 0}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-teal-500 to-sky-500 text-white shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-cyan-500 text-white shadow-lg hover:shadow-xl"
               >
                 <ChevronLeftIcon className="w-5 h-5" />
                 Anterior
@@ -2611,8 +2613,8 @@ export default function Soporte() {
 
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold text-gray-700">
-                  Página <span className="text-teal-600 text-lg">{paginaHistorial + 1}</span> de{' '}
-                  <span className="text-sky-600 text-lg">{Math.ceil(historialReportes.length / ITEMS_POR_PAGINA)}</span>
+                  Página <span className="text-cyan-600 text-lg">{paginaHistorial + 1}</span> de{' '}
+                  <span className="text-blue-600 text-lg">{Math.ceil(historialReportes.length / ITEMS_POR_PAGINA)}</span>
                 </span>
                 <span className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                 <span className="text-xs text-gray-600 bg-white px-3 py-1.5 rounded-full font-semibold">
@@ -2623,7 +2625,7 @@ export default function Soporte() {
               <button
                 onClick={() => setPaginaHistorial(Math.min(Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1, paginaHistorial + 1))}
                 disabled={paginaHistorial >= Math.ceil(historialReportes.length / ITEMS_POR_PAGINA) - 1}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-sky-500 to-purple-500 text-white shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
               >
                 Siguiente
                 <ChevronRightIcon className="w-5 h-5" />
@@ -2652,42 +2654,69 @@ export default function Soporte() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-teal-50 via-sky-50 to-purple-50 relative overflow-hidden">
+    <div className="flex min-h-screen bg-gradient-to-br from-cyan-50 via-cyan-50 to-blue-50 relative overflow-hidden">
       {/* Animated background blobs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-teal-400/20 to-sky-400/20 rounded-full blur-3xl animate-blob" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-gradient-to-br from-sky-400/20 to-purple-400/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
-      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-teal-400/20 rounded-full blur-3xl animate-blob animation-delay-4000" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-cyan-400/20 rounded-full blur-xl animate-blob" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full blur-xl animate-blob animation-delay-2000" />
+      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-xl animate-blob animation-delay-4000" />
+      
+      {/* Botón hamburguesa móvil */}
+      <button
+        onClick={() => setMenuAbierto(!menuAbierto)}
+        className="fixed top-4 left-4 z-50 lg:hidden bg-white/90 backdrop-blur-sm p-2 rounded-xl shadow-lg hover:bg-white transition-all duration-200 hover:scale-110 border border-cyan-100/50"
+        aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
+      >
+        {menuAbierto ? (
+          <XMarkIcon className="h-6 w-6 text-gray-700" />
+        ) : (
+          <Bars3Icon className="h-6 w-6 text-gray-700" />
+        )}
+      </button>
+
+      {/* Overlay móvil */}
+      {menuAbierto && (
+        <div
+          onClick={() => setMenuAbierto(false)}
+          className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm lg:hidden"
+          aria-hidden="true"
+        />
+      )}
       
       {/* Sidebar */}
-      <aside className="w-64 bg-white/80 backdrop-blur-xl shadow-2xl flex flex-col justify-between relative z-10 border-r border-teal-100/50">
+      <aside className={`fixed inset-y-0 left-0 z-50 w-72 lg:static lg:w-80 transform ${
+        menuAbierto ? 'translate-x-0' : '-translate-x-full'
+      } lg:translate-x-0 transition-transform duration-300 bg-white/80 backdrop-blur-xl shadow-2xl flex flex-col justify-between border-r border-cyan-100/50`}>
         <div>
-          <div className="p-6 border-b border-teal-100/50 bg-gradient-to-br from-white/90 to-teal-50/30">
+          <div className="p-5 sm:p-6 border-b border-cyan-100/50 bg-gradient-to-br from-white/90 to-cyan-50/30">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 bg-gradient-to-br from-teal-500 via-sky-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow transform hover:scale-110 transition-transform duration-300">
-                <ShieldCheckIcon className="text-white w-8 h-8" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 via-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow transform hover:scale-110 transition-transform duration-300">
+                <ShieldCheckIcon className="text-white w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <div>
-                <h1 className="text-2xl font-extrabold bg-gradient-to-r from-teal-600 via-sky-600 to-purple-600 bg-clip-text text-transparent tracking-tight">CONTROL</h1>
-                <p className="text-xs text-gray-600 font-semibold">Centro de Supervisión</p>
+                <h1 className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-blue-600 bg-clip-text text-transparent tracking-tight">CONTROL</h1>
+                <p className="text-[10px] sm:text-xs text-gray-600 font-semibold">Centro de Supervisión</p>
               </div>
             </div>
           </div>
 
-          <nav className="p-4 space-y-2">
+          <nav className="p-3 sm:p-4 space-y-1.5 sm:space-y-2">
             {menuItems.map(({ id, label, icon: Icon, badge, badgeClass }) => (
               <button
                 key={id}
-                onClick={() => setSeccionActiva(id)}
-                className={`group w-full flex items-center gap-3 px-4 py-4 rounded-xl text-sm font-bold transition-all duration-300 transform hover:scale-[1.03] ${
+                onClick={() => {
+                  setSeccionActiva(id);
+                  setMenuAbierto(false);
+                }}
+                className={`group w-full flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 transform hover:scale-[1.02] ${
                   seccionActiva === id
-                    ? 'bg-gradient-to-r from-teal-500 via-sky-500 to-purple-500 text-white shadow-2xl shadow-teal-300/50 scale-[1.02]'
-                    : 'hover:bg-gradient-to-r hover:from-teal-50 hover:to-sky-50 text-gray-700 hover:shadow-lg border border-transparent hover:border-teal-200/50'
+                    ? 'bg-gradient-to-r from-cyan-500 via-cyan-500 to-blue-500 text-white shadow-2xl shadow-cyan-300/50 scale-[1.02]'
+                    : 'hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-50 text-gray-700 hover:shadow-lg border border-transparent hover:border-cyan-200/50'
                 }`}
               >
-                <Icon className={`w-6 h-6 transition-transform duration-300 ${seccionActiva === id ? 'animate-pulse scale-110' : 'group-hover:scale-110'}`} />
+                <Icon className={`w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 ${seccionActiva === id ? 'animate-pulse scale-110' : 'group-hover:scale-110'}`} />
                 <span className="flex-1 text-left">{label}</span>
                 {badge !== null && badge !== undefined && (
-                  <span className={`text-xs px-3 py-1.5 rounded-full font-bold animate-pulse shadow-md ${seccionActiva === id ? 'bg-white/30 text-white backdrop-blur-sm' : badgeClass || 'bg-teal-100 text-teal-800'}`}>
+                  <span className={`text-[10px] sm:text-xs px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-bold animate-pulse shadow-md ${seccionActiva === id ? 'bg-white/30 text-white backdrop-blur-sm' : badgeClass || 'bg-cyan-100 text-cyan-800'}`}>
                     {badge}
                   </span>
                 )}
@@ -2697,61 +2726,61 @@ export default function Soporte() {
         </div>
 
         {usuario && (
-          <div className="p-4 border-t border-teal-100/50 flex items-center gap-3 bg-gradient-to-r from-teal-50/50 to-sky-50/50">
+          <div className="p-3 sm:p-4 border-t border-cyan-100/50 flex items-center gap-2.5 sm:gap-3 bg-gradient-to-r from-cyan-50/50 to-cyan-50/50">
             <img
               src={obtenerAvatarUrl(usuario?.foto, usuario?.nombre)}
               alt={usuario.nombre}
-              className="w-11 h-11 rounded-full object-cover border-2 border-teal-300 shadow-md"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-cyan-300 shadow-md"
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = obtenerAvatarUrl(null, usuario?.nombre);
               }}
             />
-            <div className="flex-1">
-              <p className="text-sm font-bold text-gray-800">{usuario.nombre}</p>
-              <span className="text-xs bg-gradient-to-r from-teal-500 to-sky-500 text-white px-2.5 py-1 rounded-full capitalize font-semibold shadow-sm">{usuario.rol}</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm font-bold text-gray-800 truncate">{usuario.nombre}</p>
+              <span className="text-[10px] sm:text-xs bg-gradient-to-r from-cyan-500 to-cyan-500 text-white px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full capitalize font-semibold shadow-sm inline-block">{usuario.rol}</span>
             </div>
             <button
               onClick={cerrarSesion}
-              className="text-red-500 hover:text-red-700 transition transform hover:scale-110 hover:rotate-12 p-1 rounded-lg hover:bg-red-50"
+              className="text-blue-500 hover:text-blue-700 transition transform hover:scale-110 hover:rotate-12 p-1 rounded-lg hover:bg-blue-50 flex-shrink-0"
               title="Cerrar sesión"
             >
-              <ArrowRightOnRectangleIcon className="w-6 h-6" />
+              <ArrowRightOnRectangleIcon className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         )}
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-8 pt-10 overflow-y-auto relative">
+      <main className="flex-1 px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-10 pt-16 sm:pt-10 overflow-y-auto relative">
         {/* Hero Section */}
-        <div className="mb-8 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-purple-500/10 rounded-3xl blur-2xl" />
-          <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-teal-100/50 p-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-teal-400/20 to-sky-400/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-br from-purple-400/20 to-teal-400/20 rounded-full blur-3xl" />
+        <div className="mb-6 sm:mb-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-cyan-500/10 to-blue-500/10 rounded-2xl sm:rounded-3xl blur-xl" />
+          <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-cyan-100/50 p-5 sm:p-6 lg:p-8 overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-br from-cyan-400/20 to-cyan-400/20 rounded-full blur-xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-xl" />
             
-            <div className="relative flex justify-between items-center">
+            <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
               <div className="flex-1">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500/10 to-sky-500/10 backdrop-blur-sm border border-teal-200/50 rounded-full px-4 py-1.5 mb-4">
-                  <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
-                  <span className="text-xs font-semibold text-teal-700">Sistema Activo</span>
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/10 to-cyan-500/10 backdrop-blur-sm border border-cyan-200/50 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 mb-3 sm:mb-4">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-500 rounded-full animate-pulse" />
+                  <span className="text-[10px] sm:text-xs font-semibold text-cyan-700">Sistema Activo</span>
                 </div>
-                <h2 className="text-4xl font-bold mb-3 bg-gradient-to-r from-teal-600 via-sky-600 to-purple-600 bg-clip-text text-transparent animate-text-shimmer">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-cyan-600 via-blue-600 to-blue-600 bg-clip-text text-transparent animate-text-shimmer">
                   {menuItems.find((m) => m.id === seccionActiva)?.label || 'Centro de Control'}
                 </h2>
-                <p className="text-gray-600 text-lg">Sistema de gestión y supervisión integral</p>
+                <p className="text-gray-600 text-sm sm:text-base lg:text-lg">Sistema de gestión y supervisión integral</p>
               </div>
 
               {/* Botón Notificaciones */}
-              <div className="relative">
+              <div className="relative w-full sm:w-auto flex justify-end">
                 <button
                   onClick={() => setMostrarNotificaciones(!mostrarNotificaciones)}
-                  className="relative p-3 rounded-xl hover:bg-gradient-to-r hover:from-teal-50 hover:to-sky-50 transition transform hover:scale-110 shadow-lg bg-white border border-teal-200/50"
+                  className="relative p-2.5 sm:p-3 rounded-xl hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-50 transition transform hover:scale-110 shadow-lg bg-white border border-cyan-200/50"
                 >
-                  <BellIcon className="w-7 h-7 text-gray-700" />
+                  <BellIcon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-700" />
                   {notificacionesNoLeidas > 0 && (
-                    <span className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full flex items-center justify-center font-bold animate-bounce shadow-lg">
+                    <span className="absolute -top-0.5 sm:-top-1 -right-0.5 sm:-right-1 w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-blue-500 to-pink-500 text-white text-[10px] sm:text-xs rounded-full flex items-center justify-center font-bold animate-bounce shadow-lg">
                       {notificacionesNoLeidas}
                     </span>
                   )}
@@ -2767,7 +2796,7 @@ export default function Soporte() {
             className={`rounded-lg border px-4 py-3 mb-6 ${
               mensaje.tipo === 'success'
                 ? 'border-green-200 bg-green-50 text-green-700'
-                : 'border-red-200 bg-red-50 text-red-700'
+                : 'border-red-200 bg-blue-50 text-blue-700'
             }`}
           >
             {mensaje.texto}
@@ -2790,16 +2819,16 @@ export default function Soporte() {
             onClick={cerrarComentarios}
             aria-hidden="true"
           />
-          <aside className="relative ml-auto flex h-full w-full max-w-2xl flex-col bg-white/95 backdrop-blur-xl shadow-2xl border-l-4 border-gradient-to-b from-teal-500 via-sky-500 to-purple-500 animate-slideInRight">
-            <header className="flex items-start justify-between border-b-2 border-gradient-to-r from-teal-100 to-sky-100 p-7 bg-gradient-to-r from-teal-50/50 to-sky-50/50">
+          <aside className="relative ml-auto flex h-full w-full max-w-2xl flex-col bg-white/95 backdrop-blur-xl shadow-2xl border-l-4 border-gradient-to-b from-cyan-500 via-cyan-500 to-blue-500 animate-slideInRight">
+            <header className="flex items-start justify-between border-b-2 border-gradient-to-r from-cyan-100 to-cyan-100 p-7 bg-gradient-to-r from-cyan-50/50 to-cyan-50/50">
               <div className="space-y-2 flex-1">
-                <p className="text-xs uppercase tracking-wider font-bold text-teal-600 flex items-center gap-2">
+                <p className="text-xs uppercase tracking-wider font-bold text-cyan-600 flex items-center gap-2">
                   <DocumentTextIcon className="w-4 h-4" />
                   Reporte {reporteComentarios.displayId}
                 </p>
-                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-700 via-sky-700 to-purple-700 bg-clip-text text-transparent">{reporteComentarios.resumen}</h3>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-700 via-blue-700 to-blue-700 bg-clip-text text-transparent">{reporteComentarios.resumen}</h3>
                 <div className="flex flex-wrap items-center gap-2 text-xs">
-                  <span className="inline-flex items-center rounded-full bg-gradient-to-r from-teal-100 to-sky-100 px-3 py-1.5 text-teal-700 font-bold shadow-sm">
+                  <span className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-100 to-cyan-100 px-3 py-1.5 text-cyan-700 font-bold shadow-sm">
                     {toLabel(reporteComentarios.categoria)}
                   </span>
                   {reporteComentarios.estado && (
@@ -2808,7 +2837,7 @@ export default function Soporte() {
                     </span>
                   )}
                   {reporteComentarios.resuelto_en && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-1.5 text-emerald-700 font-bold shadow-sm">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-cyan-100 to-cyan-100 px-3 py-1.5 text-cyan-700 font-bold shadow-sm">
                       <CheckCircleIcon className="h-4 w-4" />
                       Resuelto {formatearFecha(reporteComentarios.resuelto_en)}
                     </span>
@@ -2818,30 +2847,30 @@ export default function Soporte() {
               <button
                 type="button"
                 onClick={cerrarComentarios}
-                className="rounded-xl p-2 text-gray-500 transition hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-600 transform hover:scale-110 hover:rotate-90"
+                className="rounded-xl p-2 text-gray-500 transition hover:bg-gradient-to-r hover:from-blue-50 hover:to-pink-50 hover:text-blue-600 transform hover:scale-110 hover:rotate-90"
                 aria-label="Cerrar panel de comentarios"
               >
                 <XMarkIcon className="h-7 w-7" />
               </button>
             </header>
 
-            <div className="flex-1 space-y-4 overflow-y-auto p-6 bg-gradient-to-br from-gray-50/50 to-teal-50/20">
+            <div className="flex-1 space-y-4 overflow-y-auto p-6 bg-gradient-to-br from-gray-50/50 to-cyan-50/20">
               {errorComentarios ? (
-                <div className="rounded-2xl border-2 border-red-200 bg-gradient-to-br from-red-50 to-pink-50 p-5 text-sm text-red-700 shadow-lg animate-fadeIn">
+                <div className="rounded-2xl border-2 border-red-200 bg-gradient-to-br from-blue-50 to-pink-50 p-5 text-sm text-blue-700 shadow-lg animate-fadeIn">
                   <ExclamationTriangleIcon className="w-6 h-6 inline mr-2 animate-pulse" />
                   {errorComentarios.message || 'No se pudieron cargar los comentarios.'}
                 </div>
               ) : cargandoComentarios && comentarios.length === 0 ? (
                 <div className="py-16 text-center">
                   <div className="relative inline-block">
-                    <div className="w-16 h-16 border-4 border-teal-200 border-t-teal-500 rounded-full animate-spin" />
-                    <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-sky-500 rounded-full animate-spin animation-delay-150" />
+                    <div className="w-16 h-16 border-4 border-cyan-200 border-t-cyan-500 rounded-full animate-spin" />
+                    <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-cyan-500 rounded-full animate-spin animation-delay-150" />
                   </div>
                   <p className="mt-4 text-sm font-semibold text-gray-600">Cargando conversación…</p>
                 </div>
               ) : comentarios.length === 0 ? (
-                <div className="rounded-2xl border-2 border-dashed border-teal-200 bg-gradient-to-br from-teal-50/50 to-sky-50/50 p-8 text-center shadow-inner">
-                  <ChatBubbleOvalLeftEllipsisIcon className="w-16 h-16 mx-auto mb-4 text-teal-300" />
+                <div className="rounded-2xl border-2 border-dashed border-cyan-200 bg-gradient-to-br from-cyan-50/50 to-cyan-50/50 p-8 text-center shadow-inner">
+                  <ChatBubbleOvalLeftEllipsisIcon className="w-16 h-16 mx-auto mb-4 text-cyan-300" />
                   <p className="text-sm font-semibold text-gray-600">Aún no hay comentarios en este reporte.</p>
                 </div>
               ) : (
@@ -2850,16 +2879,16 @@ export default function Soporte() {
                     comentario.tipo === 'interno'
                       ? 'bg-gradient-to-r from-slate-100 to-gray-100 text-slate-700'
                       : comentario.tipo === 'respuesta'
-                        ? 'bg-gradient-to-r from-teal-100 to-sky-100 text-teal-700'
-                        : 'bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700';
+                        ? 'bg-gradient-to-r from-cyan-100 to-cyan-100 text-cyan-700'
+                        : 'bg-gradient-to-r from-blue-100 to-orange-100 text-blue-700';
 
                   return (
-                    <div key={comentario.id} className="rounded-2xl border border-teal-100/50 bg-white/80 backdrop-blur-sm p-5 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.01] animate-fadeIn" style={{ animationDelay: `${idx * 50}ms` }}>
+                    <div key={comentario.id} className="rounded-2xl border border-cyan-100/50 bg-white/80 backdrop-blur-sm p-5 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.01] animate-fadeIn" style={{ animationDelay: `${idx * 50}ms` }}>
                       <div className="flex items-start gap-4">
                         <img
                           src={obtenerAvatarUrl(comentario.autor_foto, comentario.autor_nombre)}
                           alt={comentario.autor_nombre}
-                          className="h-11 w-11 flex-shrink-0 rounded-full object-cover border-2 border-teal-200 shadow-md"
+                          className="h-11 w-11 flex-shrink-0 rounded-full object-cover border-2 border-cyan-200 shadow-md"
                           onError={(e) => {
                             e.currentTarget.onerror = null;
                             e.currentTarget.src = obtenerAvatarUrl(null, comentario.autor_nombre);
@@ -2887,15 +2916,15 @@ export default function Soporte() {
               )}
             </div>
 
-            <footer className="border-t-2 border-gradient-to-r from-teal-100 to-sky-100 p-6 bg-gradient-to-r from-teal-50/50 to-sky-50/50">
+            <footer className="border-t-2 border-gradient-to-r from-cyan-100 to-cyan-100 p-6 bg-gradient-to-r from-cyan-50/50 to-cyan-50/50">
               {comentariosAviso && (
-                <div className="mb-4 rounded-xl border-2 border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 px-4 py-3 text-sm text-emerald-700 font-semibold shadow-md animate-fadeIn">
+                <div className="mb-4 rounded-xl border-2 border-cyan-200 bg-gradient-to-r from-cyan-50 to-cyan-50 px-4 py-3 text-sm text-cyan-700 font-semibold shadow-md animate-fadeIn">
                   <CheckCircleIcon className="w-5 h-5 inline mr-2" />
                   {comentariosAviso.texto}
                 </div>
               )}
               {comentarioError && (
-                <div className="mb-4 rounded-xl border-2 border-red-200 bg-gradient-to-r from-red-50 to-pink-50 px-4 py-3 text-sm text-red-700 font-semibold shadow-md animate-fadeIn">
+                <div className="mb-4 rounded-xl border-2 border-red-200 bg-gradient-to-r from-blue-50 to-pink-50 px-4 py-3 text-sm text-blue-700 font-semibold shadow-md animate-fadeIn">
                   <ExclamationTriangleIcon className="w-5 h-5 inline mr-2" />
                   {comentarioError}
                 </div>
@@ -2906,7 +2935,7 @@ export default function Soporte() {
                     htmlFor="nuevo-comentario"
                     className="text-xs font-bold uppercase tracking-widest text-gray-700 flex items-center gap-2 mb-2"
                   >
-                    <ChatBubbleOvalLeftEllipsisIcon className="w-4 h-4 text-teal-500" />
+                    <ChatBubbleOvalLeftEllipsisIcon className="w-4 h-4 text-cyan-500" />
                     Nuevo comentario
                   </label>
                   <textarea
@@ -2919,7 +2948,7 @@ export default function Soporte() {
                       }
                     }}
                     rows={4}
-                    className="w-full rounded-xl border-2 border-teal-200 px-4 py-3 text-sm focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-200/50 transition-all bg-white/80 backdrop-blur-sm shadow-inner"
+                    className="w-full rounded-xl border-2 border-cyan-200 px-4 py-3 text-sm focus:border-cyan-500 focus:outline-none focus:ring-4 focus:ring-cyan-200/50 transition-all bg-white/80 backdrop-blur-sm shadow-inner"
                     placeholder="Comparte una actualización o deja una nota interna…"
                   ></textarea>
                 </div>
@@ -2928,7 +2957,7 @@ export default function Soporte() {
                   <select
                     value={comentarioTipo}
                     onChange={(e) => setComentarioTipo(e.target.value)}
-                    className="w-full rounded-xl border-2 border-teal-200 px-4 py-3 text-sm font-semibold focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-200/50 sm:w-52 transition-all bg-white/80 backdrop-blur-sm shadow-sm"
+                    className="w-full rounded-xl border-2 border-cyan-200 px-4 py-3 text-sm font-semibold focus:border-cyan-500 focus:outline-none focus:ring-4 focus:ring-cyan-200/50 sm:w-52 transition-all bg-white/80 backdrop-blur-sm shadow-sm"
                   >
                     {tiposComentarioDisponibles.map((opcion) => (
                       <option key={opcion.value} value={opcion.value}>
@@ -2940,7 +2969,7 @@ export default function Soporte() {
                   <button
                     type="submit"
                     disabled={creandoComentario || !comentarioMensaje.trim()}
-                    className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-teal-500 via-sky-500 to-purple-500 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:shadow-2xl disabled:cursor-not-allowed disabled:opacity-60 transform hover:scale-105"
+                    className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-cyan-500 via-cyan-500 to-blue-500 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:shadow-2xl disabled:cursor-not-allowed disabled:opacity-60 transform hover:scale-105"
                   >
                     {creandoComentario && <ArrowPathIcon className="h-5 w-5 animate-spin" />}
                     {creandoComentario ? 'Enviando…' : 'Agregar comentario'}
@@ -2964,17 +2993,17 @@ export default function Soporte() {
             }}
           />
           {/* Panel de notificaciones */}
-          <div className="fixed right-8 top-24 w-[420px] bg-white backdrop-blur-xl rounded-2xl shadow-2xl border-2 border-teal-200/50 z-[9999] overflow-hidden animate-fadeIn">
+          <div className="fixed right-8 top-24 w-[420px] bg-white backdrop-blur-xl rounded-2xl shadow-2xl border-2 border-cyan-200/50 z-[9999] overflow-hidden animate-fadeIn">
             {/* Header */}
-            <div className="p-5 border-b-2 border-teal-100/50 bg-gradient-to-r from-teal-50/80 to-sky-50/80">
+            <div className="p-5 border-b-2 border-cyan-100/50 bg-gradient-to-r from-cyan-50/80 to-cyan-50/80">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-gray-900 flex items-center gap-2">
-                  <BellIcon className="w-5 h-5 text-teal-600" />
+                  <BellIcon className="w-5 h-5 text-cyan-600" />
                   Notificaciones
                 </h3>
                 <div className="flex items-center gap-2">
                   {notificacionesNoLeidas > 0 && (
-                    <span className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg">
+                    <span className="bg-gradient-to-r from-blue-500 to-pink-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg">
                       {notificacionesNoLeidas} nuevas
                     </span>
                   )}
@@ -2983,7 +3012,7 @@ export default function Soporte() {
                       setMostrarNotificaciones(false);
                       setPaginaNotificaciones(0);
                     }}
-                    className="p-1 hover:bg-red-50 rounded-lg transition text-gray-500 hover:text-red-600"
+                    className="p-1 hover:bg-blue-50 rounded-lg transition text-gray-500 hover:text-blue-600"
                   >
                     <XMarkIcon className="w-5 h-5" />
                   </button>
@@ -3001,7 +3030,7 @@ export default function Soporte() {
             ) : (
               <>
                 {/* Lista de notificaciones paginadas */}
-                <div className="divide-y divide-teal-50/50 min-h-[300px] max-h-[400px]">
+                <div className="divide-y divide-cyan-50/50 min-h-[300px] max-h-[400px]">
                   {notificaciones
                     .slice(
                       paginaNotificaciones * NOTIFICACIONES_POR_PAGINA,
@@ -3010,7 +3039,7 @@ export default function Soporte() {
                     .map((notif, idx) => (
                       <div
                         key={notif.id}
-                        className={`p-4 hover:bg-gradient-to-r hover:from-teal-50 hover:to-sky-50 cursor-pointer transition-all duration-200 animate-fadeIn ${notif.leido ? 'opacity-60' : 'bg-teal-50/50'}`}
+                        className={`p-4 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-cyan-50 cursor-pointer transition-all duration-200 animate-fadeIn ${notif.leido ? 'opacity-60' : 'bg-cyan-50/50'}`}
                         style={{ animationDelay: `${idx * 50}ms` }}
                         onClick={() => !notif.leido && marcarNotificacionLeida(notif.id)}
                       >
@@ -3018,8 +3047,8 @@ export default function Soporte() {
                           {!notif.leido && (
                             <div className="flex-shrink-0 mt-1">
                               <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
                               </span>
                             </div>
                           )}
@@ -3039,20 +3068,20 @@ export default function Soporte() {
 
                 {/* Controles de paginación */}
                 {notificaciones.length > NOTIFICACIONES_POR_PAGINA && (
-                  <div className="p-4 border-t-2 border-teal-100/50 bg-gradient-to-r from-teal-50/50 to-sky-50/50">
+                  <div className="p-4 border-t-2 border-cyan-100/50 bg-gradient-to-r from-cyan-50/50 to-cyan-50/50">
                     <div className="flex items-center justify-between">
                       <button
                         onClick={() => setPaginaNotificaciones((prev) => Math.max(0, prev - 1))}
                         disabled={paginaNotificaciones === 0}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border-2 border-teal-200 text-teal-700 font-semibold text-sm hover:bg-teal-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md transform hover:scale-105 disabled:transform-none"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border-2 border-cyan-200 text-cyan-700 font-semibold text-sm hover:bg-cyan-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md transform hover:scale-105 disabled:transform-none"
                       >
                         <ChevronLeftIcon className="w-4 h-4" />
                         Anterior
                       </button>
 
                       <div className="text-xs font-semibold text-gray-600">
-                        <span className="text-teal-600">{paginaNotificaciones + 1}</span> de{' '}
-                        <span className="text-sky-600">
+                        <span className="text-cyan-600">{paginaNotificaciones + 1}</span> de{' '}
+                        <span className="text-blue-600">
                           {Math.ceil(notificaciones.length / NOTIFICACIONES_POR_PAGINA)}
                         </span>
                       </div>
@@ -3069,7 +3098,7 @@ export default function Soporte() {
                         disabled={
                           paginaNotificaciones >= Math.ceil(notificaciones.length / NOTIFICACIONES_POR_PAGINA) - 1
                         }
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border-2 border-teal-200 text-teal-700 font-semibold text-sm hover:bg-teal-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md transform hover:scale-105 disabled:transform-none"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border-2 border-cyan-200 text-cyan-700 font-semibold text-sm hover:bg-cyan-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md transform hover:scale-105 disabled:transform-none"
                       >
                         Siguiente
                         <ChevronRightIcon className="w-4 h-4" />
@@ -3091,9 +3120,9 @@ export default function Soporte() {
             onClick={cancelarMantenimiento}
             aria-hidden="true"
           />
-          <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border-4 border-gradient-to-br from-teal-500 via-sky-500 to-purple-500 w-full max-w-2xl mx-4 animate-slideInRight overflow-hidden">
+          <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border-4 border-gradient-to-br from-cyan-500 via-cyan-500 to-blue-500 w-full max-w-2xl mx-4 animate-slideInRight overflow-hidden">
             {/* Header con gradiente */}
-            <div className="relative bg-gradient-to-r from-teal-500 via-sky-500 to-purple-500 p-8">
+            <div className="relative bg-gradient-to-r from-cyan-500 via-cyan-500 to-blue-500 p-8">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
               <div className="relative flex items-center gap-4">
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow">
@@ -3119,9 +3148,9 @@ export default function Soporte() {
             {/* Contenido */}
             <div className="p-8 space-y-6">
               {/* Aviso */}
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-5 shadow-lg">
+              <div className="bg-gradient-to-br from-blue-50 to-orange-50 border-2 border-blue-200 rounded-2xl p-5 shadow-lg">
                 <div className="flex items-start gap-3">
-                  <ExclamationTriangleIcon className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5 animate-pulse" />
+                  <ExclamationTriangleIcon className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5 animate-pulse" />
                   <div>
                     <h4 className="font-bold text-amber-900 mb-1">¡Atención!</h4>
                     <p className="text-sm text-amber-800 leading-relaxed">
@@ -3136,7 +3165,7 @@ export default function Soporte() {
               <div className="space-y-3">
                 <label className="block">
                   <span className="text-sm font-bold text-gray-700 uppercase tracking-wide flex items-center gap-2">
-                    <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5 text-teal-600" />
+                    <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5 text-cyan-600" />
                     Mensaje para usuarios (opcional)
                   </span>
                   <p className="text-xs text-gray-500 mt-1 mb-3">
@@ -3144,13 +3173,13 @@ export default function Soporte() {
                   </p>
                 </label>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-sky-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-cyan-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <textarea
                     value={mensajeMantenimiento}
                     onChange={(e) => setMensajeMantenimiento(e.target.value)}
                     placeholder="Ej: Sistema en mantenimiento programado. Volveremos pronto..."
                     rows={4}
-                    className="relative w-full px-5 py-4 border-2 border-teal-200/50 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all bg-white/80 backdrop-blur-sm resize-none font-medium text-gray-700 placeholder:text-gray-400"
+                    className="relative w-full px-5 py-4 border-2 border-cyan-200/50 rounded-2xl focus:ring-4 focus:ring-cyan-500/20 focus:border-cyan-500 transition-all bg-white/80 backdrop-blur-sm resize-none font-medium text-gray-700 placeholder:text-gray-400"
                   />
                   <div className="absolute bottom-3 right-3 text-xs text-gray-400 font-semibold bg-white/80 px-2 py-1 rounded-lg">
                     {mensajeMantenimiento.length} caracteres
@@ -3160,8 +3189,8 @@ export default function Soporte() {
 
               {/* Vista previa */}
               {mensajeMantenimiento && (
-                <div className="bg-gradient-to-br from-teal-50 to-sky-50 border-2 border-teal-200/50 rounded-2xl p-5 shadow-lg animate-fadeIn">
-                  <p className="text-xs font-bold text-teal-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <div className="bg-gradient-to-br from-cyan-50 to-cyan-50 border-2 border-cyan-200/50 rounded-2xl p-5 shadow-lg animate-fadeIn">
+                  <p className="text-xs font-bold text-cyan-700 uppercase tracking-wider mb-2 flex items-center gap-2">
                     <ShieldCheckIcon className="w-4 h-4" />
                     Vista previa
                   </p>
@@ -3173,7 +3202,7 @@ export default function Soporte() {
             </div>
 
             {/* Footer con botones */}
-            <div className="bg-gradient-to-r from-gray-50 to-teal-50/30 border-t-2 border-teal-100/50 p-6 flex items-center justify-end gap-3">
+            <div className="bg-gradient-to-r from-gray-50 to-cyan-50/30 border-t-2 border-cyan-100/50 p-6 flex items-center justify-end gap-3">
               <button
                 onClick={cancelarMantenimiento}
                 disabled={activandoMantenimiento}
@@ -3185,7 +3214,7 @@ export default function Soporte() {
               <button
                 onClick={confirmarMantenimiento}
                 disabled={activandoMantenimiento}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white font-bold text-sm hover:from-orange-600 hover:via-amber-600 hover:to-orange-700 disabled:opacity-60 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-2xl transform hover:scale-105 disabled:transform-none"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 text-white font-bold text-sm hover:from-blue-600 hover:via-blue-600 hover:to-orange-700 disabled:opacity-60 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-2xl transform hover:scale-105 disabled:transform-none"
               >
                 {activandoMantenimiento ? (
                   <>
@@ -3206,3 +3235,12 @@ export default function Soporte() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
