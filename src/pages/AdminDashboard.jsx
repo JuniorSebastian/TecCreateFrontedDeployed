@@ -20,6 +20,7 @@ import {
   BoltIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  Bars3Icon,
 } from '@heroicons/react/24/outline';
 import {
   actualizarEstadoReporte,
@@ -343,6 +344,7 @@ export default function AdminDashboard() {
   const [eliminandoPresentacionId, setEliminandoPresentacionId] = useState(null);
   const [accionUsuario, setAccionUsuario] = useState({ id: null, tipo: null });
   const [seccionActiva, setSeccionActiva] = useState('dashboard');
+  const [menuAbierto, setMenuAbierto] = useState(false);
   const { limit: usuariosLimit, offset: usuariosOffset } = usuariosPaginacion;
   const { limit: historialLimit, offset: historialOffset } = presentacionesUsuarioPaginacion;
   const [reportes, setReportes] = useState([]);
@@ -2941,8 +2943,8 @@ export default function AdminDashboard() {
         label: 'Usuarios totales',
         value: totalUsuariosHero,
         description: 'Cuentas registradas en TEC CREATE',
-        gradient: 'from-sky-500 to-blue-600',
-        glow: 'from-sky-400/20 via-blue-400/10 to-indigo-500/20',
+        gradient: 'from-cyan-500 to-blue-600',
+        glow: 'from-cyan-400/20 via-blue-400/10 to-indigo-500/20',
       },
       {
         id: 'stats-presentaciones',
@@ -2950,8 +2952,8 @@ export default function AdminDashboard() {
         label: 'Presentaciones creadas',
         value: totalPresentacionesHero,
         description: 'Documentos generados por la comunidad',
-        gradient: 'from-indigo-500 to-purple-600',
-        glow: 'from-indigo-400/20 via-purple-400/10 to-fuchsia-500/20',
+        gradient: 'from-blue-500 to-indigo-600',
+        glow: 'from-blue-400/20 via-indigo-400/10 to-cyan-500/20',
       },
       {
         id: 'stats-reportes',
@@ -2959,75 +2961,76 @@ export default function AdminDashboard() {
         label: 'Reportes abiertos',
         value: reportesPendientesHero,
         description: 'Casos pendientes de soporte',
-        gradient: 'from-rose-500 to-amber-500',
-        glow: 'from-rose-400/20 via-amber-400/10 to-orange-400/20',
+        gradient: 'from-indigo-500 to-blue-500',
+        glow: 'from-indigo-400/20 via-cyan-400/10 to-blue-400/20',
       },
     ];
 
     return (
-      <section className="relative mb-10 overflow-hidden rounded-3xl border border-white/60 bg-white/80 px-6 py-10 shadow-[0px_25px_60px_rgba(59,130,246,0.25)] backdrop-blur-xl lg:px-10">
-        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-sky-400/40 via-indigo-400/30 to-purple-400/20 blur-3xl animate-blob"></div>
-        <div className="pointer-events-none absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-emerald-400/30 blur-[110px] animate-blob-slow"></div>
+      <section className="relative mb-6 sm:mb-8 lg:mb-10 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/80 px-4 sm:px-6 lg:px-10 py-6 sm:py-8 lg:py-10 shadow-[0px_25px_60px_rgba(59,130,246,0.25)] backdrop-blur-xl">
+        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-br from-cyan-400/40 via-blue-400/30 to-indigo-400/20 blur-3xl animate-blob"></div>
+        <div className="pointer-events-none absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-indigo-400/30 blur-[110px] animate-blob-slow"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
 
-        <div className="relative flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-2xl space-y-5">
-            <span className="inline-flex items-center gap-2 rounded-full bg-indigo-600/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-indigo-700">
-              <SparklesIcon className="h-4 w-4 text-indigo-500" />
+        <div className="relative flex flex-col gap-6 sm:gap-8 lg:gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl space-y-3 sm:space-y-4 lg:space-y-5">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-cyan-600/10 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-cyan-700">
+              <SparklesIcon className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-500" />
               Panel Ejecutivo
             </span>
-            <h1 className="text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900">
               Bienvenido a{' '}
-              <span className="animate-text-shimmer bg-gradient-to-r from-indigo-500 via-sky-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="animate-text-shimmer bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
                 TEC CREATE Admin
               </span>
             </h1>
-            <p className="text-base leading-relaxed text-slate-600 md:text-lg">
+            <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-600">
               Gestiona usuarios, monitorea reportes y consulta métricas clave en un espacio visual renovado.
               Mantén cada interacción bajo control con información en tiempo real y accesos rápidos.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               <button
                 type="button"
                 onClick={refrescarPanel}
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition-transform duration-300 hover:-translate-y-1"
+                className="group inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-transform duration-300 hover:-translate-y-1"
               >
-                <ArrowPathIcon className="h-4 w-4 animate-spin-slow" />
-                Sincronizar panel
+                <ArrowPathIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin-slow" />
+                <span className="hidden xs:inline sm:inline">Sincronizar panel</span>
+                <span className="inline xs:hidden sm:hidden">Sincronizar</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSeccionActiva('usuarios')}
-                className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/80 px-5 py-2.5 text-sm font-semibold text-indigo-700 shadow-sm transition hover:border-indigo-300 hover:shadow-lg"
+                className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-cyan-200 bg-white/80 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-cyan-700 shadow-sm transition hover:border-cyan-300 hover:shadow-lg"
               >
-                <BoltIcon className="h-4 w-4" />
+                <BoltIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 Gestionar usuarios
               </button>
             </div>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-slate-500">
+            <p className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.25em] sm:tracking-[0.3em] text-slate-500">
               {actualizacionTexto}
             </p>
           </div>
 
-            <div className="grid w-full gap-4 sm:grid-cols-2 lg:w-auto lg:min-w-[360px] lg:grid-cols-1">
+            <div className="grid w-full gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:w-auto lg:min-w-[360px] lg:grid-cols-1">
               {heroStats.map(({ id, icon: Icon, label, value, description, gradient, glow }, index) => (
                 <div
                   key={id}
-                  className="group relative overflow-hidden rounded-2xl border border-white/70 bg-white/80 p-5 shadow-xl transition-transform duration-300 hover:-translate-y-2"
+                  className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/70 bg-white/80 p-4 sm:p-5 shadow-xl transition-transform duration-300 hover:-translate-y-2"
                   style={{ animationDelay: `${index * 0.4}s` }}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${glow} opacity-0 transition-opacity duration-300 group-hover:opacity-100 animate-gradient-flight`}></div>
-                  <div className="relative flex items-start gap-4">
+                  <div className="relative flex items-start gap-3 sm:gap-4">
                     <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-white shadow-lg shadow-indigo-500/20 animate-float`}
+                      className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${gradient} text-white shadow-lg shadow-cyan-500/20 animate-float`}
                       style={{ animationDelay: `${index * 0.6}s` }}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">{label}</p>
-                      <p className="text-2xl font-bold text-slate-900">{value}</p>
-                      <p className="mt-1 text-xs text-slate-500">{description}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-500 truncate">{label}</p>
+                      <p className="text-xl sm:text-2xl font-bold text-slate-900">{value}</p>
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-slate-500 line-clamp-1">{description}</p>
                     </div>
                   </div>
                 </div>
@@ -3047,7 +3050,7 @@ export default function AdminDashboard() {
         description: 'Actualiza permisos, estados y privilegios en segundos.',
         chip: 'Usuarios',
         highlight: `${formatearNumero(usuariosTotal)} perfiles`,
-        accent: 'from-cyan-500 via-sky-500 to-blue-500',
+        accent: 'from-cyan-500 via-blue-500 to-indigo-500',
         onClick: () => setSeccionActiva('usuarios'),
       },
       {
@@ -3057,7 +3060,7 @@ export default function AdminDashboard() {
         description: 'Toma acción inmediata sobre casos pendientes de soporte.',
         chip: 'Soporte',
         highlight: `${formatearNumero(totalPendientes)} abiertos`,
-        accent: 'from-blue-500 via-cyan-500 to-emerald-500',
+        accent: 'from-blue-500 via-indigo-500 to-cyan-500',
         onClick: () => setSeccionActiva('reportes'),
       },
       {
@@ -3067,63 +3070,64 @@ export default function AdminDashboard() {
         description: 'Activa mensajes y controla las ventanas de servicio.',
         chip: mantenimiento?.activo ? 'Activo' : 'Programar',
         highlight: mantenimiento?.activo ? 'En curso' : 'Listo',
-        accent: 'from-sky-500 via-indigo-500 to-purple-500',
+        accent: 'from-indigo-500 via-cyan-500 to-blue-500',
         onClick: () => setSeccionActiva('mantenimiento'),
       },
     ];
 
     return (
-      <section className="relative mb-10">
-        <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-lg font-semibold text-slate-900">Accesos rápidos</h2>
-            <p className="text-sm text-slate-500">
+      <section className="relative mb-6 sm:mb-8 lg:mb-10">
+        <div className="mb-3 sm:mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex-1 min-w-0">
+            <h2 className="text-base sm:text-lg font-semibold text-slate-900">Accesos rápidos</h2>
+            <p className="text-xs sm:text-sm text-slate-500">
               Inicia tus flujos favoritos con tarjetas dinámicas que responden a tu contexto actual.
             </p>
           </div>
           <button
             type="button"
             onClick={refrescarPanel}
-            className="inline-flex items-center gap-2 rounded-full border border-cyan-300/60 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-700 shadow-sm transition hover:border-cyan-400 hover:shadow-lg"
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-cyan-300/60 bg-white/80 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-cyan-700 shadow-sm transition hover:border-cyan-400 hover:shadow-lg"
           >
-            <ArrowPathIcon className="h-4 w-4" />
+            <ArrowPathIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Refrescar
           </button>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {quickActions.map(({ id, icon: Icon, title, description, chip, highlight, accent, onClick }, index) => (
             <div
               key={id}
-              className="group relative overflow-hidden rounded-3xl border border-sky-100/70 bg-white/80 p-6 shadow-lg transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-cyan-100/70 bg-white/80 p-4 sm:p-5 lg:p-6 shadow-lg transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
               style={{ animationDelay: `${index * 0.25}s` }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-0 transition-opacity duration-500 group-hover:opacity-20 animate-gradient-flight`}></div>
-              <div className="relative flex flex-col gap-5">
-                <div className="flex items-start justify-between">
+              <div className="relative flex flex-col gap-3 sm:gap-4 lg:gap-5">
+                <div className="flex items-start justify-between gap-2">
                   <div
-                    className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-cyan-600 shadow-[0_12px_30px_rgba(56,189,248,0.35)] animate-float"
+                    className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white text-cyan-600 shadow-[0_12px_30px_rgba(56,189,248,0.35)] animate-float"
                     style={{ animationDelay: `${index * 0.3}s` }}
                   >
-                    <Icon className="h-6 w-6" />
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
-                  <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.4em] text-cyan-600">
+                  <span className="rounded-full bg-white/80 px-2 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[11px] font-semibold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-cyan-600 truncate">
                     {chip}
                   </span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900">{title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-600">{description}</p>
+                <div className="min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 line-clamp-2">{title}</h3>
+                  <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm leading-relaxed text-slate-600 line-clamp-2">{description}</p>
                 </div>
-                <div className="flex items-center justify-between text-sm font-semibold text-cyan-700">
-                  <span>{highlight}</span>
+                <div className="flex items-center justify-between text-xs sm:text-sm font-semibold text-cyan-700 gap-2">
+                  <span className="truncate">{highlight}</span>
                   <button
                     type="button"
                     onClick={onClick}
-                    className="inline-flex items-center gap-1 rounded-full bg-cyan-600/90 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-white shadow-lg transition hover:bg-cyan-500"
+                    className="inline-flex items-center gap-1 rounded-full bg-cyan-600/90 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white shadow-lg transition hover:bg-cyan-500"
                   >
-                    Ir ahora
-                    <ArrowRightOnRectangleIcon className="h-4 w-4" />
+                    <span className="hidden xs:inline sm:inline">Ir ahora</span>
+                    <span className="inline xs:hidden sm:hidden">Ir</span>
+                    <ArrowRightOnRectangleIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                   </button>
                 </div>
               </div>
@@ -3150,62 +3154,91 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <aside className="relative w-72 lg:w-80 overflow-hidden bg-gradient-to-br from-[#071120] via-[#0891b2] to-[#38bdf8] text-white shadow-2xl">
+      {/* Botón Hamburguesa Móvil */}
+      <button
+        onClick={() => setMenuAbierto(!menuAbierto)}
+        className="fixed top-4 left-4 z-50 lg:hidden flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+        aria-label="Menú"
+      >
+        {menuAbierto ? (
+          <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+        ) : (
+          <Bars3Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+        )}
+      </button>
+
+      {/* Overlay oscuro móvil */}
+      {menuAbierto && (
+        <div
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setMenuAbierto(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed lg:relative inset-y-0 left-0 z-40 w-72 sm:w-80 overflow-hidden bg-gradient-to-br from-[#071120] via-[#0891b2] to-[#38bdf8] text-white shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
+          menuAbierto ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
         <div className="pointer-events-none absolute -top-28 -left-20 h-60 w-60 rounded-full bg-cyan-300/45 blur-3xl animate-blob"></div>
         <div className="pointer-events-none absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-sky-400/50 blur-[110px] animate-blob-slow"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/50"></div>
 
         <div className="relative flex min-h-full flex-col justify-between">
-          <div className="border-b border-white/15 p-7 pb-6">
-            <div className="flex items-center gap-3">
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-white via-sky-200 to-cyan-200 text-2xl font-black text-cyan-700 shadow-[0_15px_35px_rgba(56,189,248,0.38)] animate-pulse-soft">
+          <div className="border-b border-white/15 p-4 sm:p-6 lg:p-7 pb-4 sm:pb-5 lg:pb-6">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white via-sky-200 to-cyan-200 text-xl sm:text-2xl font-black text-cyan-700 shadow-[0_15px_35px_rgba(56,189,248,0.38)] animate-pulse-soft">
                 <span className="tracking-tight">TC</span>
-                <span className="absolute -top-1 -right-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cyan-500 text-[10px] font-semibold text-white shadow-lg">
+                <span className="absolute -top-1 -right-1 inline-flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-cyan-500 text-[9px] sm:text-[10px] font-semibold text-white shadow-lg">
                   ✦
                 </span>
               </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.45em] text-white/70">Tec Create</p>
-                <h1 className="mt-1 text-2xl font-black leading-snug">
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.35em] sm:tracking-[0.45em] text-white/70">Tec Create</p>
+                <h1 className="mt-0.5 sm:mt-1 text-lg sm:text-xl lg:text-2xl font-black leading-snug">
                   <span className="bg-gradient-to-r from-white via-sky-100 to-cyan-200 bg-clip-text text-transparent animate-text-shimmer">
                     Admin Suite
                   </span>
                 </h1>
-                <p className="mt-1 text-[11px] text-white/75">
+                <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-[11px] text-white/75 hidden sm:block">
                   Control absoluto con un estilo fresco, listo para tus mejores decisiones.
                 </p>
               </div>
             </div>
-            <div className="mt-5 flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.35em] text-white/80">
-              <SparklesIcon className="h-3.5 w-3.5 text-cyan-100" />
-              Panel ejecutivo
+            <div className="mt-3 sm:mt-4 lg:mt-5 flex items-center gap-1.5 sm:gap-2 rounded-lg border border-white/20 bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-white/80">
+              <SparklesIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-cyan-100" />
+              <span className="truncate">Panel ejecutivo</span>
             </div>
           </div>
 
-          <nav className="relative flex-1 space-y-3 overflow-y-auto px-6 py-6">
+          <nav className="relative flex-1 space-y-2 sm:space-y-3 overflow-y-auto px-4 sm:px-6 py-4 sm:py-6">
             {menuItems.map(({ id, label, icon: Icon, badge, badgeClass }) => {
               const activo = seccionActiva === id;
               return (
                 <button
                   key={id}
-                  onClick={() => setSeccionActiva(id)}
-                  className={`group flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold tracking-wide transition-all duration-200 ${
+                  onClick={() => {
+                    setSeccionActiva(id);
+                    setMenuAbierto(false); // Cierra el menú al cambiar sección (móvil)
+                  }}
+                  className={`group flex w-full items-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 ${
                     activo
                       ? 'bg-white/25 text-white shadow-[0_15px_35px_rgba(8,145,178,0.35)] backdrop-blur'
                       : 'text-white/80 hover:bg-white/10 hover:text-white'
                   }`}
                 >
                   <span
-                    className={`flex h-9 w-9 items-center justify-center rounded-xl border border-white/20 bg-white/10 transition duration-200 ${
+                    className={`flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg sm:rounded-xl border border-white/20 bg-white/10 transition duration-200 ${
                       activo ? 'bg-white text-cyan-600 shadow-lg' : 'group-hover:border-white/40'
                     }`}
                   >
-                    <Icon className={`h-5 w-5 ${activo ? 'text-cyan-600' : 'text-white/80'}`} />
+                    <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${activo ? 'text-cyan-600' : 'text-white/80'}`} />
                   </span>
-                  <span>{label}</span>
+                  <span className="truncate">{label}</span>
                   {badge !== null && badge !== undefined && (
                     <span
-                      className={`ml-auto inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
+                      className={`ml-auto inline-flex items-center rounded-full px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide ${
                         badgeClass || (activo ? 'bg-white/95 text-cyan-600' : 'bg-white/20 text-white')
                       }`}
                     >
@@ -3218,8 +3251,8 @@ export default function AdminDashboard() {
           </nav>
 
           {admin && (
-            <div className="border-t border-white/15 bg-white/10 px-6 py-6 backdrop-blur">
-              <div className="flex items-center gap-3">
+            <div className="border-t border-white/15 bg-white/10 px-4 sm:px-6 py-4 sm:py-6 backdrop-blur">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <img
                   src={admin.foto || `https://ui-avatars.com/api/?name=${encodeURIComponent(admin.nombre)}`}
                   alt={admin.nombre}
@@ -3227,20 +3260,20 @@ export default function AdminDashboard() {
                     e.target.onerror = null;
                     e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(admin.nombre)}`;
                   }}
-                  className="h-12 w-12 rounded-full border-2 border-white/60 object-cover shadow-lg"
+                  className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border-2 border-white/60 object-cover shadow-lg"
                 />
-                <div className="flex-1">
-                  <p className="text-sm font-semibold text-white">{admin.nombre}</p>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/70">
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs sm:text-sm font-semibold text-white truncate">{admin.nombre}</p>
+                  <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-white/70">
                     Administrador
                   </span>
                 </div>
                 <button
                   onClick={cerrarSesion}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
+                  className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
                   title="Cerrar sesion"
                 >
-                  <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                  <ArrowRightOnRectangleIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </div>
             </div>
@@ -3248,14 +3281,14 @@ export default function AdminDashboard() {
         </div>
       </aside>
 
-      <main className="relative flex-1 overflow-hidden px-8 py-12 lg:px-12">
+      <main className="relative flex-1 overflow-hidden px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-12 lg:ml-0">
         <div className="pointer-events-none absolute -top-32 right-16 h-80 w-80 rounded-full bg-cyan-200/45 blur-[120px] animate-blob"></div>
         <div className="pointer-events-none absolute bottom-10 left-1/3 h-64 w-64 rounded-full bg-sky-200/35 blur-[110px] animate-blob-slow"></div>
 
-        <div className="relative mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">{infoSeccion.titulo}</h2>
-            <p className="text-gray-600">{infoSeccion.descripcion}</p>
+        <div className="relative mb-6 sm:mb-8 lg:mb-10 flex flex-col gap-3 sm:gap-4 md:gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex-1 min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 truncate">{infoSeccion.titulo}</h2>
+            <p className="text-sm sm:text-base text-gray-600 mt-0.5 sm:mt-1">{infoSeccion.descripcion}</p>
           </div>
           {renderAccionesHeader()}
         </div>
