@@ -2014,10 +2014,10 @@ export default function Soporte() {
     const puedeEditarEstadoDetalle = rolSeleccionado === 'usuario';
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-5 sm:space-y-6">
         {mensajeUsuarios && (
           <div
-            className={`rounded-lg border px-4 py-3 text-sm ${
+            className={`rounded-lg border px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm ${
               mensajeUsuarios.tipo === 'error'
                 ? 'border-red-200 bg-blue-50 text-blue-700'
                 : 'border-cyan-200 bg-cyan-50 text-cyan-700'
@@ -2027,25 +2027,25 @@ export default function Soporte() {
           </div>
         )}
 
-        <div className="grid gap-3 md:grid-cols-[1.4fr,1fr,1fr]">
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+        <div className="grid gap-3 grid-cols-1 lg:grid-cols-[1.4fr,1fr,1fr]">
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-4">
             <div className="relative">
-              <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <MagnifyingGlassIcon className="w-4 h-4 sm:w-5 sm:h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Buscar por nombre o correo..."
                 value={busquedaUsuarios}
                 onChange={(e) => setBusquedaUsuarios(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-4">
             <select
               value={rolFiltroUsuarios}
               onChange={(e) => setRolFiltroUsuarios(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-300 rounded-lg px-2.5 sm:px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="todos">Todos los roles</option>
               <option value="admin">Admin</option>
@@ -2054,11 +2054,11 @@ export default function Soporte() {
             </select>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+          <div className="bg-white rounded-xl shadow-sm border p-3 sm:p-4">
             <select
               value={estadoFiltroUsuarios}
               onChange={(e) => setEstadoFiltroUsuarios(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-300 rounded-lg px-2.5 sm:px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="todos">Todos los estados</option>
               <option value="activo">Activo</option>
@@ -2071,13 +2071,13 @@ export default function Soporte() {
         <button
           onClick={fetchUsuarios}
           disabled={cargandoUsuarios}
-          className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 transition disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-blue-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 text-sm rounded-lg shadow-sm hover:bg-blue-700 transition disabled:opacity-60 w-full sm:w-auto"
         >
-          <ArrowPathIcon className={`w-5 h-5 ${cargandoUsuarios ? 'animate-spin' : ''}`} />
+          <ArrowPathIcon className={`w-4 h-4 sm:w-5 sm:h-5 ${cargandoUsuarios ? 'animate-spin' : ''}`} />
           Actualizar
         </button>
 
-        <div className="grid gap-6 lg:grid-cols-[2fr,1.05fr]">
+        <div className="grid gap-5 sm:gap-6 grid-cols-1 lg:grid-cols-[2fr,1.05fr]">
           <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
             {cargandoUsuarios ? (
               <div className="py-12 text-center text-gray-500">Cargando usuarios...</div>
