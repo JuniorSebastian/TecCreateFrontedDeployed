@@ -102,7 +102,7 @@ export default function LoginPage() {
       {/* Botón de volver MEJORADO */}
       <motion.button
         onClick={() => navigate('/')}
-        className="absolute top-6 left-6 z-50 flex items-center gap-2 px-5 py-2.5 bg-white/90 backdrop-blur-sm border border-cyan-200 rounded-full text-gray-700 font-semibold text-sm hover:bg-white hover:border-cyan-300 hover:text-cyan-700 hover:shadow-lg transition-all duration-300 group"
+        className="absolute top-4 sm:top-6 left-4 sm:left-6 z-50 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-white/90 backdrop-blur-sm border border-cyan-200 rounded-full text-gray-700 font-semibold text-xs sm:text-sm hover:bg-white hover:border-cyan-300 hover:text-cyan-700 hover:shadow-lg transition-all duration-300 group"
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, x: -20 }}
@@ -113,24 +113,25 @@ export default function LoginPage() {
           animate={{ x: [-2, 0, -2] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <ArrowLeftIcon className="w-4 h-4" />
+          <ArrowLeftIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </motion.div>
-        Volver al inicio
+        <span className="hidden xs:inline sm:inline">Volver al inicio</span>
+        <span className="inline xs:hidden sm:hidden">Volver</span>
       </motion.button>
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Columna izquierda - Información MEJORADA */}
           <motion.div
-            className="space-y-8 lg:pr-8"
+            className="space-y-6 sm:space-y-8 lg:pr-8 text-center lg:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, type: "spring" }}
           >
             {/* Logo y título */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <motion.div
-                className="inline-flex items-center gap-4"
+                className="inline-flex items-center gap-3 sm:gap-4"
                 whileHover={{ scale: 1.05 }}
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -146,13 +147,13 @@ export default function LoginPage() {
                     }}
                     transition={{ duration: 3, repeat: Infinity }}
                   />
-                  <div className="relative bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 p-4 rounded-2xl shadow-2xl">
-                    <HiSparkles className="w-10 h-10 text-white" />
+                  <div className="relative bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-2xl">
+                    <HiSparkles className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
                 </motion.div>
                 <div>
                   <motion.h1 
-                    className="text-5xl font-black bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent"
+                    className="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent"
                     initial={{ backgroundPosition: "0% 50%" }}
                     animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
@@ -160,7 +161,7 @@ export default function LoginPage() {
                   >
                     TecCreate
                   </motion.h1>
-                  <p className="text-sm text-cyan-600 font-bold">Powered by AI</p>
+                  <p className="text-xs sm:text-sm text-cyan-600 font-bold">Powered by AI</p>
                 </div>
               </motion.div>
 
@@ -169,13 +170,13 @@ export default function LoginPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, type: "spring" }}
               >
-                <h2 className="text-3xl md:text-4xl font-black mb-4 leading-tight text-gray-900">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 leading-tight text-gray-900">
                   Transforma tus ideas en{' '}
                   <span className="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
                     presentaciones increíbles
                   </span>
                 </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                   La plataforma de inteligencia artificial diseñada exclusivamente para la comunidad
                   <span className="font-bold text-cyan-700"> TECSUP</span>. Crea contenido profesional en minutos.
                 </p>
@@ -184,7 +185,7 @@ export default function LoginPage() {
 
             {/* Features MEJORADOS */}
             <motion.div
-              className="space-y-4"
+              className="space-y-3 sm:space-y-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, type: "spring" }}
@@ -194,7 +195,7 @@ export default function LoginPage() {
                 return (
                   <motion.div
                     key={index}
-                    className={`relative flex items-start gap-4 p-5 rounded-2xl bg-white/90 backdrop-blur-sm border ${feature.borderColor} hover:shadow-xl transition-all duration-300 group overflow-hidden`}
+                    className={`relative flex items-start gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-sm border ${feature.borderColor} hover:shadow-xl transition-all duration-300 group overflow-hidden`}
                     initial={{ opacity: 0, x: -20, scale: 0.95 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     transition={{ 
@@ -205,18 +206,18 @@ export default function LoginPage() {
                     whileHover={{ x: 5, scale: 1.02 }}
                   >
                     {/* Background gradient on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`} />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl sm:rounded-2xl`} />
                     
                     <motion.div 
-                      className={`relative flex-shrink-0 w-12 h-12 rounded-xl ${feature.iconBg} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      className={`relative flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl ${feature.iconBg} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
                       animate={{ rotate: [0, 360] }}
                       transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
                     >
-                      <Icon className="w-6 h-6 text-white" />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </motion.div>
                     <div className="relative">
-                      <h3 className="font-bold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors">{feature.title}</h3>
-                      <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">{feature.description}</p>
+                      <h3 className="font-bold text-sm sm:text-base text-gray-900 mb-1 group-hover:text-gray-800 transition-colors">{feature.title}</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 group-hover:text-gray-700 transition-colors">{feature.description}</p>
                     </div>
                   </motion.div>
                 );
@@ -225,7 +226,7 @@ export default function LoginPage() {
 
             {/* Estadísticas MEJORADAS */}
             <motion.div
-              className="grid grid-cols-3 gap-4"
+              className="grid grid-cols-3 gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, type: "spring" }}
@@ -237,7 +238,7 @@ export default function LoginPage() {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="relative group text-center p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-cyan-300 hover:shadow-xl transition-all duration-300 overflow-hidden"
+                  className="relative group text-center p-3 sm:p-5 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-cyan-300 hover:shadow-xl transition-all duration-300 overflow-hidden"
                   whileHover={{ scale: 1.08, y: -5, rotateY: 5 }}
                   initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
@@ -252,12 +253,12 @@ export default function LoginPage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <motion.div 
-                    className="relative text-3xl font-black bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-1"
+                    className="relative text-2xl sm:text-3xl font-black bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-1"
                     whileHover={{ scale: 1.1 }}
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="relative text-xs text-gray-600 font-semibold uppercase tracking-wider group-hover:text-gray-700 transition-colors">
+                  <div className="relative text-[10px] sm:text-xs text-gray-600 font-semibold uppercase tracking-wider group-hover:text-gray-700 transition-colors">
                     {stat.label}
                   </div>
                   
@@ -277,16 +278,16 @@ export default function LoginPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            className="relative w-full"
           >
-            <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
+            <div className="relative bg-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
               {/* Barra superior decorativa */}
               <div className="h-2 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600" />
 
-              <div className="p-8 md:p-12">
+              <div className="p-6 sm:p-8 md:p-12">
                 {/* Logo de TECSUP */}
                 <motion.div
-                  className="mb-8"
+                  className="mb-6 sm:mb-8"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
@@ -294,21 +295,21 @@ export default function LoginPage() {
                   <img
                     src="https://i.ibb.co/Q3JXxDPY/Chat-GPT-Image-13-jun-2025-22-14-04-removebg-preview-Photoroom.png"
                     alt="TecCreate Logo"
-                    className="w-48 mx-auto drop-shadow-lg"
+                    className="w-36 sm:w-48 mx-auto drop-shadow-lg"
                   />
                 </motion.div>
 
                 {/* Título */}
                 <motion.div
-                  className="text-center mb-8"
+                  className="text-center mb-6 sm:mb-8"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, type: "spring" }}
                 >
-                  <h2 className="text-3xl font-black text-gray-900 mb-3">
+                  <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 sm:mb-3">
                     ¡Bienvenido de vuelta!
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-sm sm:text-base text-gray-600">
                     Inicia sesión con tu cuenta institucional de{' '}
                     <span className="font-bold text-cyan-700">TECSUP</span>
                   </p>
@@ -320,7 +321,7 @@ export default function LoginPage() {
                   disabled={isLoading}
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
-                  className="group relative w-full overflow-hidden bg-white border-2 border-gray-200 hover:border-cyan-400 text-gray-700 font-bold py-5 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="group relative w-full overflow-hidden bg-white border-2 border-gray-200 hover:border-cyan-400 text-gray-700 font-bold py-4 sm:py-5 rounded-xl sm:rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
                   whileHover={{ scale: 1.03, y: -3 }}
                   whileTap={{ scale: 0.97 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -391,25 +392,25 @@ export default function LoginPage() {
 
                 {/* Nota de seguridad */}
                 <motion.div
-                  className="mt-8 p-4 bg-cyan-50 border border-cyan-200 rounded-xl group hover:bg-cyan-100/50 transition-colors"
+                  className="mt-6 sm:mt-8 p-3 sm:p-4 bg-cyan-50 border border-cyan-200 rounded-xl group hover:bg-cyan-100/50 transition-colors"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.9, type: "spring" }}
                   whileHover={{ scale: 1.01 }}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <motion.div
-                      className="p-1.5 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex-shrink-0"
+                      className="p-1 sm:p-1.5 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex-shrink-0"
                       whileHover={{ rotate: [0, -5, 5, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <HiShieldCheck className="w-5 h-5 text-white" />
+                      <HiShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </motion.div>
                     <div>
-                      <p className="text-sm font-bold text-gray-900 mb-1">
+                      <p className="text-xs sm:text-sm font-bold text-gray-900 mb-1">
                         Acceso exclusivo TECSUP
                       </p>
-                      <p className="text-xs text-gray-700">
+                      <p className="text-[11px] sm:text-xs text-gray-700">
                         Solo usuarios con correos{' '}
                         <span className="font-bold text-cyan-700">@tecsup.edu.pe</span> pueden acceder.
                         Tu información está protegida.
@@ -420,7 +421,7 @@ export default function LoginPage() {
 
                 {/* Características adicionales */}
                 <motion.div
-                  className="mt-8 grid grid-cols-3 gap-3"
+                  className="mt-6 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1, type: "spring" }}
@@ -432,20 +433,20 @@ export default function LoginPage() {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className={`text-center p-3 ${item.bg} ${item.hover} rounded-xl transition-all group`}
+                      className={`text-center p-2 sm:p-3 ${item.bg} ${item.hover} rounded-xl transition-all group`}
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 200 }}
                       whileHover={{ scale: 1.05, y: -3 }}
                     >
                       <motion.div
-                        className={`inline-flex p-2 bg-gradient-to-br ${item.color} rounded-lg mb-2`}
+                        className={`inline-flex p-1.5 sm:p-2 bg-gradient-to-br ${item.color} rounded-lg mb-1 sm:mb-2`}
                         whileHover={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 0.5 }}
                       >
-                        <item.icon className="w-5 h-5 text-white" />
+                        <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                       </motion.div>
-                      <div className="text-xs font-bold text-gray-700">{item.text}</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-gray-700">{item.text}</div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -454,7 +455,7 @@ export default function LoginPage() {
 
             {/* Decoración flotante */}
             <motion.div
-              className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-2xl"
+              className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-2xl"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.2, 0.4, 0.2],
@@ -466,7 +467,7 @@ export default function LoginPage() {
               }}
             />
             <motion.div
-              className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-full blur-2xl"
+              className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-20 h-20 sm:w-32 sm:h-32 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-full blur-2xl"
               animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.2, 0.4, 0.2],
